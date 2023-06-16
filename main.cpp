@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string>
 #include <SDL.h>
-#include "Player.h"
-#include "Time.h"
+#include "Player/Player.h"
+#include "System/Time.h"
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer;
