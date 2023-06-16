@@ -15,3 +15,5 @@ If ```SDL_MAIN_HANDLED``` is not defined at the top of [main.cpp](main.cpp) then
 ```c++
 #define SDL_MAIN_HANDLED
 ```
+
+Using SDL for image rendering.  Necessary files can be found [here](https://github.com/libsdl-org/SDL_image/releases)

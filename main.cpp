@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string>
 #include <SDL.h>
+#include <SDL_image.h>
 #include "Player/Player.h"
 #include "System/Time.h"
 
@@ -15,9 +16,15 @@ int main(int argc, char *argv[]) {
     Time time;
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        printf("SDL count not initialize! SDL_ERROR: %s\n", SDL_GetError());
+        printf("SDL could not initialize! SDL_ERROR: %s\n", SDL_GetError());
         isRunning = false;
     }
+
+    if(IMG_Init(IMG_INIT_PNG) < 0){
+        printf("SDL could not initialize images! SDL_ERROR: %s\n",IMG_GetError());
+        isRunning = false;
+    }
+
 
     window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480,SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
