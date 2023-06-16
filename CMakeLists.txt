@@ -8,6 +8,6 @@ set(SDL2_LIB_DIR C:/libs/SDL/x86_64-w64-mingw32/lib)
 include_directories(${SDL2_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR})
 
-add_executable(SDL_Learn main.cpp)
+add_executable(SDL_Learn main.cpp Player.cpp Player.h Time.cpp Time.h)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2)

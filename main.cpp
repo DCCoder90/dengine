@@ -1,26 +1,72 @@
-
-
-#include <iostream>
+#define SDL_MAIN_HANDLED
+#include <stdio.h>
+#include <string>
 #include <SDL.h>
+#include "Player.h"
+#include "Time.h"
+
+SDL_Window* window = NULL;
+SDL_Renderer* renderer;
+bool isRunning = true;
+
+
 
 int main(int argc, char* argv[]) {
-    SDL_Window* window = NULL;
-    SDL_Surface* screenSurface = NULL;
+    Time time;
+
     if(SDL_Init(SDL_INIT_VIDEO) < 0){
         printf("SDL count not initialize! SDL_ERROR: %s\n",SDL_GetError());
     }else{
         window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640,480,SDL_WINDOW_SHOWN);
+        renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+        if(renderer == NULL){
+            printf("Renderer not initialize! SDL_ERROR: %s\n",SDL_GetError());
+        }
+
         if(window == NULL){
             printf("Window could not be created! SDL_ERROR: %s\n",SDL_GetError());
-        }else{
-            screenSurface = SDL_GetWindowSurface(window);
-            SDL_FillRect(screenSurface,NULL,SDL_MapRGB(screenSurface->format,0xFF,0xFF,0xFF));
-            SDL_UpdateWindowSurface(window);
-            SDL_Delay(2000);
-            SDL_FillRect(screenSurface,NULL,SDL_MapRGB(screenSurface->format,0xF0,0x00,0xFF));
-            SDL_UpdateWindowSurface(window);
-            SDL_Delay(2000);
         }
+
+            Player player;
+
+            while(isRunning) {
+                SDL_Event event;
+
+                while(SDL_PollEvent(&event)){
+                    if(event.type == SDL_QUIT){
+                        isRunning = false;
+                    }
+                }
+
+                const Uint8* keystates = SDL_GetKeyboardState(NULL);
+                if(keystates[SDL_SCANCODE_UP]){
+                    player.yPos -= player.speed;
+                }
+                if(keystates[SDL_SCANCODE_DOWN]){
+                    player.yPos += player.speed;
+                }
+                if(keystates[SDL_SCANCODE_LEFT]){
+                    player.xPos -= player.speed;
+                }
+                if(keystates[SDL_SCANCODE_RIGHT]){
+                    player.xPos += player.speed;
+                }
+                time.StartTick();
+
+                player.posRect.x = player.xPos;
+                player.posRect.y = player.yPos;
+
+                SDL_SetRenderDrawColor(renderer,255,255,255,255);
+                SDL_RenderClear(renderer);
+                SDL_SetRenderDrawColor(renderer,0,255,0,255);
+                SDL_RenderFillRect(renderer,&player.posRect);
+
+                SDL_RenderPresent(renderer);
+
+
+                time.EndTick();
+            }
     }
     SDL_DestroyWindow(window);
     SDL_Quit();
