@@ -4,7 +4,9 @@
 
 #ifndef SDL_LEARN_PLAYER_H
 #define SDL_LEARN_PLAYER_H
+using namespace std;
 #include <SDL.h>
+#include <SDL_image.h>
 
 
 class Player {
@@ -13,6 +15,7 @@ public:
     float xPos, yPos;
     SDL_Rect posRect;
     int speed;
+    SDL_Texture *texture;
 };
 
 

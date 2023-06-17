@@ -8,6 +8,7 @@ Player::Player(){
     xPos = 100.f;
     yPos = 100.f;
     speed = 1;
+    SDL_Texture *texture = NULL;
 
     posRect = {
             (int)xPos,
