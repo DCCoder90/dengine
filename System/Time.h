@@ -8,13 +8,15 @@
 class Time {
 public:
     Time();
-    Uint32 startTicks;
-    Uint32 endTicks;
     float deltaTicks;
     float frameTicks;
 
     void StartTick();
     void EndTick();
+
+private:
+    Uint32 startTicks = 0;
+    Uint32 endTicks = 0;
 };
 
 

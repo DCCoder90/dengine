@@ -4,8 +4,6 @@
 
 #include "Time.h"
 Time::Time(){
-    Uint32 startTicks = 0;
-    Uint32 endTicks = 0;
     float deltaTicks = 0.f;
     float frameTicks = 0.f;
 

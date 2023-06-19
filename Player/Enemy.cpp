@@ -1,13 +1,13 @@
 //
-// Created by ernes on 6/16/2023.
+// Created by ernes on 6/18/2023.
 //
 
-#include "Player.h"
+#include "Enemy.h"
 
-Player::Player(){
-    xPos = 250.f;
-    yPos = 100.f;
-    speed = 3;
+Enemy::Enemy(){
+    xPos = 200.f;
+    yPos = 200.f;
+    speed = 1;
     SDL_Texture *texture = NULL;
 
     posRect = {
@@ -18,7 +18,7 @@ Player::Player(){
     };
 }
 
-void Player::SetPos(float xPos, float yPos) {
+void Enemy::SetPos(float xPos, float yPos) {
     this->xPos = xPos;
     this->yPos = yPos;
     posRect.x = this->xPos;
