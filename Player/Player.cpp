@@ -17,10 +17,3 @@ Player::Player(){
             32
     };
 }
-
-void Player::SetPos(float xPos, float yPos) {
-    this->xPos = xPos;
-    this->yPos = yPos;
-    posRect.x = this->xPos;
-    posRect.y = this->yPos;
-}
