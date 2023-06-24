@@ -2,7 +2,7 @@
 // Created by ernes on 6/18/2023.
 //
 
-#include "Enemy.h"
+#include "../../include/Player/Enemy.h"
 
 Enemy::Enemy(){
     xPos = 200.f;

@@ -2,7 +2,7 @@
 // Created by ernes on 6/16/2023.
 //
 
-#include "Player.h"
+#include "../../include/Player/Player.h"
 
 Player::Player(){
     xPos = 250.f;

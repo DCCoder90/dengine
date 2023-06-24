@@ -2,7 +2,7 @@
 // Created by ernes on 6/17/2023.
 //
 
-#include "Sprite.h"
+#include "../../include/System/Sprite.h"
 
 Sprite::Sprite(std::string filepath, SDL_Renderer* renderer){
     SDL_Surface *tempSurface = IMG_Load(filepath.c_str());

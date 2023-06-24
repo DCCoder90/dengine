@@ -1,6 +1,6 @@
 #define SDL_MAIN_HANDLED
 
-#include "System/Game.h"
+#include "include/System/Game.h"
 
 Game game;
 

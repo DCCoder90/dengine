@@ -2,7 +2,7 @@
 // Created by ernes on 6/16/2023.
 //
 
-#include "Time.h"
+#include "../../include/System/Time.h"
 Time::Time(){
     float deltaTicks = 0.f;
     float frameTicks = 0.f;

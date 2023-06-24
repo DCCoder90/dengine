@@ -2,7 +2,7 @@
 // Created by ernes on 6/17/2023.
 //
 
-#include "Game.h"
+#include "../../include/System/Game.h"
 
 Game::Game(){
     isRunning = true;

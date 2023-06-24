@@ -5,7 +5,7 @@
 #ifndef SDL_LEARN_GAME_H
 #define SDL_LEARN_GAME_H
 #include <stdio.h>
-#include <sdl.h>
+#include <SDL.h>
 #include "../Player/Player.h"
 #include "Time.h"
 #include <string>

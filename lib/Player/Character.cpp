@@ -2,7 +2,7 @@
 // Created by ernes on 6/20/2023.
 //
 
-#include "Character.h"
+#include "../../include/Player/Character.h"
 
 
 void Character::SetPos(float xPos, float yPos) {
