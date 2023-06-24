@@ -32,7 +32,8 @@ private:
     Time time;
     class Player* player;
     std::vector<class Enemy*> enemies;
-    int gameState = GAMESTATES::Playing;
+    //int gameState = GAMESTATES::Playing;
+    GameState gameState;
 };
 
 #endif //SDL_LEARN_GAME_H

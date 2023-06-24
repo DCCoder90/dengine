@@ -10,3 +10,7 @@ Component::Component(std::string componentName){
 std::string Component::GetName(){
     return name;
 }
+
+void Component::Update() {
+
+}
