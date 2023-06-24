@@ -13,11 +13,8 @@
 #include <SDL_image.h>
 #include <vector>
 #include "Sprite.h"
+#include "GameStates.h"
 
-enum GAMESTATES{
-    Playing,
-    Gameover
-};
 
 class Game {
 public:
