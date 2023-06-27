@@ -29,3 +29,5 @@ Also created the enemy class and added it to the game.
 #### N/A
 
 Just wanted to quickly notate that the full path in the .run/GenerateDocumentation.xml file could potentially cause issues if the project is moved between systems.  Will need to take care of that at some point in the future.
+
+Before I can continue to move forward with this I have to look into event handling.  Want to move the collision detection from Game.cpp to a collider component.

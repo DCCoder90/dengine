@@ -19,6 +19,7 @@
 class Game {
 public:
     Game();
+
     void loop();
     void handleEvents();
     void update();

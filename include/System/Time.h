@@ -11,7 +11,13 @@ public:
     float deltaTicks;
     float frameTicks;
 
+    /**
+ * To be run at the begining of a frame, logs the start tick of the frame
+ */
     void StartTick();
+    /**
+ * To be run at the end of the frame, logs the end tick of the frame and calculates the framerate
+ */
     void EndTick();
 
 private:
