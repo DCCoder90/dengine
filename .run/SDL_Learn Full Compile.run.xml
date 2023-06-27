@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="SDL_Learn Full Compile" type="CompoundRunConfigurationType">
-    <toRun name="MoveAssets" type="ShConfigurationType" />
     <toRun name="SDL_Learn" targetId="CMakeBuildProfile:Debug" type="CMakeRunConfiguration" />
+    <toRun name="MoveAssets" type="ShConfigurationType" />
     <method v="2" />
   </configuration>
 </component>

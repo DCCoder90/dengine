@@ -25,3 +25,7 @@ Thanks to [LepleyDev](https://www.youtube.com/@LepleyDev) for the work he did on
 
 Created the moveassets.bat file to automatically copy the Assets directory and all files in the bin directory to the debug output.  Keeps issues to a minimum.
 Also created the enemy class and added it to the game.
+
+#### N/A
+
+Just wanted to quickly notate that the full path in the .run/GenerateDocumentation.xml file could potentially cause issues if the project is moved between systems.  Will need to take care of that at some point in the future.
