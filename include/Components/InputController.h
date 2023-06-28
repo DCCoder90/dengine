@@ -9,7 +9,7 @@
 
 class InputController: public Component {
 public:
-    InputController(std::string componentName);
+    InputController(GameObject& parent);
     /**
  * Keyboard key states
  */
