@@ -22,6 +22,13 @@ void GameObject::RemoveComponent(Component* component){
     std::remove(components.begin(),components.end(),component);
 }
 
+void GameObject::Start(){
+    int i;
+    for(i = 0;i<components.size();i++){
+        components[i]->Start();
+    }
+}
+
 void GameObject::Update(){
     int i;
     for(i = 0;i<components.size();i++){

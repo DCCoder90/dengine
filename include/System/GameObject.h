@@ -30,6 +30,11 @@ public:
      * @see components
 */
     void RemoveComponent(Component* component);
+
+    /**
+     * Called on object instantiation
+     */
+    void Start();
     /**
 * Runs every frame performing any required logic
 */
