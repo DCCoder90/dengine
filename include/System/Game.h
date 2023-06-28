@@ -4,6 +4,7 @@
 
 #ifndef SDL_LEARN_GAME_H
 #define SDL_LEARN_GAME_H
+
 #include <stdio.h>
 #include <SDL.h>
 #include "../Player/Player.h"
@@ -21,9 +22,13 @@ public:
     Game();
 
     void loop();
+
     void handleEvents();
+
     void update();
+
     void draw();
+
     void cleanup();
 
 private:
@@ -31,8 +36,10 @@ private:
     SDL_Renderer *renderer;
     bool isRunning = true;
     Time time;
-    class Player* player;
-    std::vector<class Enemy*> enemies;
+
+    class Player *player;
+
+    std::vector<class Enemy *> enemies;
     //int gameState = GAMESTATES::Playing;
     GameState gameState;
 };

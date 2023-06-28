@@ -4,9 +4,10 @@
 
 #ifndef SDL_LEARN_ENEMY_H
 #define SDL_LEARN_ENEMY_H
+
 #include "Character.h"
 
-class Enemy : public Character{
+class Enemy : public Character {
 public:
     Enemy();
 };

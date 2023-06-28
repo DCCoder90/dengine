@@ -4,9 +4,10 @@
 
 #ifndef SDL_LEARN_PLAYER_H
 #define SDL_LEARN_PLAYER_H
+
 #include "Character.h"
 
-class Player: public Character {
+class Player : public Character {
 public:
     Player();
 };

@@ -18,17 +18,18 @@ public:
      *  @param filepath The filepath of the sprite
      *  @param renderer The renderer that will utilize this sprite
  */
-    Sprite(std::string filepath, SDL_Renderer* renderer);
+    Sprite(std::string filepath, SDL_Renderer *renderer);
+
     /**
  *  Returns the texture
  */
-    SDL_Texture* getTexture();
+    SDL_Texture *getTexture();
 
 private:
     /**
  *  Texture of the sprite
  */
-    SDL_Texture* texture;
+    SDL_Texture *texture;
 };
 
 

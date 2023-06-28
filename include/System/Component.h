@@ -16,11 +16,13 @@ public:
     /**
  *  @param componentName A string denoting the name of the component.  This should be unique
  */
-    Component(GameObject& parent);
+    Component(GameObject &parent);
+
     /**
  *  @param other Reference to the object being collided with
  */
-    virtual void NotifyCollision(GameObject& other);
+    virtual void NotifyCollision(GameObject &other);
+
     /**
 * Returns the component's name
  * @see name
@@ -31,13 +33,15 @@ public:
      * Called on instantiation
      */
     void Start();
+
     /**
 * Runs every frame performing any required logic
  * @see components
 */
     virtual void Update();
+
 protected:
-    GameObject& parent;
+    GameObject &parent;
 private:
     std::string name;
 };

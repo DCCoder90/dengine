@@ -14,17 +14,20 @@
 class GameObject {
 public:
     GameObject(std::string objectName);
+
     /**
 * Returns the object's name
      * @see name
 */
     std::string GetName();
+
     /**
 * Adds a component to the GameObject
      * @param component The component to add to the object
      * @see components
 */
-    void AddComponent(Component* component);
+    void AddComponent(Component *component);
+
     /**
 * Removes a component from the GameObject
      * @param component The component to remove

@@ -4,6 +4,7 @@
 
 #ifndef SDL_LEARN_CHARACTER_H
 #define SDL_LEARN_CHARACTER_H
+
 #include <SDL.h>
 #include <SDL_image.h>
 
@@ -28,6 +29,7 @@ public:
  */
     int speed;
     SDL_Texture *texture;
+
     /**
  * Sets the position of the character on the screen
  */

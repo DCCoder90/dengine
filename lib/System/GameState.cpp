@@ -3,16 +3,18 @@
 //
 #include "../../include/System/GameStates.h"
 
-GameState::GameState(){
+GameState::GameState() {
 
 }
-GameState::~GameState(){
+
+GameState::~GameState() {
 
 }
-int GameState::getGameState(){
+
+int GameState::getGameState() {
     return currentstate;
 }
 
-void GameState::setGameState(int state){
+void GameState::setGameState(int state) {
     currentstate = state;
 }

@@ -4,7 +4,7 @@
 
 #include "../../include/System/Game.h"
 
-Game::Game(){
+Game::Game() {
     isRunning = true;
     player = new Player();
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -12,13 +12,14 @@ Game::Game(){
         isRunning = false;
     }
 
-    if(IMG_Init(IMG_INIT_PNG) < 0){
-        printf("SDL could not initialize images! SDL_ERROR: %s\n",IMG_GetError());
+    if (IMG_Init(IMG_INIT_PNG) < 0) {
+        printf("SDL could not initialize images! SDL_ERROR: %s\n", IMG_GetError());
         isRunning = false;
     }
 
 
-    window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480,SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480,
+                              SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     if (renderer == NULL) {
@@ -36,9 +37,9 @@ Game::Game(){
 
 
     Sprite enemySprite = Sprite("../Assets/evil.png", renderer);
-    for(int i =0;i<10;i++){
-        Enemy* e = new Enemy;
-        e->SetPos(40.f*i,40.f*i);
+    for (int i = 0; i < 10; i++) {
+        Enemy *e = new Enemy;
+        e->SetPos(40.f * i, 40.f * i);
         e->texture = enemySprite.getTexture();
         enemies.emplace_back(e);
     }
@@ -46,8 +47,8 @@ Game::Game(){
     gameState.setGameState(GAMESTATES::Playing);
 }
 
-void Game::loop(){
-    while(isRunning){
+void Game::loop() {
+    while (isRunning) {
         time.StartTick();
         handleEvents();
         update();
@@ -58,7 +59,8 @@ void Game::loop(){
     cleanup();
 
 }
-void Game::handleEvents(){
+
+void Game::handleEvents() {
     SDL_Event event;
 
     while (SDL_PollEvent(&event)) {
@@ -69,34 +71,35 @@ void Game::handleEvents(){
 
     const Uint8 *keystates = SDL_GetKeyboardState(NULL);
     if (keystates[SDL_SCANCODE_UP]) {
-        player->SetPos(player->xPos,player->yPos -=player->speed);
+        player->SetPos(player->xPos, player->yPos -= player->speed);
     }
     if (keystates[SDL_SCANCODE_DOWN]) {
-        player->SetPos(player->xPos,player->yPos +=player->speed);
+        player->SetPos(player->xPos, player->yPos += player->speed);
     }
     if (keystates[SDL_SCANCODE_LEFT]) {
-        player->SetPos(player->xPos -= player->speed,player->yPos);
+        player->SetPos(player->xPos -= player->speed, player->yPos);
     }
     if (keystates[SDL_SCANCODE_RIGHT]) {
-        player->SetPos(player->xPos += player->speed,player->yPos);
+        player->SetPos(player->xPos += player->speed, player->yPos);
     }
 }
-void Game::update(){
+
+void Game::update() {
     //Update loop
 
     //Move enemies towards player
-    for(int i=0;i<enemies.size();i++){
-        if(enemies[i]->xPos < player->xPos){
-            enemies[i]->SetPos(enemies[i]->xPos+enemies[i]->speed,enemies[i]->yPos);
+    for (int i = 0; i < enemies.size(); i++) {
+        if (enemies[i]->xPos < player->xPos) {
+            enemies[i]->SetPos(enemies[i]->xPos + enemies[i]->speed, enemies[i]->yPos);
         }
-        if(enemies[i]->xPos > player->xPos){
-            enemies[i]->SetPos(enemies[i]->xPos-enemies[i]->speed,enemies[i]->yPos);
+        if (enemies[i]->xPos > player->xPos) {
+            enemies[i]->SetPos(enemies[i]->xPos - enemies[i]->speed, enemies[i]->yPos);
         }
-        if(enemies[i]->yPos < player->yPos){
-            enemies[i]->SetPos(enemies[i]->xPos,enemies[i]->yPos+enemies[i]->speed);
+        if (enemies[i]->yPos < player->yPos) {
+            enemies[i]->SetPos(enemies[i]->xPos, enemies[i]->yPos + enemies[i]->speed);
         }
-        if(enemies[i]->yPos > player->yPos){
-            enemies[i]->SetPos(enemies[i]->xPos,enemies[i]->yPos-enemies[i]->speed);
+        if (enemies[i]->yPos > player->yPos) {
+            enemies[i]->SetPos(enemies[i]->xPos, enemies[i]->yPos - enemies[i]->speed);
         }
 
         //Check enemy collision
@@ -104,10 +107,10 @@ void Game::update(){
         //Just a simple collision that will be able to tell if right or bottom side of
         //enemy touches player or if enemy is fully on top of player.   Need to fix
         //this though so we only check if we know for sure player and enemy are near each other.
-        if(enemies[i]->xPos+enemies[i]->posRect.w >= player ->xPos &&
-        enemies[i]->xPos <= player->xPos+player->posRect.w &&
-        enemies[i]->yPos+enemies[i]->posRect.h >= player ->yPos &&
-        enemies[i]->yPos <= player->yPos+player->posRect.h){
+        if (enemies[i]->xPos + enemies[i]->posRect.w >= player->xPos &&
+            enemies[i]->xPos <= player->xPos + player->posRect.w &&
+            enemies[i]->yPos + enemies[i]->posRect.h >= player->yPos &&
+            enemies[i]->yPos <= player->yPos + player->posRect.h) {
             gameState.setGameState(GAMESTATES::Gameover);
         }
     }
@@ -115,18 +118,18 @@ void Game::update(){
 
 }
 
-void Game::draw(){
+void Game::draw() {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
 
-    if(gameState.getGameState() == GAMESTATES::Playing){
-        SDL_RenderCopy(renderer,player->texture,NULL,&player->posRect);
+    if (gameState.getGameState() == GAMESTATES::Playing) {
+        SDL_RenderCopy(renderer, player->texture, NULL, &player->posRect);
 
-        for(int i=0;i<enemies.size();i++){
-            SDL_RenderCopy(renderer,enemies[i]->texture,NULL,&enemies[i]->posRect);
+        for (int i = 0; i < enemies.size(); i++) {
+            SDL_RenderCopy(renderer, enemies[i]->texture, NULL, &enemies[i]->posRect);
         }
-    }else if (gameState.getGameState() == GAMESTATES::Gameover){
+    } else if (gameState.getGameState() == GAMESTATES::Gameover) {
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         SDL_RenderClear(renderer);
     }
@@ -134,7 +137,8 @@ void Game::draw(){
 
     SDL_RenderPresent(renderer);
 }
-void Game::cleanup(){
+
+void Game::cleanup() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 }

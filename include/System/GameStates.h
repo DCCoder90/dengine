@@ -8,7 +8,7 @@
 /** @enum GAMESTATES
 *  @brief Available game states
 */
-enum GAMESTATES{
+enum GAMESTATES {
     Splash,
     Playing,
     Gameover
@@ -21,20 +21,25 @@ enum GAMESTATES{
 class GameState {
 public:
     GameState();
+
     ~GameState();
+
     /**
      * Retrieve the current gamestate
      * @see GAMESTATES
      * @return int that corrosponds to a game state in GAMESTATES
      */
     int getGameState();
+
     /**
      * Set the game state.  This can be done with an int or with the GAMESTATES enum.
      * @see GAMESTATES
      * @param state The current state of the game
      */
     void setGameState(int state);
+
 private:
     int currentstate = GAMESTATES::Splash;
 };
+
 #endif //SDL_LEARN_GAMESTATES_H
