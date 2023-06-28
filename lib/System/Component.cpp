@@ -4,13 +4,13 @@
 
 #include "../../include/System/Component.h"
 
-Component::Component(std::string componentName){
-    name = componentName;
-}
+Component::Component(GameObject& parent) : parent(parent) {}
+
 std::string Component::GetName(){
     return name;
 }
 
-void Component::Update() {
+void Component::Start() {}
+void Component::Update() {}
 
-}
+void Component::NotifyCollision(GameObject& other) {}
