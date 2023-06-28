@@ -9,6 +9,7 @@
 #include <vector>
 #include "Component.h"
 #include<bits/stdc++.h>
+#include <SDL_rect.h>
 
 class GameObject {
 public:
@@ -29,21 +30,27 @@ public:
      * @param component The component to remove
      * @see components
 */
-    void RemoveComponent(Component* component);
+    void RemoveComponent(Component *component);
 
     /**
      * Called on object instantiation
      */
     void Start();
+
     /**
 * Runs every frame performing any required logic
 */
     void Update();
+
+    /**
+* A rect denoting the object's position in space.
+*/
+    SDL_Rect box;
 private:
     /**
 * A vector containing any components that may be on the GameObject
 */
-    std::vector<class Component*> components;
+    std::vector<class Component *> components;
     /**
 * A string containing the object name.
 */
