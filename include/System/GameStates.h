@@ -37,9 +37,10 @@ public:
      * @param state The current state of the game
      */
     void setGameState(int state);
-
+    static GameState& GetInstance();
 private:
     int currentstate = GAMESTATES::Splash;
+    static GameState instance;
 };
 
 #endif //SDL_LEARN_GAMESTATES_H

@@ -44,7 +44,7 @@ Game::Game() {
         enemies.emplace_back(e);
     }
 
-    gameState.setGameState(GAMESTATES::Playing);
+    GameState::GetInstance().setGameState(GAMESTATES::Playing);
 }
 
 void Game::loop() {
@@ -111,7 +111,7 @@ void Game::update() {
             enemies[i]->xPos <= player->xPos + player->posRect.w &&
             enemies[i]->yPos + enemies[i]->posRect.h >= player->yPos &&
             enemies[i]->yPos <= player->yPos + player->posRect.h) {
-            gameState.setGameState(GAMESTATES::Gameover);
+            GameState::GetInstance().setGameState(GAMESTATES::Gameover);
         }
     }
 
@@ -123,13 +123,13 @@ void Game::draw() {
     SDL_RenderClear(renderer);
 
 
-    if (gameState.getGameState() == GAMESTATES::Playing) {
+    if (GameState::GetInstance().getGameState() == GAMESTATES::Playing) {
         SDL_RenderCopy(renderer, player->texture, NULL, &player->posRect);
 
         for (int i = 0; i < enemies.size(); i++) {
             SDL_RenderCopy(renderer, enemies[i]->texture, NULL, &enemies[i]->posRect);
         }
-    } else if (gameState.getGameState() == GAMESTATES::Gameover) {
+    } else if (GameState::GetInstance().getGameState() == GAMESTATES::Gameover) {
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
         SDL_RenderClear(renderer);
     }

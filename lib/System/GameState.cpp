@@ -18,3 +18,7 @@ int GameState::getGameState() {
 void GameState::setGameState(int state) {
     currentstate = state;
 }
+
+GameState& GameState::GetInstance() {
+    return instance;
+}
