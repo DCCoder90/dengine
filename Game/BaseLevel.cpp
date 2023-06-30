@@ -30,6 +30,20 @@ void BaseLevel::Resume(){}
 
 
 void BaseLevel::Update(){
+
+    std::weak_ptr<GameObject> player = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
+    std::shared_ptr<GameObject> playerGo = player.lock();
+    for(int i=0;i<objects.size();i++){
+        if(objects[i]->HasComponent("LeafMan")){
+            if (objects[i]->box.x + objects[i]->box.w>= playerGo->box.x &&
+                    objects[i]->box.x <= playerGo->box.x + playerGo->box.w &&
+                    objects[i]->box.y + objects[i]->box.h >= playerGo->box.y &&
+                    objects[i]->box.y <= playerGo->box.y + playerGo->box.h) {
+                GameState::GetInstance().setGameState(GAMESTATES::Gameover);
+            }
+        }
+    }
+
         UpdateObjects();
 }
 

@@ -104,6 +104,17 @@ void Game::loop() {
             }
         }
 
+        //TODO: Change this to be an end game screen
+        //TODO: Add a way to change levels
+        //TODO: Move this to a GameLevel
+        if(GameState::GetInstance().getGameState() == GAMESTATES::Gameover){
+            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+            SDL_RenderClear(renderer);
+            SDL_RenderPresent(renderer);
+            Time::GetInstance().EndTick();
+            continue;
+        }
+
         state->Update();
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);

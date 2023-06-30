@@ -5,6 +5,7 @@
 #include "LeafMan.h"
 
 LeafMan::LeafMan(GameObject &parent) : Component(parent) {
+    name = "LeafMan";
 }
 
 void LeafMan::Start() {
