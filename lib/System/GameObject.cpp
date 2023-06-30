@@ -3,8 +3,9 @@
 //
 
 
+#include <SDL_log.h>
 #include "../../include/System/GameObject.h"
-
+#include "../../include/System/Component.h"
 
 GameObject::GameObject(std::string objectName) {
     name = objectName;
@@ -12,6 +13,12 @@ GameObject::GameObject(std::string objectName) {
 
 std::string GameObject::GetName() {
     return name;
+}
+
+bool GameObject::HasComponent(std::string name){
+    return std::any_of(components.begin(), components.end(), [&](const auto &item) {
+        return item->GetName() == name;
+    });
 }
 
 void GameObject::AddComponent(Component *component) {
@@ -34,4 +41,16 @@ void GameObject::Update() {
     for (i = 0; i < components.size(); i++) {
         components[i]->Update();
     }
+}
+
+void GameObject::Render() {
+    int i;
+    for (i = 0; i < components.size(); i++) {
+        components[i]->Render();
+    }
+}
+
+void GameObject::SetPos(float xPos, float yPos) {
+    box.x = xPos;
+    box.y = yPos;
 }

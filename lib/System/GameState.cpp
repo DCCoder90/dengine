@@ -3,6 +3,8 @@
 //
 #include "../../include/System/GameStates.h"
 
+GameState GameState::instance;
+
 GameState::GameState() {
 
 }

@@ -5,12 +5,12 @@
 #ifndef SDL_LEARN_GAMEOBJECT_H
 #define SDL_LEARN_GAMEOBJECT_H
 
+
 #include <string>
 #include <vector>
-#include "Component.h"
 #include<bits/stdc++.h>
 #include <SDL_rect.h>
-
+class Component;  //Forward declaration to fix circular dependency
 class GameObject {
 public:
     GameObject(std::string objectName);
@@ -35,20 +35,28 @@ public:
 */
     void RemoveComponent(Component *component);
 
+    bool HasComponent(std::string name);
+
     /**
      * Called on object instantiation
      */
-    void Start();
+    virtual void Start();
 
     /**
 * Runs every frame performing any required logic
 */
-    void Update();
+    virtual void Update();
+    /**
+* Performs render on all attached components
+*/
+    virtual void Render();
 
     /**
 * A rect denoting the object's position in space.
 */
     SDL_Rect box;
+
+    void SetPos(float xPos, float yPos);
 private:
     /**
 * A vector containing any components that may be on the GameObject

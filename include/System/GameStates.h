@@ -11,7 +11,8 @@
 enum GAMESTATES {
     Splash,
     Playing,
-    Gameover
+    Gameover,
+    Quit
 };
 
 /**
