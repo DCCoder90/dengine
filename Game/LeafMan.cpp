@@ -10,6 +10,8 @@ LeafMan::LeafMan(GameObject &parent) : Component(parent) {
 void LeafMan::Start() {
     Sprite* sprite = new Sprite("../Assets/evil.png",parent);
     parent.AddComponent(sprite);
+    parent.box.h = 32;
+    parent.box.w = 32;
 }
 
 void LeafMan::Update(){
@@ -18,15 +20,15 @@ void LeafMan::Update(){
 
     //Move enemies towards player
     if (parent.box.x < playerGo->box.x) {
-        parent.SetPos(parent.box.x + 1,parent.box.y);
+        parent.SetPos(parent.box.x + speed,parent.box.y);
     }
     if (parent.box.x> playerGo->box.x) {
-        parent.SetPos(parent.box.x - 1,parent.box.y);
+        parent.SetPos(parent.box.x - speed,parent.box.y);
     }
     if (parent.box.y < playerGo->box.y) {
-        parent.SetPos(parent.box.x,parent.box.y+1);
+        parent.SetPos(parent.box.x,parent.box.y+speed);
     }
     if (parent.box.y > playerGo->box.y) {
-        parent.SetPos(parent.box.x,parent.box.y-1);
+        parent.SetPos(parent.box.x,parent.box.y-speed);
     }
 }

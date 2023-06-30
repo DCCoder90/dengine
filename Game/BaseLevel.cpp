@@ -15,17 +15,15 @@ void BaseLevel::Start(){
     playerGo->AddComponent(player);
     objects.emplace_back(playerGo);
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 2; i++) {
         GameObject* enemyGo = new GameObject("Enemy " + i);
         LeafMan* enemy = new LeafMan(*enemyGo);
         enemyGo->AddComponent(enemy);
+        enemyGo->SetPos(i*150,i*80);
         objects.emplace_back(enemyGo);
     }
 
-    SDL_Log("Loaded base level");
-
     StartObjects();
-
 }
 void BaseLevel::Pause(){}
 void BaseLevel::Resume(){}
@@ -39,34 +37,7 @@ void BaseLevel::Render() {
     RenderObjects();
 }
 
-/* This needs to be reimplemented using the input controller
-void BaseLevel::handleEvents() {
-    SDL_Event event;
-
-    while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)) {
-            GameState::GetInstance().setGameState(GAMESTATES::Quit);
-        }
-    }
-
-    const Uint8 *keystates = SDL_GetKeyboardState(NULL);
-    if (keystates[SDL_SCANCODE_UP]) {
-        player->SetPos(player->xPos, player->yPos -= player->speed);
-    }
-    if (keystates[SDL_SCANCODE_DOWN]) {
-        player->SetPos(player->xPos, player->yPos += player->speed);
-    }
-    if (keystates[SDL_SCANCODE_LEFT]) {
-        player->SetPos(player->xPos -= player->speed, player->yPos);
-    }
-    if (keystates[SDL_SCANCODE_RIGHT]) {
-        player->SetPos(player->xPos += player->speed, player->yPos);
-    }
-}
- */
-
 /*
-
 void BaseLevel::updatestuff() {
         //Check enemy collision
 

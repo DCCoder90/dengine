@@ -95,8 +95,6 @@ void Game::loop() {
 
         auto& state = stateStack.top();
 
-
-
         SDL_Event event;
 
         while (SDL_PollEvent(&event)) {
@@ -106,32 +104,12 @@ void Game::loop() {
             }
         }
 
-        const Uint8 *keystates = SDL_GetKeyboardState(NULL);
-        std::weak_ptr<GameObject> playerGoPtr = GetCurrentState().GetObjectByComponent("Player");
-        std::shared_ptr<GameObject> player = playerGoPtr.lock();
-        if (keystates[SDL_SCANCODE_UP]) {
-            std::weak_ptr<GameObject> playerGoPtr = GetCurrentState().GetObjectByComponent("Player");
-            std::shared_ptr<GameObject> player = playerGoPtr.lock();
-            player->SetPos(player->box.x, player->box.y -= 1);
-        }
-        if (keystates[SDL_SCANCODE_DOWN]) {
-            player->SetPos(player->box.x, player->box.y += 1);
-        }
-        if (keystates[SDL_SCANCODE_LEFT]) {
-            player->SetPos(player->box.x -= 1, player->box.y);
-        }
-        if (keystates[SDL_SCANCODE_RIGHT]) {
-            player->SetPos(player->box.x += 1, player->box.y);
-        }
-
         state->Update();
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
         state->Render();
-        SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
         Time::GetInstance().EndTick();
-        //SDL_Delay(33);
     }
 
     while (!stateStack.empty()) {

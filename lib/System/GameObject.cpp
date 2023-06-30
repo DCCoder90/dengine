@@ -3,6 +3,7 @@
 //
 
 
+#include <SDL_log.h>
 #include "../../include/System/GameObject.h"
 #include "../../include/System/Component.h"
 

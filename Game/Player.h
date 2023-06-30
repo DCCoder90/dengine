@@ -13,6 +13,9 @@ class Player : public Component{
 public:
     Player(GameObject &parent);
     void Start() override;
+    void Update() override;
+private:
+    int speed = 3;
 };
 
 

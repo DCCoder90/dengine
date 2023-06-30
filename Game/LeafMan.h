@@ -15,6 +15,8 @@ public:
     LeafMan(GameObject &parent);
     void Start() override;
     void Update() override;
+private:
+    int speed = 1;
 };
 
 
