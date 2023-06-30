@@ -1,6 +1,4 @@
-//
-// Created by ernes on 6/24/2023.
-//
+
 #include "../../include/System/GameStates.h"
 
 GameState GameState::instance;

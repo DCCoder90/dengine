@@ -1,6 +1,4 @@
-//
-// Created by ernes on 6/29/2023.
-//
+
 
 #ifndef SDL_LEARN_PLAYER_H
 #define SDL_LEARN_PLAYER_H

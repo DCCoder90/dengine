@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/28/2023.
-//
-
 #include "../../include/Components/Collider.h"
 
 Collider::Collider(GameObject &associated, Vec2 scale, Vec2 offset) : Component(associated), scale(scale),

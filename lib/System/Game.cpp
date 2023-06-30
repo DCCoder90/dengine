@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/17/2023.
-//
-
 #include "../../include/System/Game.h"
 
 Game* Game::instance;

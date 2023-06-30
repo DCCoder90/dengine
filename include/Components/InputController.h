@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/24/2023.
-//
-
 #ifndef SDL_LEARN_INPUTCONTROLLER_H
 #define SDL_LEARN_INPUTCONTROLLER_H
 

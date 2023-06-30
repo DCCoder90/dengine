@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/29/2023.
-//
-
 #include "../../include/Components/Sprite.h"
 
 Sprite::Sprite(std::string filepath, GameObject &associated) : Component(associated){

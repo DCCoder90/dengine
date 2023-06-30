@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/27/2023.
-//
-
 #ifndef SDL_LEARN_EVENTSYSTEM_H
 #define SDL_LEARN_EVENTSYSTEM_H
 

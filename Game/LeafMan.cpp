@@ -1,6 +1,4 @@
-//
-// Created by ernes on 6/29/2023.
-//
+
 
 #include "LeafMan.h"
 

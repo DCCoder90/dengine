@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/27/2023.
-//
-
 #include "../../include/System/EventSystem.h"
 
 const Uint32 CustomEventType = SDL_USEREVENT + 1;

@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/16/2023.
-//
-
 #include "../../include/System/Time.h"
 
 Time Time::instance;

@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/28/2023.
-//
-
 #ifndef SDL_LEARN_GAMELEVEL_H
 #define SDL_LEARN_GAMELEVEL_H
 

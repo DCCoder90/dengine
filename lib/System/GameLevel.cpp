@@ -1,7 +1,4 @@
-//
-// Created by ernes on 6/28/2023.
-//  Help from https://github.com/mikaelmello/sdl-game-engine
-
+//Help from https://github.com/mikaelmello/sdl-game-engine
 #include "../../include/System/GameLevel.h"
 #include "../../include/System/Game.h"
 

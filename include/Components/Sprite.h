@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/29/2023.
-//
-
 #ifndef SDL_LEARN_SPRITE_H
 #define SDL_LEARN_SPRITE_H
 

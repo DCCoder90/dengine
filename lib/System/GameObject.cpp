@@ -1,7 +1,3 @@
-//
-// Created by ernes on 6/24/2023.
-//
-
 
 #include <SDL_log.h>
 #include "../../include/System/GameObject.h"
