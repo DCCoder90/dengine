@@ -18,6 +18,7 @@ BaseLevel::BaseLevel(){
         objects.emplace_back(enemyGo);
     }
 
+    SDL_Log("Loaded base level");
 
     StartObjects();
 }
@@ -38,7 +39,7 @@ void BaseLevel::Render() {
     RenderObjects();
 }
 
-
+/* This needs to be reimplemented using the input controller
 void BaseLevel::handleEvents() {
     SDL_Event event;
 
@@ -62,6 +63,9 @@ void BaseLevel::handleEvents() {
         player->SetPos(player->xPos += player->speed, player->yPos);
     }
 }
+ */
+
+/*
 
 void BaseLevel::updatestuff() {
         //Check enemy collision
@@ -79,23 +83,4 @@ void BaseLevel::updatestuff() {
 
 
 }
-
-void BaseLevel::draw() {
-    SDL_SetRenderDrawColor(Game::GetInstance().GetRenderer(), 255, 255, 255, 255);
-    SDL_RenderClear(Game::GetInstance().GetRenderer());
-
-
-    if (GameState::GetInstance().getGameState() == GAMESTATES::Playing) {
-        SDL_RenderCopy(Game::GetInstance().GetRenderer(), player->texture, NULL, &player->posRect);
-
-        for (int i = 0; i < enemies.size(); i++) {
-            SDL_RenderCopy(Game::GetInstance().GetRenderer(), enemies[i]->texture, NULL, &enemies[i]->posRect);
-        }
-    } else if (GameState::GetInstance().getGameState() == GAMESTATES::Gameover) {
-        SDL_SetRenderDrawColor(Game::GetInstance().GetRenderer(), 255, 0, 0, 255);
-        SDL_RenderClear(Game::GetInstance().GetRenderer());
-    }
-
-
-    SDL_RenderPresent(Game::GetInstance().GetRenderer());
-}
+ */

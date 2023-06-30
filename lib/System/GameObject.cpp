@@ -14,6 +14,12 @@ std::string GameObject::GetName() {
     return name;
 }
 
+bool GameObject::HasComponent(std::string name){
+    return std::any_of(components.begin(), components.end(), [&](const auto &item) {
+        return item->GetName() == name;
+    });
+}
+
 void GameObject::AddComponent(Component *component) {
     components.emplace_back(component);
 }

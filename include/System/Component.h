@@ -47,7 +47,6 @@ public:
 
 protected:
     GameObject &parent;
-private:
     std::string name;
 };
 

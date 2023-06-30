@@ -4,19 +4,12 @@
 
 #include "Player.h"
 
-
 Player::Player(GameObject &parent) : Component(parent) {
+    name="Player";
 }
 
 void Player::Start() {
     Sprite* sprite = new Sprite("../Assets/circle.png",parent);
     parent.AddComponent(sprite);
-}
-
-Player& Player::GetInstance() {
-    return instance;
-}
-
-GameObject& Player::GetParent() {
-    return GetInstance().parent;
+    SDL_Log("Loaded Player");
 }

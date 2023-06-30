@@ -4,6 +4,8 @@
 
 #include "../../include/System/Time.h"
 
+Time Time::instance;
+
 Time::Time() {
     float deltaTicks = 0.f;
     float frameTicks = 0.f;

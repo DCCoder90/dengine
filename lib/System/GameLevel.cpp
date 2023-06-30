@@ -22,6 +22,19 @@ std::weak_ptr<GameObject> GameLevel::AddObject(GameObject* go) {
     return std::weak_ptr<GameObject>(goSharedPtr);
 }
 
+std::weak_ptr<GameObject> GameLevel::GetObjectByComponent(std::string componentName){
+    auto it = std::find_if(objects.begin(), objects.end(),
+                           [&](std::shared_ptr<GameObject>& go2){
+
+        return go2->HasComponent(componentName); });
+
+    if (it == objects.end()) {
+        throw std::runtime_error("Cannot get object that doesn't contain component");
+    }
+
+    return std::weak_ptr<GameObject>(*it);
+}
+
 std::weak_ptr<GameObject> GameLevel::GetObject(GameObject* go) {
     auto it = std::find_if(objects.begin(), objects.end(),
                            [&](std::shared_ptr<GameObject>& go2){ return go == go2.get(); });

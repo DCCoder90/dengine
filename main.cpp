@@ -1,5 +1,5 @@
 #define SDL_MAIN_HANDLED
-
+#define DEBUG
 #include "include/System/Game.h"
 #include "Game/BaseLevel.h"
 

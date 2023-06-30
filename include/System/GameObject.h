@@ -35,6 +35,8 @@ public:
 */
     void RemoveComponent(Component *component);
 
+    bool HasComponent(std::string name);
+
     /**
      * Called on object instantiation
      */

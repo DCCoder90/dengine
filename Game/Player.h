@@ -13,11 +13,6 @@ class Player : public Component{
 public:
     Player(GameObject &parent);
     void Start() override;
-    static Player& GetInstance();
-    static GameObject& GetParent();
-
-private:
-    static Player instance;
 };
 
 

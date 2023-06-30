@@ -8,8 +8,8 @@
 #include <SDL.h>
 #include "../include/System/GameLevel.h"
 #include "../include/System/GameStates.h"
-#include "../include/System/Sprite.h"
 #include "../include/System/Game.h"
+#include "Player.h"
 
 class BaseLevel : public GameLevel{
 public:
@@ -20,9 +20,6 @@ public:
     void Start() override;
     void Pause() override;
     void Resume() override;
-    void handleEvents();
-    void updatestuff();
-    void draw();
 private:
 
     class Player *player;

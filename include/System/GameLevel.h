@@ -32,6 +32,8 @@ public:
     virtual std::weak_ptr<GameObject> AddObject(GameObject* go);
 
     virtual std::weak_ptr<GameObject> GetObject(GameObject* go);
+
+    virtual std::weak_ptr<GameObject> GetObjectByComponent(std::string componentName);
 protected:
     void StartObjects();
 

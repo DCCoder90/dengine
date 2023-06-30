@@ -13,19 +13,20 @@ void LeafMan::Start() {
 }
 
 void LeafMan::Update(){
-    GameObject& playerGo = Player::GetParent();
+    std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
+    std::shared_ptr<GameObject>  playerGo = playerGoPtr.lock();
 
     //Move enemies towards player
-    if (parent.box.x < playerGo.box.x) {
+    if (parent.box.x < playerGo->box.x) {
         parent.SetPos(parent.box.x + 1,parent.box.y);
     }
-    if (parent.box.x> playerGo.box.x) {
+    if (parent.box.x> playerGo->box.x) {
         parent.SetPos(parent.box.x - 1,parent.box.y);
     }
-    if (parent.box.y < playerGo.box.y) {
+    if (parent.box.y < playerGo->box.y) {
         parent.SetPos(parent.box.x,parent.box.y+1);
     }
-    if (parent.box.y > playerGo.box.y) {
+    if (parent.box.y > playerGo->box.y) {
         parent.SetPos(parent.box.x,parent.box.y-1);
     }
 }

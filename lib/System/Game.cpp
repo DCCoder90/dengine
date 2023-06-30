@@ -4,6 +4,8 @@
 
 #include "../../include/System/Game.h"
 
+Game* Game::instance;
+
 Game::Game() {
     isRunning = true;
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
