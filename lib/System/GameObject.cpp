@@ -35,3 +35,15 @@ void GameObject::Update() {
         components[i]->Update();
     }
 }
+
+void GameObject::Render() {
+    int i;
+    for (i = 0; i < components.size(); i++) {
+        components[i]->Render();
+    }
+}
+
+void GameObject::SetPos(float xPos, float yPos) {
+    box.x = xPos;
+    box.y = yPos;
+}

@@ -32,13 +32,18 @@ public:
     /**
      * Called on instantiation
      */
-    void Start();
+    virtual void Start();
 
     /**
 * Runs every frame performing any required logic
  * @see components
 */
     virtual void Update();
+    /**
+* Used for drawing to screen
+* @see components
+*/
+    virtual void Render();
 
 protected:
     GameObject &parent;

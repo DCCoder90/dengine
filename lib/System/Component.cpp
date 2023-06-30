@@ -15,3 +15,5 @@ void Component::Start() {}
 void Component::Update() {}
 
 void Component::NotifyCollision(GameObject &other) {}
+
+void Component::Render() {}

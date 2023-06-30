@@ -7,19 +7,22 @@
 
 #include <stdio.h>
 #include <SDL.h>
-#include "../Player/Player.h"
 #include "Time.h"
 #include <string>
-#include "../Player/Enemy.h"
 #include <SDL_image.h>
 #include <vector>
-#include "Sprite.h"
+#include <memory>
+#include <stack>
 #include "GameStates.h"
+#include "GameLevel.h"
 
 
 class Game {
 public:
     Game();
+
+    GameLevel& GetCurrentState();
+    void Push(GameLevel* state);
 
     void loop();
 
@@ -30,16 +33,18 @@ public:
     void draw();
 
     void cleanup();
+    static Game& GetInstance();
+    SDL_Renderer* GetRenderer();
 
 private:
     SDL_Window *window = NULL;
     SDL_Renderer *renderer;
+
+    std::stack<std::unique_ptr<GameLevel>> stateStack;
+    GameLevel* storedState;
+    static Game* instance;
+
     bool isRunning = true;
-    Time time;
-
-    class Player *player;
-
-    std::vector<class Enemy *> enemies;
 };
 
 #endif //SDL_LEARN_GAME_H

@@ -38,17 +38,23 @@ public:
     /**
      * Called on object instantiation
      */
-    void Start();
+    virtual void Start();
 
     /**
 * Runs every frame performing any required logic
 */
-    void Update();
+    virtual void Update();
+    /**
+* Performs render on all attached components
+*/
+    virtual void Render();
 
     /**
 * A rect denoting the object's position in space.
 */
     SDL_Rect box;
+
+    void SetPos(float xPos, float yPos);
 private:
     /**
 * A vector containing any components that may be on the GameObject

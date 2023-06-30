@@ -22,3 +22,7 @@ void Time::EndTick() {
     deltaTicks = endTicks - startTicks;
     frameTicks = (endTicks - startTicks + (16.6666f - deltaTicks)) / 1000.f;
 }
+
+Time& Time::GetInstance() {
+    return instance;
+}
