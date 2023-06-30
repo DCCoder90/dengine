@@ -6,6 +6,10 @@
 #include "LeafMan.h"
 
 BaseLevel::BaseLevel(){
+}
+
+void BaseLevel::Load(){}
+void BaseLevel::Start(){
     GameObject* playerGo = new GameObject("Player");
     Player* player = new Player(*playerGo);
     playerGo->AddComponent(player);
@@ -21,18 +25,14 @@ BaseLevel::BaseLevel(){
     SDL_Log("Loaded base level");
 
     StartObjects();
-}
 
-void BaseLevel::Load(){}
-void BaseLevel::Start(){}
+}
 void BaseLevel::Pause(){}
 void BaseLevel::Resume(){}
 
 
 void BaseLevel::Update(){
-    while(GameState::GetInstance().getGameState() == GAMESTATES::Playing){
         UpdateObjects();
-    }
 }
 
 void BaseLevel::Render() {

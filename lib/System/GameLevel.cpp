@@ -3,6 +3,7 @@
 //  Help from https://github.com/mikaelmello/sdl-game-engine
 
 #include "../../include/System/GameLevel.h"
+#include "../../include/System/Game.h"
 
 GameLevel::GameLevel() : started(false) {}
 
