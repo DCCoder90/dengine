@@ -7,6 +7,11 @@
 Game* Game::instance;
 
 Game::Game() {
+    if (instance == nullptr) {
+        instance = this;
+    } else {
+        throw std::logic_error("Game constructor called when an instance is already created");
+    }
     isRunning = true;
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("SDL could not initialize! SDL_ERROR: %s\n", SDL_GetError());
@@ -70,6 +75,14 @@ void Game::loop() {
 
     while (!(stateStack.empty())|| GameState::GetInstance().getGameState() != GAMESTATES::Quit) {
         Time::GetInstance().StartTick();
+
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)) {
+                isRunning = false;
+            }
+        }
+
         auto& topState = stateStack.top();
 
         if (storedState != nullptr) {
@@ -90,9 +103,13 @@ void Game::loop() {
 
         Time::GetInstance().EndTick();
         state->Update();
+
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderClear(renderer);
         state->Render();
+        SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
-        SDL_Delay(33);
+        SDL_Delay(1000);
     }
 
     while (!stateStack.empty()) {
