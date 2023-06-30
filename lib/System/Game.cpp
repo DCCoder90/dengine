@@ -38,6 +38,7 @@ Game::Game() {
     }
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
+    SDL_Log("Created game");
 }
 
 Game& Game::GetInstance() {
@@ -73,7 +74,7 @@ void Game::loop() {
 
     GetCurrentState().Start();
 
-    while (!(stateStack.empty())|| GameState::GetInstance().getGameState() != GAMESTATES::Quit) {
+    while (!(stateStack.empty())&& GameState::GetInstance().getGameState() != GAMESTATES::Quit) {
         Time::GetInstance().StartTick();
 
         auto& topState = stateStack.top();
@@ -94,15 +95,43 @@ void Game::loop() {
 
         auto& state = stateStack.top();
 
-        Time::GetInstance().EndTick();
-        state->Update();
 
+
+        SDL_Event event;
+
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                isRunning = false;
+                GameState::GetInstance().setGameState(GAMESTATES::Quit);
+            }
+        }
+
+        const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+        std::weak_ptr<GameObject> playerGoPtr = GetCurrentState().GetObjectByComponent("Player");
+        std::shared_ptr<GameObject> player = playerGoPtr.lock();
+        if (keystates[SDL_SCANCODE_UP]) {
+            std::weak_ptr<GameObject> playerGoPtr = GetCurrentState().GetObjectByComponent("Player");
+            std::shared_ptr<GameObject> player = playerGoPtr.lock();
+            player->SetPos(player->box.x, player->box.y -= 1);
+        }
+        if (keystates[SDL_SCANCODE_DOWN]) {
+            player->SetPos(player->box.x, player->box.y += 1);
+        }
+        if (keystates[SDL_SCANCODE_LEFT]) {
+            player->SetPos(player->box.x -= 1, player->box.y);
+        }
+        if (keystates[SDL_SCANCODE_RIGHT]) {
+            player->SetPos(player->box.x += 1, player->box.y);
+        }
+
+        state->Update();
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
         state->Render();
         SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
-        SDL_Delay(33);
+        Time::GetInstance().EndTick();
+        //SDL_Delay(33);
     }
 
     while (!stateStack.empty()) {
