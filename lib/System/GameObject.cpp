@@ -4,7 +4,7 @@
 
 
 #include "../../include/System/GameObject.h"
-
+#include "../../include/System/Component.h"
 
 GameObject::GameObject(std::string objectName) {
     name = objectName;

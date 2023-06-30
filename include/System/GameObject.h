@@ -5,12 +5,12 @@
 #ifndef SDL_LEARN_GAMEOBJECT_H
 #define SDL_LEARN_GAMEOBJECT_H
 
+
 #include <string>
 #include <vector>
-#include "Component.h"
 #include<bits/stdc++.h>
 #include <SDL_rect.h>
-
+class Component;  //Forward declaration to fix circular dependency
 class GameObject {
 public:
     GameObject(std::string objectName);

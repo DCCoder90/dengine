@@ -5,8 +5,8 @@
 #ifndef SDL_LEARN_COMPONENT_H
 #define SDL_LEARN_COMPONENT_H
 
-#include <string>
 #include "GameObject.h"
+#include <string>
 
 /**
 * A component adds aditional functionality to a Gameobject without being a defining factor of the object
@@ -14,7 +14,7 @@
 class Component {
 public:
     /**
- *  @param componentName A string denoting the name of the component.  This should be unique
+ *  @param parent The parent object that this component is on
  */
     Component(GameObject &parent);
 
