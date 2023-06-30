@@ -76,13 +76,6 @@ void Game::loop() {
     while (!(stateStack.empty())|| GameState::GetInstance().getGameState() != GAMESTATES::Quit) {
         Time::GetInstance().StartTick();
 
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)) {
-                isRunning = false;
-            }
-        }
-
         auto& topState = stateStack.top();
 
         if (storedState != nullptr) {
@@ -109,7 +102,7 @@ void Game::loop() {
         state->Render();
         SDL_RenderClear(renderer);
         SDL_RenderPresent(renderer);
-        SDL_Delay(1000);
+        SDL_Delay(33);
     }
 
     while (!stateStack.empty()) {
