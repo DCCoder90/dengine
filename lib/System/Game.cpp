@@ -9,7 +9,7 @@ Game::Game() {
         throw std::logic_error("Game constructor called when an instance is already created");
     }
     isRunning = true;
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) < 0) {
         printf("SDL could not initialize! SDL_ERROR: %s\n", SDL_GetError());
         isRunning = false;
     }

@@ -37,7 +37,12 @@ void BaseLevel::Update(){
                     objects[i]->box.x <= playerGo->box.x + playerGo->box.w &&
                     objects[i]->box.y + objects[i]->box.h >= playerGo->box.y &&
                     objects[i]->box.y <= playerGo->box.y + playerGo->box.h) {
+
+                Sound* deathSound = new Sound("./Assets/deaths.wav");
+                deathSound->SetupDevice();
+                deathSound->PlaySound();
                 GameState::GetInstance().setGameState(GAMESTATES::Gameover);
+                SDL_Delay(1000);
             }
         }
     }

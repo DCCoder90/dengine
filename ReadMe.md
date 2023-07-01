@@ -16,6 +16,14 @@ In order to compile this you will need [SDL](https://github.com/libsdl-org/SDL/r
 |Assets|Graphics/Audio/Etc for game|
 |.run|IDE Configuration|
 
+### TODO
+
+* Audio Manager
+* Video System
+* Camera System
+* Event System
+* UI System
+
 ### Notebook
 
 If ```SDL_MAIN_HANDLED``` is not defined at the top of [main.cpp](main.cpp) then it will throw the following error:

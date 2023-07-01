@@ -8,6 +8,7 @@
 #include "../include/System/GameStates.h"
 #include "../include/System/Game.h"
 #include "Player.h"
+#include "../include/System/Sound.h"
 
 class BaseLevel : public GameLevel{
 public:
@@ -19,7 +20,6 @@ public:
     void Pause() override;
     void Resume() override;
 private:
-
     class Player *player;
 };
 
