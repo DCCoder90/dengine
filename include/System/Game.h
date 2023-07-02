@@ -23,12 +23,6 @@ public:
 
     void loop();
 
-    void handleEvents();
-
-    void update();
-
-    void draw();
-
     void cleanup();
     static Game& GetInstance();
     SDL_Renderer* GetRenderer();
@@ -40,8 +34,6 @@ private:
     std::stack<std::unique_ptr<GameLevel>> stateStack;
     GameLevel* storedState;
     static Game* instance;
-
-    bool isRunning = true;
 };
 
 #endif //SDL_LEARN_GAME_H
