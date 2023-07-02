@@ -8,15 +8,13 @@ Game::Game() {
     } else {
         throw std::logic_error("Game constructor called when an instance is already created");
     }
-    isRunning = true;
+
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) < 0) {
         printf("SDL could not initialize! SDL_ERROR: %s\n", SDL_GetError());
-        isRunning = false;
     }
 
     if (IMG_Init(IMG_INIT_PNG) < 0) {
         printf("SDL could not initialize images! SDL_ERROR: %s\n", IMG_GetError());
-        isRunning = false;
     }
 
     window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480,
@@ -25,12 +23,10 @@ Game::Game() {
 
     if (renderer == NULL) {
         printf("Renderer not initialize! SDL_ERROR: %s\n", SDL_GetError());
-        isRunning = false;
     }
 
     if (window == NULL) {
         printf("Window could not be created! SDL_ERROR: %s\n", SDL_GetError());
-        isRunning = false;
     }
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
@@ -96,7 +92,6 @@ void Game::loop() {
 
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
-                isRunning = false;
                 GameState::GetInstance().setGameState(GAMESTATES::Quit);
             }
         }
