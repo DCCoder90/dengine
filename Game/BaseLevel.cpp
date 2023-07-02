@@ -6,8 +6,7 @@
 BaseLevel::BaseLevel(){
 }
 
-void BaseLevel::Load(){}
-void BaseLevel::Start(){
+void BaseLevel::Load(){
     AudioManager::GetInstance().AddSound("death","./Assets/deaths.wav");
     AudioManager::GetInstance().LoadSounds();
 
@@ -23,9 +22,12 @@ void BaseLevel::Start(){
         enemyGo->SetPos(i*150,i*80);
         objects.emplace_back(enemyGo);
     }
+}
 
+void BaseLevel::Start(){
     StartObjects();
 }
+
 void BaseLevel::Pause(){}
 void BaseLevel::Resume(){}
 
