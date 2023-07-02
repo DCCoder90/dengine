@@ -11,7 +11,6 @@ class Camera {
 public:
     Camera(std::string name, int x, int y, int height, int width);
     Camera(std::string name, int height, int width);
-    ~Camera();
     std::string GetName();
     void SetPosition(int x, int y);
 private:

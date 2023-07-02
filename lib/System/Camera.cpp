@@ -1,8 +1,4 @@
-//
-// Created by ernes on 7/1/2023.
-//
-
-#include "Camera.h"
+#include "../../include/System/Camera.h"
 
 Camera::Camera(std::string name, int x, int y, int height, int width) {
     this->name = name;
