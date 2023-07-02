@@ -1,4 +1,5 @@
 #include "../../include/Components/SpriteSheet.h"
+#include "../../include/System/CameraManager.h"
 
 SpriteSheet::SpriteSheet(std::string filepath, GameObject &associated) : Component(associated){
     SDL_Surface* surface = IMG_Load(filepath.c_str());
@@ -11,19 +12,52 @@ SpriteSheet::SpriteSheet(std::string filepath, GameObject &associated) : Compone
         }
         SDL_FreeSurface(surface);
     }
+    LOG_INFO << "Loaded Spritesheet";
 }
 
-void SpriteSheet::Update(){
-    //TODO: Perform animation here
-    //Time::GetInstance().frameTicks;
+bool SpriteSheet::HasAnimation(std::string name){
+    return animationCollection.count(name) > 0;
+}
+
+void SpriteSheet::Render(){
+    if(!isPaused){
+        Uint32 ticks = SDL_GetTicks();
+        Uint32 sprite = ((ticks / 100) % animationCollection[currentAnimation].frames)+1;
+        SDL_Rect* spriteFrame = new SDL_Rect();
+
+        int xPos = animationCollection[currentAnimation].rect.x;
+        if(xPos == 0 && sprite != 0){
+            xPos = 1;
+        }
+
+        spriteFrame->x = (sprite*xPos);
+        spriteFrame->y = animationCollection[currentAnimation].rect.y;
+        spriteFrame->h = animationCollection[currentAnimation].rect.h;
+        spriteFrame->w = animationCollection[currentAnimation].rect.w;
+
+        SDL_RenderCopy(Game::GetInstance().GetRenderer(),
+                       sheet,
+                       spriteFrame,
+                       &parent.box);
+    }
+}
+
+void SpriteSheet::SetCurrentAnimation(std::string name){
+    currentAnimation = name;
+}
+
+void SpriteSheet::RegisterAnimation(std::string name, int x, int y, int w, int h, int frames){
+    animationCollection[name] = *new Animation({x,y,w,h},frames);
+}
+
+void SpriteSheet::DeregisterAnimation(std::string name){
+    animationCollection.erase(name);
 }
 
 void SpriteSheet::Pause(bool pause){
     isPaused = pause;
 }
 
-//TODO: Register Animations
-//TODO: Set current animation
-//TODO: Pause animation
-//TODO: Define sprite size h/w
-//TODO: Define number of frames in animation
+SpriteSheet::~SpriteSheet() {
+    SDL_DestroyTexture(sheet);
+}
