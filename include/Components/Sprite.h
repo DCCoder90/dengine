@@ -7,6 +7,7 @@
 #include "../System/GameObject.h"
 #include "../../include/System/Game.h"
 #include <SDL_image.h>
+#include "../System/CameraManager.h"
 
 class Sprite : public Component {
 public:

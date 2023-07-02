@@ -12,7 +12,8 @@ Sprite::Sprite(std::string filepath, GameObject &associated) : Component(associa
 }
 
 void Sprite::Render() {
-    SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture, NULL, &parent.box);
+    SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture,
+                   reinterpret_cast<const SDL_Rect *>(CameraManager::GetInstance().GetMainCamera().get()), &parent.box);
 }
 
 SDL_Texture *Sprite::getTexture() {

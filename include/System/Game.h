@@ -31,9 +31,9 @@ public:
     void cleanup();
     static Game& GetInstance();
     SDL_Renderer* GetRenderer();
+    SDL_Window *window = NULL;
 
 private:
-    SDL_Window *window = NULL;
     SDL_Renderer *renderer;
 
     std::stack<std::unique_ptr<GameLevel>> stateStack;
