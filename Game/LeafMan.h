@@ -14,6 +14,7 @@ public:
     void Start() override;
     void Update() override;
 private:
+    SpriteSheet* spriteSheet;
     int speed = 1;
 };
 
