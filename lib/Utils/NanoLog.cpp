@@ -119,6 +119,8 @@ namespace nanolog
             : m_bytes_used(0)
             , m_buffer_size(sizeof(m_stack_buffer))
     {
+        //TODO: Make this optional
+        printf("[%s] ", to_string(level));
         encode < uint64_t >(timestamp_now());
         encode < std::thread::id >(this_thread_id());
         encode < string_literal_t >(string_literal_t(file));
