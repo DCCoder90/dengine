@@ -6,6 +6,8 @@
 #include "../include/System/Component.h"
 #include "../include/System/GameObject.h"
 #include "../include/Components/Sprite.h"
+#include "../include/Universal.h"
+
 
 class Player : public Component{
 public:

@@ -34,7 +34,7 @@ Game::Game() {
     }
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
-    SDL_Log("Created game");
+    LOG_INFO << "Created game";
 }
 
 Game& Game::GetInstance() {
@@ -58,6 +58,7 @@ GameLevel& Game::GetCurrentState() {
 
 void Game::Push(GameLevel* state) {
     storedState = state;
+    state->Load();
 }
 
 void Game::loop() {

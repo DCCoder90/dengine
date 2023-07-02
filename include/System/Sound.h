@@ -4,17 +4,20 @@
 #include <string>
 #include <iostream>
 #include <SDL.h>
+#include "../Universal.h"
 
 class Sound{
 
 public:
     Sound(std::string filepath);
     ~Sound();
+    void LoadSound();
     void PlaySound();
     void StopSound();
-    void SetupDevice();
 
 private:
+    void SetupDevice();
+    std::string filePath;
     SDL_AudioDeviceID m_device;
     SDL_AudioSpec m_audioSpec;
     Uint8*        m_waveStart;
