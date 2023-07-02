@@ -8,10 +8,8 @@ Player::Player(GameObject &parent) : Component(parent) {
 }
 
 void Player::Start() {
-    //Sprite* sprite = new Sprite("../Assets/circle.png",parent);
-    //parent.AddComponent(sprite);
-    SpriteSheet* spriteSheet = new SpriteSheet("../Assets/walk-sheet.png",parent);
-    spriteSheet->RegisterAnimation("walkdown",0,0,96,96,8);
+    SpriteSheet* spriteSheet = new SpriteSheet("../Assets/warrior-sheet.png",parent);
+    spriteSheet->RegisterAnimation("walkdown",2882,1045,96,96,8);
     spriteSheet->SetCurrentAnimation("walkdown");
     spriteSheet->Pause(false);
 

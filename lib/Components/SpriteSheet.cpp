@@ -25,7 +25,7 @@ void SpriteSheet::Render(){
         Uint32 sprite = ((ticks / 100) % animationCollection[currentAnimation].frames);
         SDL_Rect* spriteFrame = new SDL_Rect();
 
-        spriteFrame->x = (sprite*animationCollection[currentAnimation].rect.w);
+        spriteFrame->x = (sprite*animationCollection[currentAnimation].rect.w)+animationCollection[currentAnimation].rect.x;
         spriteFrame->y = animationCollection[currentAnimation].rect.y;
         spriteFrame->h = animationCollection[currentAnimation].rect.h;
         spriteFrame->w = animationCollection[currentAnimation].rect.w;
