@@ -58,6 +58,7 @@ GameLevel& Game::GetCurrentState() {
 
 void Game::Push(GameLevel* state) {
     storedState = state;
+    state->Load();
 }
 
 void Game::loop() {

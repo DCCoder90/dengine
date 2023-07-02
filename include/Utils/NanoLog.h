@@ -59,6 +59,8 @@ namespace nanolog
         template < size_t N >
         NanoLogLine& operator<<(const char (&arg)[N])
         {
+            //TODO: Make the console optional
+            printf("%s\n",string_literal_t(arg));
             encode(string_literal_t(arg));
             return *this;
         }

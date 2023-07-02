@@ -21,10 +21,9 @@ std::shared_ptr<Camera> CameraManager::CreateCamera(std::string name, int x, int
 std::shared_ptr<Camera> CameraManager::GetMainCamera() {
     if(cameraCollection.count(MainCamera) < 1){
         LOG_WARN << "MainCamera does not exist.  Creating it.";
-        int* w_ptr;
-        int* h_ptr;
-        SDL_GetWindowSize(Game::GetInstance().window,w_ptr,h_ptr);
-        cameraCollection[MainCamera]=std::make_shared<Camera>(MainCamera,0,0,*h_ptr,*w_ptr);
+        int w_ptr, h_ptr;
+        SDL_GetWindowSize(Game::GetInstance().window,&w_ptr,&h_ptr);
+        cameraCollection[MainCamera]=std::make_shared<Camera>(MainCamera,0,0,h_ptr,w_ptr);
     }
     return cameraCollection[MainCamera];
 }
