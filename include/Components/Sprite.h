@@ -9,6 +9,9 @@
 #include <SDL_image.h>
 #include "../System/CameraManager.h"
 
+/**
+ * @brief Sprites are used for static images that don't require animation
+*/
 class Sprite : public Component {
 public:
     Sprite(std::string filepath, GameObject &parent);

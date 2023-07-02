@@ -18,10 +18,11 @@ In order to compile this you will need [SDL](https://github.com/libsdl-org/SDL/r
 
 ### TODO
 
-* Audio Manager
+* Animation System
 * Video System
 * Event System
 * UI System
+* Save/Load system
 
 ### Notebook
 

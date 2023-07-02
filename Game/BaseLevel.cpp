@@ -15,6 +15,7 @@ void BaseLevel::Load(){
     playerGo->AddComponent(player);
     objects.emplace_back(playerGo);
 
+
     for (int i = 0; i < 2; i++) {
         GameObject* enemyGo = new GameObject("Enemy " + i);
         LeafMan* enemy = new LeafMan(*enemyGo);
