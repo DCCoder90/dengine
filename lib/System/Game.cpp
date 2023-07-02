@@ -34,7 +34,7 @@ Game::Game() {
     }
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
-    SDL_Log("Created game");
+    LOG_INFO << "Created game";
 }
 
 Game& Game::GetInstance() {

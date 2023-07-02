@@ -5,6 +5,7 @@
 #include <map>
 #include <memory>
 #include "Game.h"
+#include "../Universal.h"
 
 class CameraManager {
 public:

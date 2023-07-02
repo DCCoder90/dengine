@@ -20,7 +20,6 @@ In order to compile this you will need [SDL](https://github.com/libsdl-org/SDL/r
 
 * Audio Manager
 * Video System
-* Camera System
 * Event System
 * UI System
 

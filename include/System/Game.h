@@ -11,6 +11,7 @@
 #include <stack>
 #include "GameStates.h"
 #include "GameLevel.h"
+#include "../Universal.h"
 
 
 class Game {

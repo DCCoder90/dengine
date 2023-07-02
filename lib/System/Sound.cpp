@@ -2,7 +2,7 @@
 
 Sound::Sound(std::string filepath){
     if(SDL_LoadWAV(filepath.c_str(), &m_audioSpec, &m_waveStart, &m_waveLength) == nullptr){
-        SDL_LogError(1,SDL_GetError());
+        LOG_CRIT << SDL_GetError();
     }
 }
 
@@ -23,6 +23,6 @@ void Sound::StopSound(){
 void Sound::SetupDevice(){
     m_device = SDL_OpenAudioDevice(nullptr, 0, &m_audioSpec, nullptr, SDL_AUDIO_ALLOW_ANY_CHANGE);
     if(0 == m_device){
-        SDL_LogError(1,SDL_GetError());
+        LOG_CRIT << SDL_GetError();
     }
 }

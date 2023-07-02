@@ -9,7 +9,7 @@ Player::Player(GameObject &parent) : Component(parent) {
 void Player::Start() {
     Sprite* sprite = new Sprite("../Assets/circle.png",parent);
     parent.AddComponent(sprite);
-    SDL_Log("Loaded Player");
+    LOG_INFO << "Loaded Player";
 
     parent.box = {250,100,32,32};
 }

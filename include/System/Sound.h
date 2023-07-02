@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <SDL.h>
+#include "../Universal.h"
 
 class Sound{
 

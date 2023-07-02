@@ -6,6 +6,8 @@
 #include <vector>
 #include<bits/stdc++.h>
 #include <SDL_rect.h>
+#include "../Universal.h"
+
 class Component;  //Forward declaration to fix circular dependency
 class GameObject {
 public:
