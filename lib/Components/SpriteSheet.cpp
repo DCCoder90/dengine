@@ -22,23 +22,25 @@ bool SpriteSheet::HasAnimation(std::string name){
 void SpriteSheet::Render(){
     if(!isPaused){
         Uint32 ticks = SDL_GetTicks();
-        Uint32 sprite = ((ticks / 100) % animationCollection[currentAnimation].frames)+1;
+        Uint32 sprite = ((ticks / 100) % animationCollection[currentAnimation].frames);
         SDL_Rect* spriteFrame = new SDL_Rect();
 
-        int xPos = animationCollection[currentAnimation].rect.x;
-        if(xPos == 0 && sprite != 0){
-            xPos = 1;
-        }
-
-        spriteFrame->x = (sprite*xPos);
+        spriteFrame->x = (sprite*animationCollection[currentAnimation].rect.w);
         spriteFrame->y = animationCollection[currentAnimation].rect.y;
         spriteFrame->h = animationCollection[currentAnimation].rect.h;
         spriteFrame->w = animationCollection[currentAnimation].rect.w;
 
+
+        SDL_Rect destRect;
+        destRect.x = parent.box.x;
+        destRect.y = parent.box.y;
+        destRect.w = spriteFrame->w;
+        destRect.h = spriteFrame->h;
+
         SDL_RenderCopy(Game::GetInstance().GetRenderer(),
                        sheet,
                        spriteFrame,
-                       &parent.box);
+                       &destRect);
     }
 }
 
