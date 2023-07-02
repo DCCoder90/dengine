@@ -1,14 +1,19 @@
 #include "../../include/System/Sound.h"
 
 Sound::Sound(std::string filepath){
-    if(SDL_LoadWAV(filepath.c_str(), &m_audioSpec, &m_waveStart, &m_waveLength) == nullptr){
-        LOG_CRIT << SDL_GetError();
-    }
+    filePath = filepath;
 }
 
 Sound::~Sound(){
     SDL_FreeWAV(m_waveStart);
     SDL_CloseAudioDevice(m_device);
+}
+
+void Sound::LoadSound(){
+    if(SDL_LoadWAV(filePath.c_str(), &m_audioSpec, &m_waveStart, &m_waveLength) == nullptr){
+        LOG_CRIT << SDL_GetError();
+    }
+    SetupDevice();
 }
 
 void Sound::PlaySound(){

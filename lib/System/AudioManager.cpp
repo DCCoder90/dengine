@@ -7,10 +7,8 @@ void AudioManager::AddSound(std::string name,std::string filepath){
 }
 
 void AudioManager::LoadSounds(){
-//TODO: Instead of loading sounds into memory when they are created, only load into
-//memory when they are explicity told to
     for (auto it = audioCollection.begin(); it != audioCollection.end(); ++it) {
-        it->second->SetupDevice();
+        it->second->LoadSound();
     }
 }
 
