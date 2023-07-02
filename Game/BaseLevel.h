@@ -9,6 +9,7 @@
 #include "../include/System/Game.h"
 #include "Player.h"
 #include "../include/System/Sound.h"
+#include "../include/System/AudioManager.h"
 
 class BaseLevel : public GameLevel{
 public:

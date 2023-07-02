@@ -8,6 +8,9 @@ BaseLevel::BaseLevel(){
 
 void BaseLevel::Load(){}
 void BaseLevel::Start(){
+    AudioManager::GetInstance().AddSound("death","./Assets/deaths.wav");
+    AudioManager::GetInstance().LoadSounds();
+
     GameObject* playerGo = new GameObject("Player");
     Player* player = new Player(*playerGo);
     playerGo->AddComponent(player);
@@ -38,9 +41,7 @@ void BaseLevel::Update(){
                     objects[i]->box.y + objects[i]->box.h >= playerGo->box.y &&
                     objects[i]->box.y <= playerGo->box.y + playerGo->box.h) {
 
-                Sound* deathSound = new Sound("./Assets/deaths.wav");
-                deathSound->SetupDevice();
-                deathSound->PlaySound();
+                AudioManager::GetInstance().PlaySound("death");
                 GameState::GetInstance().setGameState(GAMESTATES::Gameover);
                 SDL_Delay(1000);
             }
