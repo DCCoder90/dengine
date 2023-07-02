@@ -1,4 +1,3 @@
-#include <iostream>
 #include <algorithm>
 
 template <typename T, typename Iterator>
