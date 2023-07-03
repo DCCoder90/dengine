@@ -4,12 +4,12 @@ The purpose of packer util is to pack all game assets into a singular .dat file.
 
 ## Data Structure
 
-| Bytes    |Purpose|
-|----------|---|
-| 12       |Filename|
-| 8        |Type|
-| 12       |Size|
-| Variable | Content|
+| Bytes    |Purpose|Compressed|
+|----------|---|---|
+| 12       |Filename|N|
+| 8        |Type|N|
+| 12       |Size|N|
+| Variable | Content|Y|
 
 ## Compilation notes
 
