@@ -18,7 +18,13 @@ public:
 * Creates a sprite object
 */
     Sprite(std::string filepath, GameObject &parent);
-
+    /**
+* Frees up resources allocated by Sprite
+*/
+    ~Sprite();
+    /**
+* Renders the sprite
+*/
     void Render() override;
     /**
 * Returns a pointer to the texture
