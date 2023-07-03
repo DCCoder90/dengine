@@ -24,14 +24,14 @@ void BaseLevel::Load(){
     playerGo->AddComponent(player);
     objects.emplace_back(playerGo);
 
-/*
+
     for (int i = 0; i < 2; i++) {
         GameObject* enemyGo = new GameObject("Enemy " + i);
         LeafMan* enemy = new LeafMan(*enemyGo);
         enemyGo->AddComponent(enemy);
         enemyGo->SetPos(i*150,i*80);
         objects.emplace_back(enemyGo);
-    }*/
+    }
 }
 
 void BaseLevel::Start(){

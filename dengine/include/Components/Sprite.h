@@ -5,7 +5,7 @@
 #include <SDL.h>
 #include "../System/Component.h"
 #include "../System/GameObject.h"
-#include "../../include/System/Game.h"
+#include "../System/Game.h"
 #include <SDL_image.h>
 #include "../System/CameraManager.h"
 

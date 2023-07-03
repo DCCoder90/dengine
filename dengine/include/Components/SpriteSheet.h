@@ -3,8 +3,8 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include "../../include/System/Game.h"
-#include "../../include/System/Time.h"
+#include "../System/Game.h"
+#include "../System/Time.h"
 #include "../System/Component.h"
 
 
