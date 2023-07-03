@@ -2,27 +2,36 @@
 
 #include "BaseLevel.h"
 #include "LeafMan.h"
+#include "BaselevelBackground.h"
 
 BaseLevel::BaseLevel(){
 }
 
 void BaseLevel::Load(){
+    AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
     AudioManager::GetInstance().AddSound("death","./Assets/deaths.wav");
+    AudioManager::GetInstance().AddSound("fire","./Assets/foom_0.wav");
     AudioManager::GetInstance().LoadSounds();
+    AudioManager::GetInstance().PlaySound("background");
+
+    GameObject* managerGo = new GameObject("LevelManager");
+    BaselevelBackground* background = new BaselevelBackground("./Assets/grass.png",*managerGo);
+    managerGo->AddComponent(background);
+    objects.emplace_back(managerGo);
 
     GameObject* playerGo = new GameObject("Player");
     Player* player = new Player(*playerGo);
     playerGo->AddComponent(player);
     objects.emplace_back(playerGo);
 
-
+/*
     for (int i = 0; i < 2; i++) {
         GameObject* enemyGo = new GameObject("Enemy " + i);
         LeafMan* enemy = new LeafMan(*enemyGo);
         enemyGo->AddComponent(enemy);
         enemyGo->SetPos(i*150,i*80);
         objects.emplace_back(enemyGo);
-    }
+    }*/
 }
 
 void BaseLevel::Start(){

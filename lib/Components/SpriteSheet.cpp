@@ -3,6 +3,11 @@
 
 SpriteSheet::SpriteSheet(std::string filepath, GameObject &associated) : Component(associated){
     SDL_Surface* surface = IMG_Load(filepath.c_str());
+    //SDL_SetColorKey is then used to set the color key for the surface.
+    // The color key is the color that will be replaced with transparency.
+    // SDL_MapRGB is used to get the pixel value for white color in the format used by the surface.
+    SDL_SetColorKey(surface, SDL_TRUE, SDL_MapRGB(surface->format, 255, 255, 255));
+
     if (surface == nullptr) {
         LOG_CRIT << "Failed to load image: " << IMG_GetError();
     } else {
