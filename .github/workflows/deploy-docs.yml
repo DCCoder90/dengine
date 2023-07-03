@@ -2,6 +2,7 @@ name: Build and deploy documentation
 
 on:
   push:
+    branches: [packer-utility]
   workflow_dispatch:
 
 permissions:
