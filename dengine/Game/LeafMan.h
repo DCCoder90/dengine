@@ -10,15 +10,19 @@
 
 using namespace dengine;
 
-class LeafMan : public Component{
-public:
-    LeafMan(GameObject &parent);
-    void Start() override;
-    void Update() override;
-private:
-    SpriteSheet* spriteSheet;
-    int speed = 1;
-};
+namespace DemoGame {
+    class LeafMan : public Component {
+    public:
+        LeafMan(GameObject &parent);
 
+        void Start() override;
+
+        void Update() override;
+
+    private:
+        SpriteSheet *spriteSheet;
+        int speed = 1;
+    };
+}
 
 #endif //SDL_LEARN_LEAFMAN_H

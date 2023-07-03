@@ -1,6 +1,6 @@
-
-
 #include "LeafMan.h"
+
+using namespace DemoGame;
 
 LeafMan::LeafMan(GameObject &parent) : Component(parent) {
     name = "LeafMan";

@@ -11,16 +11,20 @@
 
 using namespace dengine;
 
-class Player : public Component{
-public:
-    Player(GameObject &parent);
-    void Start() override;
-    void Update() override;
-private:
-    SpriteSheet* spriteSheet;
-    int speed = 3;
-    bool spaceKeyDown = false;
-};
+namespace DemoGame {
+    class Player : public Component {
+    public:
+        Player(GameObject &parent);
 
+        void Start() override;
+
+        void Update() override;
+
+    private:
+        SpriteSheet *spriteSheet;
+        int speed = 3;
+        bool spaceKeyDown = false;
+    };
+}
 
 #endif //SDL_LEARN_PLAYER_H

@@ -4,6 +4,8 @@
 #include "Game/BaseLevel.h"
 #include "include/Universal.h"
 
+using namespace DemoGame;
+
 int main(int argc, char *argv[]) {
     nanolog::initialize(nanolog::GuaranteedLogger(), "./", "logfile", 3);
     Game& game = Game::GetInstance();

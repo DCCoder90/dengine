@@ -2,6 +2,8 @@
 #include "LeafMan.h"
 #include "BaselevelBackground.h"
 
+using namespace DemoGame;
+
 BaseLevel::BaseLevel(){
 }
 

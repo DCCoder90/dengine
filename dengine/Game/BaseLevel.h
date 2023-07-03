@@ -10,18 +10,28 @@
 #include "../include/System/AudioManager.h"
 
 using namespace dengine;
+/**
+ * @brief Namespace containing demo game code
+ */
+namespace DemoGame {
+    class BaseLevel : public GameLevel {
+    public:
+        BaseLevel();
 
-class BaseLevel : public GameLevel{
-public:
-    BaseLevel();
-    void Update() override;
-    void Render() override;
-    void Load() override;
-    void Start() override;
-    void Pause() override;
-    void Resume() override;
-private:
-    class Player *player;
-};
+        void Update() override;
 
+        void Render() override;
+
+        void Load() override;
+
+        void Start() override;
+
+        void Pause() override;
+
+        void Resume() override;
+
+    private:
+        class Player *player;
+    };
+}
 #endif //SDL_LEARN_BASELEVEL_H

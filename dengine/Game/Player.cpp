@@ -1,7 +1,7 @@
-
-
 #include "Player.h"
 #include "../include/System/AudioManager.h"
+
+using namespace DemoGame;
 
 Player::Player(GameObject &parent) : Component(parent) {
     name="Player";

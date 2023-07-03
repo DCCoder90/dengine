@@ -1,5 +1,7 @@
 #include "BaselevelBackground.h"
 
+using namespace DemoGame;
+
 BaselevelBackground::BaselevelBackground(std::string filepath, GameObject &associated) : Component(associated){
     SDL_Surface *tempSurface = IMG_Load(filepath.c_str());
 
