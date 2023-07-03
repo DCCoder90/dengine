@@ -33,6 +33,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #include <iosfwd>
 #include <type_traits>
 
+/**
+ * @brief Namespace consiting of the nanolog logger
+ * This logger is a third party application that was added to this project to help facilitate logging.
+ * @see https://github.com/Iyengar111/NanoLog
+ */
 namespace nanolog
 {
     enum class LogLevel : uint8_t { INFO, WARN, CRIT };

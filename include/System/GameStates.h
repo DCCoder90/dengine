@@ -12,6 +12,7 @@ enum GAMESTATES {
 };
 
 /**
+ * @brief Manges and stores the current state of the game
  *  GameState is used to manage the current state of the game as a whole.  A few game states that are built in
  *  reference whether the game is currently being played, at the gameover screen, or at the flash screen.
  */
@@ -22,14 +23,14 @@ public:
     ~GameState();
 
     /**
-     * Retrieve the current gamestate
+     * @brief Retrieve the current gamestate
      * @see GAMESTATES
      * @return int that corrosponds to a game state in GAMESTATES
      */
     int getGameState();
 
     /**
-     * Set the game state.  This can be done with an int or with the GAMESTATES enum.
+     * @brief Set the game state.  This can be done with an int or with the GAMESTATES enum.
      * @see GAMESTATES
      * @param state The current state of the game
      */

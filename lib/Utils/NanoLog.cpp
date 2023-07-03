@@ -590,7 +590,6 @@ namespace nanolog
 
             m_bytes_written = 0;
             m_os.reset(new std::ofstream());
-            // TODO Optimize this part. Does it even matter ?
             std::string log_file_name = m_name;
             log_file_name.append(".");
             log_file_name.append(std::to_string(++m_file_number));

@@ -8,60 +8,67 @@
 #include <SDL_rect.h>
 #include "../Universal.h"
 
-class Component;  //Forward declaration to fix circular dependency
+class Component;
+
+/**
+ * @brief A base object for a game
+ * The gameobject can be considered the most basic building block of a game.  Everything in a game is considered a gameobject
+ * and it's functionality are determined by it's Components
+ */
 class GameObject {
 public:
     GameObject(std::string objectName);
 
     /**
-* Returns the object's name
+* @brief Returns the object's name
      * @see name
 */
     std::string GetName();
 
     /**
-* Adds a component to the GameObject
+* @brief Adds a component to the GameObject
      * @param component The component to add to the object
      * @see components
 */
     void AddComponent(Component *component);
 
     /**
-* Removes a component from the GameObject
+* @brief Removes a component from the GameObject
      * @param component The component to remove
      * @see components
 */
     void RemoveComponent(Component *component);
 
+
     bool HasComponent(std::string name);
 
     /**
-     * Called on object instantiation
+     * @brief Called on object instantiation
      */
     virtual void Start();
 
     /**
-* Runs every frame performing any required logic
+* @brief Runs every frame performing any required logic
 */
     virtual void Update();
     /**
-* Performs render on all attached components
+* @brief Performs render on all attached components
 */
     virtual void Render();
 
     /**
-* A rect denoting the object's position in space.
+* @brief A rect denoting the object's position in space.
 */
     SDL_Rect box;
 
     void SetPos(float xPos, float yPos);
 private:
     /**
-* A vector containing any components that may be on the GameObject
+* @brief A vector containing any components that may be on the GameObject
 */
     std::vector<class Component *> components;
     /**
-* A string containing the object name.
+* @brief A string containing the object name.
 */
     std::string name;
 };

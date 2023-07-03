@@ -14,9 +14,15 @@
 */
 class Sprite : public Component {
 public:
+    /**
+* Creates a sprite object
+*/
     Sprite(std::string filepath, GameObject &parent);
 
     void Render() override;
+    /**
+* Returns a pointer to the texture
+*/
     SDL_Texture *getTexture();
 private:
     SDL_Texture *texture;
