@@ -18,6 +18,7 @@ public:
 private:
     SpriteSheet* spriteSheet;
     int speed = 3;
+    bool spaceKeyDown = false;
 };
 
 
