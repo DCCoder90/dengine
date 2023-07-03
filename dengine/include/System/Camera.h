@@ -2,8 +2,8 @@
 // Created by ernes on 7/1/2023.
 //
 
-#ifndef SDL_LEARN_CAMERA_H
-#define SDL_LEARN_CAMERA_H
+#ifndef DENGINE_CAMERA_H
+#define DENGINE_CAMERA_H
 #include <SDL.h>
 #include <string>
 
@@ -24,4 +24,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_CAMERA_H
+#endif //DENGINE_CAMERA_H

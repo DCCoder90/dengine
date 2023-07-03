@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_COMPONENT_H
-#define SDL_LEARN_COMPONENT_H
+#ifndef DENGINE_COMPONENT_H
+#define DENGINE_COMPONENT_H
 
 #include "GameObject.h"
 #include <string>
@@ -54,4 +54,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_COMPONENT_H
+#endif //DENGINE_COMPONENT_H

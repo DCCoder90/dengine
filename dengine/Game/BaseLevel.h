@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_BASELEVEL_H
-#define SDL_LEARN_BASELEVEL_H
+#ifndef DENGINE_BASELEVEL_H
+#define DENGINE_BASELEVEL_H
 
 #include <SDL.h>
 #include "../include/System/GameLevel.h"
@@ -34,4 +34,4 @@ namespace DemoGame {
         class Player *player;
     };
 }
-#endif //SDL_LEARN_BASELEVEL_H
+#endif //DENGINE_BASELEVEL_H

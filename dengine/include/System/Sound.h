@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_SOUND_H
-#define SDL_LEARN_SOUND_H
+#ifndef DENGINE_SOUND_H
+#define DENGINE_SOUND_H
 
 #include <string>
 #include <iostream>
@@ -66,4 +66,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_SOUND_H
+#endif //DENGINE_SOUND_H

@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_AUDIOMANAGER_H
-#define SDL_LEARN_AUDIOMANAGER_H
+#ifndef DENGINE_AUDIOMANAGER_H
+#define DENGINE_AUDIOMANAGER_H
 #include "Sound.h"
 #include <map>
 #include <memory>
@@ -67,4 +67,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_AUDIOMANAGER_H
+#endif //DENGINE_AUDIOMANAGER_H

@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_GAMESTATES_H
-#define SDL_LEARN_GAMESTATES_H
+#ifndef DENGINE_GAMESTATES_H
+#define DENGINE_GAMESTATES_H
 
 namespace dengine {
 /** @enum GAMESTATES
@@ -44,4 +44,4 @@ namespace dengine {
         static GameState instance;
     };
 }
-#endif //SDL_LEARN_GAMESTATES_H
+#endif //DENGINE_GAMESTATES_H

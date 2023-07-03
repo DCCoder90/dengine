@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_GAME_H
-#define SDL_LEARN_GAME_H
+#ifndef DENGINE_GAME_H
+#define DENGINE_GAME_H
 
 #include <stdio.h>
 #include <SDL.h>
@@ -65,4 +65,4 @@ namespace dengine {
         static Game *instance;
     };
 }
-#endif //SDL_LEARN_GAME_H
+#endif //DENGINE_GAME_H

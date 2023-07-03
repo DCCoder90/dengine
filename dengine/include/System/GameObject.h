@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_GAMEOBJECT_H
-#define SDL_LEARN_GAMEOBJECT_H
+#ifndef DENGINE_GAMEOBJECT_H
+#define DENGINE_GAMEOBJECT_H
 
 
 #include <string>
@@ -77,4 +77,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_GAMEOBJECT_H
+#endif //DENGINE_GAMEOBJECT_H

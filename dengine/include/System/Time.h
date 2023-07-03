@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_TIME_H
-#define SDL_LEARN_TIME_H
+#ifndef DENGINE_TIME_H
+#define DENGINE_TIME_H
 
 #include <SDL.h>
 
@@ -39,4 +39,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_TIME_H
+#endif //DENGINE_TIME_H

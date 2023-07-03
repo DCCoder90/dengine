@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_VEC2_H
-#define SDL_LEARN_VEC2_H
+#ifndef DENGINE_VEC2_H
+#define DENGINE_VEC2_H
 
 /**
  * @brief The namespace containing the engine's code
@@ -33,4 +33,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_VEC2_H
+#endif //DENGINE_VEC2_H

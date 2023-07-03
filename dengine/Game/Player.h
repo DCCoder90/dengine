@@ -1,7 +1,7 @@
 
 
-#ifndef SDL_LEARN_PLAYER_H
-#define SDL_LEARN_PLAYER_H
+#ifndef DENGINE_PLAYER_H
+#define DENGINE_PLAYER_H
 
 #include "../include/System/Component.h"
 #include "../include/System/GameObject.h"
@@ -27,4 +27,4 @@ namespace DemoGame {
     };
 }
 
-#endif //SDL_LEARN_PLAYER_H
+#endif //DENGINE_PLAYER_H

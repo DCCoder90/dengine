@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_SPRITE_H
-#define SDL_LEARN_SPRITE_H
+#ifndef DENGINE_SPRITE_H
+#define DENGINE_SPRITE_H
 
 
 #include <SDL.h>
@@ -40,4 +40,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_SPRITE_H
+#endif //DENGINE_SPRITE_H

@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_INPUTCONTROLLER_H
-#define SDL_LEARN_INPUTCONTROLLER_H
+#ifndef DENGINE_INPUTCONTROLLER_H
+#define DENGINE_INPUTCONTROLLER_H
 
 #include <SDL.h>
 #include "../System/Component.h"
@@ -21,4 +21,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_INPUTCONTROLLER_H
+#endif //DENGINE_INPUTCONTROLLER_H

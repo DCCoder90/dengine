@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_CAMERAMANAGER_H
-#define SDL_LEARN_CAMERAMANAGER_H
+#ifndef DENGINE_CAMERAMANAGER_H
+#define DENGINE_CAMERAMANAGER_H
 #include "Camera.h"
 #include <string>
 #include <map>
@@ -26,4 +26,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_CAMERAMANAGER_H
+#endif //DENGINE_CAMERAMANAGER_H

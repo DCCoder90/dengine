@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_UNIVERSAL_H
-#define SDL_LEARN_UNIVERSAL_H
+#ifndef DENGINE_UNIVERSAL_H
+#define DENGINE_UNIVERSAL_H
 #include "Utils/NanoLog.h"
 
-#endif //SDL_LEARN_UNIVERSAL_H
+#endif //DENGINE_UNIVERSAL_H

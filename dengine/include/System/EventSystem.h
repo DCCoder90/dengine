@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_EVENTSYSTEM_H
-#define SDL_LEARN_EVENTSYSTEM_H
+#ifndef DENGINE_EVENTSYSTEM_H
+#define DENGINE_EVENTSYSTEM_H
 
 #include <SDL.h>
 #include <functional>
@@ -36,4 +36,4 @@ namespace dengine {
         std::map <Uint32, std::function<void(void *, void *)>> eventHandlers;
     };
 }
-#endif //SDL_LEARN_EVENTSYSTEM_H
+#endif //DENGINE_EVENTSYSTEM_H

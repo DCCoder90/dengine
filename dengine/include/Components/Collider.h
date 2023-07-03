@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_COLLIDER_H
-#define SDL_LEARN_COLLIDER_H
+#ifndef DENGINE_COLLIDER_H
+#define DENGINE_COLLIDER_H
 
 
 #include <SDL_rect.h>
@@ -32,4 +32,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_COLLIDER_H
+#endif //DENGINE_COLLIDER_H

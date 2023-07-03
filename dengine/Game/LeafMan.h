@@ -1,7 +1,7 @@
 
 
-#ifndef SDL_LEARN_LEAFMAN_H
-#define SDL_LEARN_LEAFMAN_H
+#ifndef DENGINE_LEAFMAN_H
+#define DENGINE_LEAFMAN_H
 
 #include "../include/System/Component.h"
 #include "../include/System/GameObject.h"
@@ -25,4 +25,4 @@ namespace DemoGame {
     };
 }
 
-#endif //SDL_LEARN_LEAFMAN_H
+#endif //DENGINE_LEAFMAN_H

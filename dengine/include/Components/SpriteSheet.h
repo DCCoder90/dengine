@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_SPRITESHEET_H
-#define SDL_LEARN_SPRITESHEET_H
+#ifndef DENGINE_SPRITESHEET_H
+#define DENGINE_SPRITESHEET_H
 
 #include <SDL.h>
 #include <SDL_image.h>
@@ -88,4 +88,4 @@ namespace dengine {
         bool isPaused = false;
     };
 }
-#endif //SDL_LEARN_SPRITESHEET_H
+#endif //DENGINE_SPRITESHEET_H

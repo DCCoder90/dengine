@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="dEngine Full Compile" type="CompoundRunConfigurationType">
+        <toRun name="dEngine" targetId="CMakeBuildProfile:Debug" type="CMakeRunConfiguration"/>
+        <toRun name="MoveAssets" type="ShConfigurationType"/>
+        <method v="2"/>
+    </configuration>
+</component>

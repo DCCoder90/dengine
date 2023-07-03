@@ -1,5 +1,5 @@
-#ifndef SDL_LEARN_GAMELEVEL_H
-#define SDL_LEARN_GAMELEVEL_H
+#ifndef DENGINE_GAMELEVEL_H
+#define DENGINE_GAMELEVEL_H
 
 
 #include "GameObject.h"
@@ -99,4 +99,4 @@ namespace dengine {
     };
 }
 
-#endif //SDL_LEARN_GAMELEVEL_H
+#endif //DENGINE_GAMELEVEL_H
