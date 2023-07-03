@@ -4,20 +4,21 @@
 #include <SDL.h>
 #include "../System/Component.h"
 
-class InputController : public Component {
-public:
-    InputController(GameObject &parent);
+namespace dengine {
+    class InputController : public Component {
+    public:
+        InputController(GameObject &parent);
 
-    /**
- * Keyboard key states
- */
-    const Uint8 *keystates;
+        /**
+     * Keyboard key states
+     */
+        const Uint8 *keystates;
 
-    /**
- * Runs every frame, managing actions based upon current keystates
- */
-    void Update();
-};
-
+        /**
+     * Runs every frame, managing actions based upon current keystates
+     */
+        void Update();
+    };
+}
 
 #endif //SDL_LEARN_INPUTCONTROLLER_H

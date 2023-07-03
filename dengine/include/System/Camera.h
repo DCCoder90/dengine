@@ -7,16 +7,21 @@
 #include <SDL.h>
 #include <string>
 
-class Camera {
-public:
-    Camera(std::string name, int x, int y, int height, int width);
-    Camera(std::string name, int height, int width);
-    std::string GetName();
-    void SetPosition(int x, int y);
-private:
-    SDL_Rect pos;
-    std::string name;
-};
+namespace dengine {
+    class Camera {
+    public:
+        Camera(std::string name, int x, int y, int height, int width);
 
+        Camera(std::string name, int height, int width);
+
+        std::string GetName();
+
+        void SetPosition(int x, int y);
+
+    private:
+        SDL_Rect pos;
+        std::string name;
+    };
+}
 
 #endif //SDL_LEARN_CAMERA_H

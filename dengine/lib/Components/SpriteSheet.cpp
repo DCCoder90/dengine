@@ -1,6 +1,8 @@
 #include "../../include/Components/SpriteSheet.h"
 #include "../../include/System/CameraManager.h"
 
+using namespace dengine;
+
 SpriteSheet::SpriteSheet(std::string filepath, GameObject &associated) : Component(associated){
     SDL_Surface* surface = IMG_Load(filepath.c_str());
     //SDL_SetColorKey is then used to set the color key for the surface.

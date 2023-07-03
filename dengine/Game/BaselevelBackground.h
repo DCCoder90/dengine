@@ -7,6 +7,8 @@
 #include "../include/System/Game.h"
 #include "../include/System/CameraManager.h"
 
+using namespace dengine;
+
 class BaselevelBackground : public Component{
 public:
     /**

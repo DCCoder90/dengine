@@ -7,18 +7,23 @@
 #include "Game.h"
 #include "../Universal.h"
 
-class CameraManager {
-public:
-    std::shared_ptr<Camera> GetCameraByName(std::string cameraName);
-    std::shared_ptr<Camera> CreateCamera(std::string name, int x, int y, int height, int width);
-    std::shared_ptr<Camera> GetMainCamera();
-    bool CameraExists(std::string cameraName); //TODO: Implement this
-    static CameraManager& GetInstance();
-private:
-    const std::string MainCamera = "MainCamera";
-    static CameraManager* instance;
-    std::map<std::string, std::shared_ptr<Camera>> cameraCollection;
-};
+namespace dengine {
+    class CameraManager {
+    public:
+        std::shared_ptr <Camera> GetCameraByName(std::string cameraName);
 
+        std::shared_ptr <Camera> CreateCamera(std::string name, int x, int y, int height, int width);
+
+        std::shared_ptr <Camera> GetMainCamera();
+
+        bool CameraExists(std::string cameraName); //TODO: Implement this
+        static CameraManager &GetInstance();
+
+    private:
+        const std::string MainCamera = "MainCamera";
+        static CameraManager *instance;
+        std::map <std::string, std::shared_ptr<Camera>> cameraCollection;
+    };
+}
 
 #endif //SDL_LEARN_CAMERAMANAGER_H

@@ -1,5 +1,7 @@
 #include "../../include/System/Component.h"
 
+using namespace dengine;
+
 Component::Component(GameObject &parent) : parent(parent) {}
 
 std::string Component::GetName() {

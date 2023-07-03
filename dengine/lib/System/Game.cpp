@@ -1,5 +1,7 @@
 #include "../../include/System/Game.h"
 
+using namespace dengine;
+
 Game* Game::instance;
 
 Game::Game() {

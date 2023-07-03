@@ -1,5 +1,6 @@
-
 #include "../../include/System/GameStates.h"
+
+using namespace dengine;
 
 GameState GameState::instance;
 

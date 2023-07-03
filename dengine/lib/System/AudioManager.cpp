@@ -1,4 +1,7 @@
 #include "../../include/System/AudioManager.h"
+
+using namespace dengine;
+
 AudioManager* AudioManager::instance;
 
 void AudioManager::AddSound(std::string name,std::string filepath){

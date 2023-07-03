@@ -8,6 +8,8 @@
 #include "../include/Components/Sprite.h"
 #include "./Player.h"
 
+using namespace dengine;
+
 class LeafMan : public Component{
 public:
     LeafMan(GameObject &parent);

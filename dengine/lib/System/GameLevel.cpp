@@ -2,6 +2,8 @@
 #include "../../include/System/GameLevel.h"
 #include "../../include/System/Game.h"
 
+using namespace dengine;
+
 GameLevel::GameLevel() : started(false) {}
 
 GameLevel::~GameLevel() {

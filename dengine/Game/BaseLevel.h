@@ -1,5 +1,3 @@
-
-
 #ifndef SDL_LEARN_BASELEVEL_H
 #define SDL_LEARN_BASELEVEL_H
 
@@ -10,6 +8,8 @@
 #include "Player.h"
 #include "../include/System/Sound.h"
 #include "../include/System/AudioManager.h"
+
+using namespace dengine;
 
 class BaseLevel : public GameLevel{
 public:

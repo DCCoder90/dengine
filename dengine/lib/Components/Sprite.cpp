@@ -1,5 +1,7 @@
 #include "../../include/Components/Sprite.h"
 
+using namespace dengine;
+
 Sprite::Sprite(std::string filepath, GameObject &associated) : Component(associated){
     SDL_Surface *tempSurface = IMG_Load(filepath.c_str());
 

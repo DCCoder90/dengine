@@ -1,5 +1,7 @@
 #include "../../include/System/EventSystem.h"
 
+using namespace dengine;
+
 const Uint32 CustomEventType = SDL_USEREVENT + 1;
 
 struct EventSystem::CustomEventData {

@@ -7,32 +7,33 @@
 #include <string>
 #include <iostream>
 
-class EventSystem {
-public:
-    struct CustomEventData;
-    struct CustomEvent;
+namespace dengine {
+    class EventSystem {
+    public:
+        struct CustomEventData;
+        struct CustomEvent;
 
-    void processEvents();
+        void processEvents();
 
-    void sendCustomEvent(void *data1, void *data2);
+        void sendCustomEvent(void *data1, void *data2);
 
-    template<typename EventType>
-    void registerHandler(std::function<void(EventType)> handler);
+        template<typename EventType>
+        void registerHandler(std::function<void(EventType)> handler);
 
-    template<typename EventType>
-    void unregisterHandler();
+        template<typename EventType>
+        void unregisterHandler();
 
-protected:
-    virtual void handleCustomEvent(void *data1, void *data2);
+    protected:
+        virtual void handleCustomEvent(void *data1, void *data2);
 
-    virtual void onQuit();
+        virtual void onQuit();
 
-    virtual void onKeyDown(SDL_Keycode key);
+        virtual void onKeyDown(SDL_Keycode key);
 
-    virtual void onMouseButtonDown(Uint8 button, int x, int y);
+        virtual void onMouseButtonDown(Uint8 button, int x, int y);
 
-private:
-    std::map<Uint32, std::function<void(void *, void *)>> eventHandlers;
-};
-
+    private:
+        std::map <Uint32, std::function<void(void *, void *)>> eventHandlers;
+    };
+}
 #endif //SDL_LEARN_EVENTSYSTEM_H

@@ -9,6 +9,7 @@
 #include "../include/Universal.h"
 #include "../include/Components/SpriteSheet.h"
 
+using namespace dengine;
 
 class Player : public Component{
 public:

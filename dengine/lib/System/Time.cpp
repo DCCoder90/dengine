@@ -1,5 +1,7 @@
 #include "../../include/System/Time.h"
 
+using namespace dengine;
+
 Time Time::instance;
 
 Time::Time() {

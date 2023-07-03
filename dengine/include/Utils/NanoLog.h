@@ -33,6 +33,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SO
 #include <iosfwd>
 #include <type_traits>
 
+
 /**
  * @brief Namespace consiting of the nanolog logger
  * This logger is a third party application that was added to this project to help facilitate logging.

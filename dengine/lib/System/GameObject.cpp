@@ -1,6 +1,8 @@
 #include "../../include/System/GameObject.h"
 #include "../../include/System/Component.h"
 
+using namespace dengine;
+
 GameObject::GameObject(std::string objectName) {
     name = objectName;
 }

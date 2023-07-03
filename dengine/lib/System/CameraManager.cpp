@@ -1,5 +1,7 @@
 #include "../../include/System/CameraManager.h"
 
+using namespace dengine;
+
 CameraManager* CameraManager::instance;
 
 CameraManager& CameraManager::GetInstance() {

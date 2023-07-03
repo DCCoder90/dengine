@@ -1,5 +1,3 @@
-
-
 #include "BaseLevel.h"
 #include "LeafMan.h"
 #include "BaselevelBackground.h"

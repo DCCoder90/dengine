@@ -1,5 +1,7 @@
 #include "../../include/System/Sound.h"
 
+using namespace dengine;
+
 Sound::Sound(std::string filepath){
     filePath = filepath;
 }

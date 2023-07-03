@@ -1,5 +1,7 @@
 #include "../../include/System/Camera.h"
 
+using namespace dengine;
+
 Camera::Camera(std::string name, int x, int y, int height, int width) {
     this->name = name;
     pos = {x,y,width,height};
