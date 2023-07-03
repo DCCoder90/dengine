@@ -1,9 +1,11 @@
 
 
 #include "Player.h"
+#include "../include/System/AudioManager.h"
 
 Player::Player(GameObject &parent) : Component(parent) {
     name="Player";
+
 }
 
 void Player::Start() {
@@ -13,6 +15,7 @@ void Player::Start() {
     spriteSheet->RegisterAnimation("walkup",2882,1336,96,96,8);
     spriteSheet->RegisterAnimation("walkright",2882,1627,96,96,8);
     spriteSheet->RegisterAnimation("idle",0,1045,96,96,10);
+    spriteSheet->RegisterAnimation("fire",0,1827,96,96,20);
     spriteSheet->SetCurrentAnimation("idle");
     spriteSheet->Pause(false);
 
@@ -37,7 +40,6 @@ void Player::Update(){
     if(noKeysPressed){
         spriteSheet->SetCurrentAnimation("idle");
     }else {
-
         std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
         std::shared_ptr<GameObject> player = playerGoPtr.lock();
         if (keystates[SDL_SCANCODE_UP]) {
@@ -55,6 +57,15 @@ void Player::Update(){
         if (keystates[SDL_SCANCODE_RIGHT]) {
             spriteSheet->SetCurrentAnimation("walkright");
             player->SetPos(player->box.x += speed, player->box.y);
+        }
+        if (keystates[SDL_SCANCODE_SPACE]) {
+            if(!spaceKeyDown) {
+                AudioManager::GetInstance().PlaySound("fire");
+                spriteSheet->SetCurrentAnimation("fire");
+                spaceKeyDown = true;
+            }
+        }else{
+            spaceKeyDown = false;
         }
     }
 }
