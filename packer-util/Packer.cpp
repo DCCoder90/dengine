@@ -20,9 +20,13 @@ void Packer::ReadFileToBuffer(const std::filesystem::path filePath){
 
     // Read the file into a vector
     std::vector<char> buffer(size);
-    if (!file.read(buffer.data(), size)) {
+
+    std::vector<char> tempBuffer(size);
+    if (!file.read(tempBuffer.data(), size)) {
         std::cerr << "Failed to read file: " << filePath << '\n';
     }
+
+    buffer = compressBuffer(tempBuffer);
 
     std::string extension = filePath.extension().string();
     std::string mimeType = getMimeType(extension);
@@ -60,4 +64,17 @@ std::string Packer::getMimeType(const std::string& extension) {
     } else {
         std::cerr << "Unable to determine mimetype\n";
     }
+}
+
+std::vector<char> Packer::compressBuffer(const std::vector<char>& buffer) {
+    uLongf compressedSize = compressBound(buffer.size());
+    std::vector<char> compressedBuffer(compressedSize);
+
+    if (compress((Bytef*)compressedBuffer.data(), &compressedSize, (const Bytef*)buffer.data(), buffer.size()) != Z_OK) {
+        std::cerr << "Failed to compress buffer\n";
+        return {};
+    }
+
+    compressedBuffer.resize(compressedSize);
+    return compressedBuffer;
 }

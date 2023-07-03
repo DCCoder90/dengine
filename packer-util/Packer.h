@@ -7,12 +7,14 @@
 #include <fstream>
 #include <map>
 #include <filesystem>
+#include <zlib.h>
 
 class Packer {
 public:
     Packer(std::string filePath);
     void ReadFileToBuffer(const std::filesystem::path filePath);
 private:
+    std::vector<char> compressBuffer(const std::vector<char>& buffer);
     std::string outFilePath;
     std::vector<char> buffer;
     std::string getMimeType(const std::string& extension);

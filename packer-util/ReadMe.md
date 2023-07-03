@@ -6,7 +6,11 @@ The purpose of packer util is to pack all game assets into a singular .dat file.
 
 | Bytes    |Purpose|
 |----------|---|
-| 8        |Filename|
+| 12       |Filename|
 | 8        |Type|
 | 12       |Size|
 | Variable | Content|
+
+## Compilation notes
+
+Run zlibinstall.bat to install zlib for windows.
