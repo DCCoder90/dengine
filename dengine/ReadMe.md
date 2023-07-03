@@ -1,5 +1,4 @@
-## SDL Fun
-
+## dEngine
 
 I am working on furthering my skills with C++ and in the process I decided to learn it by writing a simple little game engine.  This will allow me to gain more experience not only in C++ development but in graphic rendering, audio management, etc etc.  
 
