@@ -29,7 +29,7 @@ void Packer::ReadFileToBuffer(const std::filesystem::path filePath){
     buffer = compressBuffer(tempBuffer);
 
     std::string extension = filePath.extension().string();
-    std::string mimeType = getMimeType(extension);
+    std::string mimeType = getFileType(extension);
     mimeType.resize(8, ' ');
     std::vector<char> mimeTypeChars(mimeType.begin(), mimeType.end());
     buffer.insert(buffer.begin(), mimeTypeChars.begin(), mimeTypeChars.end());
@@ -51,7 +51,7 @@ void Packer::ReadFileToBuffer(const std::filesystem::path filePath){
     outFile.write(buffer.data(), buffer.size());
 }
 
-std::string Packer::getMimeType(const std::string& extension) {
+std::string Packer::getFileType(const std::string& extension) {
     static std::map<std::string, std::string> mimeTypes = {
             {".txt", "text"},
             {".png", "png"},

@@ -17,7 +17,7 @@ private:
     std::vector<char> compressBuffer(const std::vector<char>& buffer);
     std::string outFilePath;
     std::vector<char> buffer;
-    std::string getMimeType(const std::string& extension);
+    std::string getFileType(const std::string& extension);
 };
 
 
