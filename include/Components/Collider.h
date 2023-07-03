@@ -6,6 +6,9 @@
 #include "../System/Component.h"
 #include "../Vec2.h"
 
+/**
+* @brief Colliders are used to determine collisions between objects in the world's space
+*/
 class Collider : public Component {
     Collider(GameObject &associated, Vec2 scale = {1, 1}, Vec2 offset = {0, 0});
 

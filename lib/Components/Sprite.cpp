@@ -11,6 +11,10 @@ Sprite::Sprite(std::string filepath, GameObject &associated) : Component(associa
     SDL_FreeSurface(tempSurface);
 }
 
+Sprite::~Sprite(){
+    SDL_DestroyTexture(texture);
+}
+
 void Sprite::Render() {
     SDL_RenderCopy(Game::GetInstance().GetRenderer(), texture,
                    reinterpret_cast<const SDL_Rect *>(CameraManager::GetInstance().GetMainCamera().get()), &parent.box);

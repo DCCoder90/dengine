@@ -5,11 +5,15 @@
 #include <string>
 
 /**
-* A component adds aditional functionality to a Gameobject without being a defining factor of the object
+* A component adds additional functionality to a Gameobject without being a defining factor of the object.  This is an empty class
+ * and is meant to be extended upon depending upon the needs of the developer.  For some examples see Sprite, SpriteSheet, or other
+ * preexisting components
+ * @brief Gameobject component that asssists in adding additional functionality
 */
 class Component {
 public:
     /**
+     * @brief Create a new component for a gameobject
  *  @param parent The parent object that this component is on
  */
     Component(GameObject &parent);
@@ -20,13 +24,14 @@ public:
     virtual void NotifyCollision(GameObject &other);
 
     /**
-* Returns the component's name
+* @brief Returns the component's name
  * @see name
 */
     std::string GetName();
 
     /**
-     * Called on instantiation
+     * @brief Start the object
+     * To be called by the GameObject's Start method.  This should be called at the beginning of instantiation
      */
     virtual void Start();
 
