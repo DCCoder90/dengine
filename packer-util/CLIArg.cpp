@@ -4,6 +4,8 @@
 
 #include "CLIArg.h"
 
+using namespace packer;
+
 CLIArg::CLIArg() {}
 
 int CLIArg::GetIndexOfArgument(char* argv[], std::string argument) {

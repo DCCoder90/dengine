@@ -1,4 +1,5 @@
 #include "Packer.h"
+using namespace packer;
 
 Packer::Packer(std::string filePath) {
     outFilePath = filePath;

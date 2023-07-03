@@ -4,6 +4,8 @@
 #include "Packer.h"
 #include "CLIArg.h"
 
+using namespace packer;
+
 int main(int argc, char* argv[]) {
     CLIArg* cli = new CLIArg();
     if(!cli->ArgumentExists(argv,"-d")){
