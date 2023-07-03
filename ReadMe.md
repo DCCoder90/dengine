@@ -1,29 +1,23 @@
-## SDL Fun
+# dEngine
 
+dEngine is a simple 2D game engine written in C++ and making use of the SDL library.
 
-I am working on furthering my skills with C++ and in the process I decided to learn it by writing a simple little game engine.  This will allow me to gain more experience not only in C++ development but in graphic rendering, audio management, etc etc.  
+This is really just kind of a hobby and nothing amazing is expected to come out of this aside from maybe a simple game or two I write just because.
 
-This repo may get messy at times while I'm working on it, as I'm just throwing stuff around.  Typically I'm not this messy, but since it's for my own eyes really and learning experience, why not?
+## Dependencies
 
-I'm going to do my best to ensure the main branch always compiles and runs.  I'll continue documenting various aspects of the project overtime as well.
+* [SDL](https://www.libsdl.org/)
+* [zLib](https://www.zlib.net/)
 
-In order to compile this you will need [SDL](https://github.com/libsdl-org/SDL/releases/tag/release-2.26.5), ensure that the paths in the [CMakeLists.txt](CMakeLists.txt) file are pointing to where your files are, and also copy the dll to the directory with the final executable.  I plan on automating that last part at some point, just not right now.
+## Projects
 
-
-## Structure
-
-|Directory|Purpose|
+|Project|Purpose|
 |---|---|
-|Game|Header and Source files for game|
-|include|Header Files|
-|lib|Source Files|
-|bin|Build dependency binaries|
-|Assets|Graphics/Audio/Etc for game|
-|.run|IDE Configuration|
+|dengine|The engine itself|
+|packer|A utility to assist with packing assets|
 
-### TODO
+## How do I make a game?!
 
-* Video System
-* Event System
-* UI System
-* Save/Load system
+Take a look at the [dengine Readme](./dengine/ReadMe.md) for details on making the game as well as generating the code documentation.
+
+Code documentation can be found on [DCCoder.com/dEngine](https://www.dccoder.com/dengine/)
