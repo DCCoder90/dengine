@@ -24,14 +24,9 @@ void Packer::ReadFileToBuffer(const std::filesystem::path filePath){
         std::cerr << "Failed to read file: " << filePath << '\n';
     }
 
-    std::string filename = filePath.stem().string();
-    filename.resize(8, ' ');
-    std::vector<char> filenameChars(filename.begin(), filename.end());
-    buffer.insert(buffer.begin(), filenameChars.begin(), filenameChars.end());
-
     std::string extension = filePath.extension().string();
     std::string mimeType = getMimeType(extension);
-    mimeType.resize(12, ' ');
+    mimeType.resize(8, ' ');
     std::vector<char> mimeTypeChars(mimeType.begin(), mimeType.end());
     buffer.insert(buffer.begin(), mimeTypeChars.begin(), mimeTypeChars.end());
 
@@ -39,6 +34,11 @@ void Packer::ReadFileToBuffer(const std::filesystem::path filePath){
     sizeStr.resize(12, ' ');
     std::vector<char> sizeChars(sizeStr.begin(), sizeStr.end());
     buffer.insert(buffer.begin() + mimeTypeChars.size(), sizeChars.begin(), sizeChars.end());
+
+    std::string filename = filePath.stem().string();
+    filename.resize(12, ' ');
+    std::vector<char> filenameChars(filename.begin(), filename.end());
+    buffer.insert(buffer.begin(), filenameChars.begin(), filenameChars.end());
 
     std::ofstream outFile(outFilePath, std::ios::binary | std::ios::app | std::ios::out);
     if (!outFile) {
