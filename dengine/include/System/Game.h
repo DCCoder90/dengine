@@ -11,6 +11,7 @@
 #include <stack>
 #include "GameStates.h"
 #include "GameLevel.h"
+#include "../Utils/Serializer.h"
 #include "../Universal.h"
 
 namespace dengine {
@@ -32,6 +33,7 @@ namespace dengine {
          * @brief Pushes a new GameLevel onto the internal stack
          */
         void Push(GameLevel *state);
+        void Pop();
 
         /**
          * @brief The game loop
@@ -58,11 +60,40 @@ namespace dengine {
          */
         SDL_Window *window = NULL;
 
+        template<typename T>
+        /**
+         * Saves the current game state to a file
+         * @param serializer The serializer to use for saving
+         * @return True if success
+         */
+        bool SaveState(Serializer<T>* serializer);
+
+        template<typename T>
+        /**
+         * Loads a state from a file and sets the games state
+         * @param serializer The serializer to use for loading
+         * @return True if success
+         */
+        bool LoadState(Serializer<T>* serializer);
     private:
         SDL_Renderer *renderer;
         std::stack <std::unique_ptr<GameLevel>> stateStack;
         GameLevel *storedState;
         static Game *instance;
     };
+
+    template<typename T>
+    bool Game::SaveState(Serializer<T>* serializer) {
+        T* level = dynamic_cast<T*>(&GetCurrentState());
+        return serializer->saveToFile(level);
+    }
+
+    template<typename T>
+    bool Game::LoadState(Serializer<T>* serializer) {
+        T level = serializer->loadFromFile();
+        Pop();
+        Push(new T(level));
+        return true;
+    }
 }
 #endif //DENGINE_GAME_H

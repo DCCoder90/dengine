@@ -1,6 +1,7 @@
 #include "BaseLevel.h"
 #include "LeafMan.h"
 #include "BaselevelBackground.h"
+#include "../include/Utils/Serializer.h"
 
 using namespace DemoGame;
 
@@ -34,6 +35,12 @@ void BaseLevel::Load(){
     }
 }
 
+void BaseLevel::UnLoad() {
+    AudioManager::GetInstance().RemoveSound("background");
+    AudioManager::GetInstance().RemoveSound("death");
+    AudioManager::GetInstance().RemoveSound("fire");
+}
+
 void BaseLevel::Start(){
     StartObjects();
 }
@@ -43,6 +50,8 @@ void BaseLevel::Resume(){}
 
 
 void BaseLevel::Update(){
+
+    const Uint8 *keystates = SDL_GetKeyboardState(NULL);
 
     std::weak_ptr<GameObject> player = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
     std::shared_ptr<GameObject> playerGo = player.lock();
@@ -66,22 +75,3 @@ void BaseLevel::Update(){
 void BaseLevel::Render() {
     RenderObjects();
 }
-
-/*
-void BaseLevel::updatestuff() {
-        //Check enemy collision
-
-        //Just a simple collision that will be able to tell if right or bottom side of
-        //enemy touches player or if enemy is fully on top of player.   Need to fix
-        //this though so we only check if we know for sure player and enemy are near each other.
-        if (enemies[i]->xPos + enemies[i]->posRect.w >= player->xPos &&
-            enemies[i]->xPos <= player->xPos + player->posRect.w &&
-            enemies[i]->yPos + enemies[i]->posRect.h >= player->yPos &&
-            enemies[i]->yPos <= player->yPos + player->posRect.h) {
-            GameState::GetInstance().setGameState(GAMESTATES::Gameover);
-        }
-    }
-
-
-}
- */

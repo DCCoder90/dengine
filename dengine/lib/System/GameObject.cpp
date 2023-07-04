@@ -1,5 +1,7 @@
 #include "../../include/System/GameObject.h"
 #include "../../include/System/Component.h"
+#include "../../include/Components/Collider.h"
+#include "../../include/Components/SpriteSheet.h"
 
 using namespace dengine;
 
