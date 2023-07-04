@@ -26,6 +26,8 @@ namespace DemoGame {
 
         void Load() override;
 
+        void UnLoad() override;
+
         void Start() override;
 
         void Pause() override;

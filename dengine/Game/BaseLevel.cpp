@@ -36,6 +36,12 @@ void BaseLevel::Load(){
     }
 }
 
+void BaseLevel::UnLoad() {
+    AudioManager::GetInstance().RemoveSound("background");
+    AudioManager::GetInstance().RemoveSound("death");
+    AudioManager::GetInstance().RemoveSound("fire");
+}
+
 void BaseLevel::Start(){
     dengine::Game::GetInstance().SaveState(serializer);
     StartObjects();

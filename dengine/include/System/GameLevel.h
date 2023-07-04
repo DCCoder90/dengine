@@ -34,6 +34,11 @@ namespace dengine {
         virtual void Load() = 0;
 
         /**
+        * @brief Used for removing assets from memory
+        */
+        virtual void UnLoad() = 0;
+
+        /**
      * @brief Used for performing logic updates
      */
         virtual void Update() = 0;
