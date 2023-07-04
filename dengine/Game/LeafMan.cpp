@@ -22,6 +22,11 @@ void LeafMan::Start() {
 }
 
 void LeafMan::Update(){
+
+    if(GameState::GetInstance().getGameState()==GAMESTATES::Pause){
+        return;
+    }
+
     std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
     std::shared_ptr<GameObject>  playerGo = playerGoPtr.lock();
 

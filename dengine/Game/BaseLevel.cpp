@@ -45,13 +45,25 @@ void BaseLevel::Start(){
     StartObjects();
 }
 
-void BaseLevel::Pause(){}
-void BaseLevel::Resume(){}
+void BaseLevel::Pause(){
+    GameState::GetInstance().setGameState(GAMESTATES::Pause);
+}
+void BaseLevel::Resume(){
+    GameState::GetInstance().setGameState(GAMESTATES::Playing);
+}
 
 
 void BaseLevel::Update(){
 
     const Uint8 *keystates = SDL_GetKeyboardState(NULL);
+    if (keystates[SDL_SCANCODE_T]) {
+        if(GameState::GetInstance().getGameState()==GAMESTATES::Pause){
+            Resume();
+        }else {
+            Pause();
+        }
+    }
+
 
     std::weak_ptr<GameObject> player = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
     std::shared_ptr<GameObject> playerGo = player.lock();
