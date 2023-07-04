@@ -33,6 +33,7 @@ namespace dengine {
          * @brief Pushes a new GameLevel onto the internal stack
          */
         void Push(GameLevel *state);
+        void Pop();
 
         /**
          * @brief The game loop
@@ -90,6 +91,7 @@ namespace dengine {
     template<typename T>
     bool Game::LoadState(Serializer<T>* serializer) {
         T level = serializer->loadFromFile();
+        Pop();
         Push(new T(level));
         return true;
     }

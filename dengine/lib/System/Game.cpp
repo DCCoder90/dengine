@@ -59,6 +59,10 @@ void Game::Push(GameLevel* state) {
     state->Load();
 }
 
+void Game::Pop() {
+    stateStack.pop();
+}
+
 void Game::loop() {
     if (storedState == nullptr) {
         throw std::runtime_error("Can not start Game without an initial state");
