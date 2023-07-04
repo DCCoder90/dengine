@@ -8,6 +8,7 @@ I'm going to do my best to ensure the main branch always compiles and runs.  I'l
 
 In order to compile this you will need [SDL](https://github.com/libsdl-org/SDL/releases/tag/release-2.26.5), ensure that the paths in the [CMakeLists.txt](CMakeLists.txt) file are pointing to where your files are, and also copy the dll to the directory with the final executable.  I plan on automating that last part at some point, just not right now.
 
+Be sure to check out the engine's [FAQ page](FAQ.md) for some of the more frequest questions.
 
 ## Structure
 
