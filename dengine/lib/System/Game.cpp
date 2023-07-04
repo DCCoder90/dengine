@@ -46,6 +46,23 @@ SDL_Renderer* Game::GetRenderer() {
     return renderer;
 }
 
+bool Game::SaveState(std::string filePath) {
+    Serializer* serializer = new Serializer(filePath);
+    GameLevel* level = &GetCurrentState();
+    return serializer->saveToFile(level);
+}
+
+bool Game::LoadState(std::string filePath) {
+    Serializer* serializer = new Serializer(filePath);
+    GameLevel level = serializer->loadFromFile<GameLevel>();
+
+
+    std::unique_ptr<GameLevel> gameLevel = std::make_unique<GameLevel>(level);
+    Push(gameLevel.get());
+    gameLevel.release();
+    return renderer;
+}
+
 GameLevel& Game::GetCurrentState() {
     if (stateStack.empty()) {
         throw std::runtime_error("State stack is empty, can't get current state");

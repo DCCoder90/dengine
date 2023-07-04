@@ -1,7 +1,3 @@
-//
-// Created by ernes on 7/4/2023.
-//
-
 #ifndef DENGINE_SERIALIZER_H
 #define DENGINE_SERIALIZER_H
 

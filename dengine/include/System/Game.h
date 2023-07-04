@@ -11,6 +11,7 @@
 #include <stack>
 #include "GameStates.h"
 #include "GameLevel.h"
+#include "../Utils/Serializer.h"
 #include "../Universal.h"
 
 namespace dengine {
@@ -58,6 +59,18 @@ namespace dengine {
          */
         SDL_Window *window = NULL;
 
+        /**
+         * Saves the current game state to a file
+         * @param path The file to save the state to
+         * @return True if success
+         */
+        bool SaveState(std::string path);
+        /**
+         * Loads a state from a file and sets the games state
+         * @param path The file to read the state from
+         * @return True if success
+         */
+        bool LoadState(std::string path);
     private:
         SDL_Renderer *renderer;
         std::stack <std::unique_ptr<GameLevel>> stateStack;
