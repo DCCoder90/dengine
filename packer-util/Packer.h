@@ -8,6 +8,7 @@
 #include <map>
 #include <filesystem>
 #include <zlib.h>
+#include <map>
 
 /**
  * @brief Namespace consisting of the packer utility
@@ -28,8 +29,23 @@ namespace packer {
          * @param filePath Filepath of the file to pack
         */
         void ReadFileToBuffer(const std::filesystem::path filePath);
+        /**
+         * @brief Writes a table of contents to the top of the file
+         */
+        void WriteTable();
+
 
     private:
+        /**
+         * @brief A map containing every file in the package and it's starting location
+         */
+        std::map<std::string,std::string> fileLocMap;
+        /**
+         * Converts a map to a vector<char>
+         * @return first:second
+         * @see fileLocMap
+         */
+        std::vector<char> MapToVector();
         /**
         * @brief Checks if file exists
          * @param filename File to check

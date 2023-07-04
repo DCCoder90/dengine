@@ -26,6 +26,8 @@ int main(int argc, char* argv[]) {
         packer->ReadFileToBuffer(entry.path());
     }
 
+    packer->WriteTable();
+
     return 0;
 }
 
