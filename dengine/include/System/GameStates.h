@@ -7,6 +7,7 @@ namespace dengine {
 */
     enum GAMESTATES {
         Splash,
+        Pause,
         Playing,
         Gameover,
         Quit

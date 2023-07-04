@@ -26,6 +26,12 @@ void Player::Start() {
 }
 
 void Player::Update(){
+
+    if(GameState::GetInstance().getGameState()==GAMESTATES::Pause){
+        spriteSheet->SetCurrentAnimation("idle");
+        return;
+    }
+
     int numKeys;
     const Uint8 *keystates = SDL_GetKeyboardState(&numKeys);
 
