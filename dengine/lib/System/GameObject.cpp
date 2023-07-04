@@ -52,6 +52,7 @@ void GameObject::SetPos(float xPos, float yPos) {
 }
 
 std::vector<char> GameObject::serialize() const{
+    //TODO: Serialize the GO name
     std::vector<char> buffer;
     buffer.resize(components.size() * sizeof(Component*));
     std::memcpy(buffer.data(), components.data(), buffer.size());
@@ -59,5 +60,6 @@ std::vector<char> GameObject::serialize() const{
 };
 
 void GameObject::deserialize(const std::vector<char> &data){
+    //TODO: Deserialize the GO name
     std::memcpy(&components, data.data(), sizeof(components));
 }

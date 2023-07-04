@@ -27,6 +27,8 @@ namespace DemoGame {
         void Load() override;
 
         void UnLoad() override;
+        void Serialize() override;
+        void Deserialize() override;
 
         void Start() override;
 
@@ -36,7 +38,7 @@ namespace DemoGame {
 
     private:
         class Player *player;
-        class Serializer<BaseLevel> *serializer;
+        std::vector <std::vector<char>> serializedObjects;
     };
 }
 #endif //DENGINE_BASELEVEL_H

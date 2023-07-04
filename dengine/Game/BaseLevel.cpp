@@ -6,7 +6,31 @@
 using namespace DemoGame;
 
 BaseLevel::BaseLevel(){
-    serializer = new Serializer<BaseLevel>("savegame.save");
+}
+
+void BaseLevel::Serialize() {
+    Pause();
+
+    for (const auto& objectPtr : objects) {
+        std::vector<char> data = objectPtr->serialize();
+        serializedObjects.push_back(data);
+    }
+
+    Resume();
+}
+
+void BaseLevel::Deserialize() {
+    Pause();
+    objects.clear();
+
+    int i =0;
+    for (const auto& objectPtr : serializedObjects) {
+        GameObject* go = new GameObject("d"+i);
+        go->deserialize(objectPtr);
+        objects.push_back(static_cast<const std::shared_ptr<GameObject>>(go));
+        ++i;
+    }
+    Resume();
 }
 
 void BaseLevel::Load(){
@@ -43,8 +67,8 @@ void BaseLevel::UnLoad() {
 }
 
 void BaseLevel::Start(){
-    dengine::Game::GetInstance().SaveState(serializer);
     StartObjects();
+    Serialize();
 }
 
 void BaseLevel::Pause(){}
@@ -56,7 +80,7 @@ void BaseLevel::Update(){
     const Uint8 *keystates = SDL_GetKeyboardState(NULL);
 
     if (keystates[SDL_SCANCODE_SPACE]) {
-        Game::GetInstance().LoadState(serializer);
+        Deserialize();
     }
 
     std::weak_ptr<GameObject> player = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
