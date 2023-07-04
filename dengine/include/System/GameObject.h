@@ -6,7 +6,6 @@
 #include <vector>
 #include<bits/stdc++.h>
 #include <SDL_rect.h>
-#include "Serializable.h"
 #include "../Universal.h"
 
 namespace dengine {
@@ -17,7 +16,7 @@ namespace dengine {
  * The gameobject can be considered the most basic building block of a game.  Everything in a game is considered a gameobject
  * and it's functionality are determined by it's Components
  */
-    class GameObject : public Serializable {
+    class GameObject {
     public:
         GameObject(std::string objectName);
 
@@ -65,9 +64,6 @@ namespace dengine {
         SDL_Rect box;
 
         void SetPos(float xPos, float yPos);
-
-        virtual std::vector<char> serialize() const override;
-        virtual void deserialize(const std::vector<char> &data) override;
 
     private:
         /**

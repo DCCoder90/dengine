@@ -1,5 +1,7 @@
 #include "../../include/System/GameObject.h"
 #include "../../include/System/Component.h"
+#include "../../include/Components/Collider.h"
+#include "../../include/Components/SpriteSheet.h"
 
 using namespace dengine;
 
@@ -49,17 +51,4 @@ void GameObject::Render() {
 void GameObject::SetPos(float xPos, float yPos) {
     box.x = xPos;
     box.y = yPos;
-}
-
-std::vector<char> GameObject::serialize() const{
-    //TODO: Serialize the GO name
-    std::vector<char> buffer;
-    buffer.resize(components.size() * sizeof(Component*));
-    std::memcpy(buffer.data(), components.data(), buffer.size());
-    return buffer;
-};
-
-void GameObject::deserialize(const std::vector<char> &data){
-    //TODO: Deserialize the GO name
-    std::memcpy(&components, data.data(), sizeof(components));
 }

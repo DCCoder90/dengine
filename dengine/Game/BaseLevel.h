@@ -27,8 +27,6 @@ namespace DemoGame {
         void Load() override;
 
         void UnLoad() override;
-        void Serialize() override;
-        void Deserialize() override;
 
         void Start() override;
 

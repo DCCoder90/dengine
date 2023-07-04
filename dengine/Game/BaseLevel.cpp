@@ -8,31 +8,6 @@ using namespace DemoGame;
 BaseLevel::BaseLevel(){
 }
 
-void BaseLevel::Serialize() {
-    Pause();
-
-    for (const auto& objectPtr : objects) {
-        std::vector<char> data = objectPtr->serialize();
-        serializedObjects.push_back(data);
-    }
-
-    Resume();
-}
-
-void BaseLevel::Deserialize() {
-    Pause();
-    objects.clear();
-
-    int i =0;
-    for (const auto& objectPtr : serializedObjects) {
-        GameObject* go = new GameObject("d"+i);
-        go->deserialize(objectPtr);
-        objects.push_back(static_cast<const std::shared_ptr<GameObject>>(go));
-        ++i;
-    }
-    Resume();
-}
-
 void BaseLevel::Load(){
     AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
     AudioManager::GetInstance().AddSound("death","./Assets/deaths.wav");
@@ -68,7 +43,6 @@ void BaseLevel::UnLoad() {
 
 void BaseLevel::Start(){
     StartObjects();
-    Serialize();
 }
 
 void BaseLevel::Pause(){}
@@ -78,10 +52,6 @@ void BaseLevel::Resume(){}
 void BaseLevel::Update(){
 
     const Uint8 *keystates = SDL_GetKeyboardState(NULL);
-
-    if (keystates[SDL_SCANCODE_SPACE]) {
-        Deserialize();
-    }
 
     std::weak_ptr<GameObject> player = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
     std::shared_ptr<GameObject> playerGo = player.lock();

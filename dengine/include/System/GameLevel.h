@@ -64,16 +64,6 @@ namespace dengine {
         virtual void Resume() = 0;
 
         /**
-         * @brief Serialize the level and all objects
-         */
-        virtual void Serialize() = 0;
-
-        /**
-         * @brief Deserialize the level and all objects
-         */
-        virtual void Deserialize() = 0;
-
-        /**
          * @brief Adds an object to the level
          */
         virtual std::weak_ptr <GameObject> AddObject(GameObject *go);

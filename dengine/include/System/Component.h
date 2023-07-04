@@ -11,7 +11,7 @@ namespace dengine {
  * preexisting components
  * @brief Gameobject component that asssists in adding additional functionality
 */
-    class Component {
+    class Component{
     public:
         /**
          * @brief Create a new component for a gameobject
