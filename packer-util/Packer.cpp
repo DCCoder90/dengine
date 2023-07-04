@@ -3,6 +3,7 @@ using namespace packer;
 
 Packer::Packer(std::string filePath) {
     outFilePath = filePath;
+    deleteFileIfExists(outFilePath);
 }
 
 void Packer::ReadFileToBuffer(const std::filesystem::path filePath){
@@ -78,4 +79,15 @@ std::vector<char> Packer::compressBuffer(const std::vector<char>& buffer) {
 
     compressedBuffer.resize(compressedSize);
     return compressedBuffer;
+}
+
+bool Packer::fileExists(const std::string& filename) {
+    std::ifstream file(filename);
+    return file.good();
+}
+
+void Packer::deleteFileIfExists(const std::string& filename) {
+    if (fileExists(filename)) {
+        remove(filename.c_str());
+    }
 }

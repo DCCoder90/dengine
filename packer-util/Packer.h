@@ -31,6 +31,17 @@ namespace packer {
 
     private:
         /**
+        * @brief Checks if file exists
+         * @param filename File to check
+         * @return True if file exists
+        */
+        bool fileExists(const std::string& filename);
+        /**
+        * @brief Deletes a file if it exists
+         * @param filename File to delete
+        */
+        void deleteFileIfExists(const std::string& filename);
+        /**
         * @brief Perform lossless compression on a buffer using zlib
          * @param buffer The buffer to compress
         */
