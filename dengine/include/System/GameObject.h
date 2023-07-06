@@ -49,6 +49,12 @@ namespace dengine {
         virtual void Start();
 
         /**
+         * Notify the gameobject and any components of a collision
+         * @param other The other gameobject being collided with
+         */
+        virtual void NotifyCollision(GameObject& other);
+
+        /**
     * @brief Runs every frame performing any required logic
     */
         virtual void Update();

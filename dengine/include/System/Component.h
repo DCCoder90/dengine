@@ -20,6 +20,7 @@ namespace dengine {
         Component(GameObject &parent);
 
         /**
+         * Notify component that a collision has occurred
      *  @param other Reference to the object being collided with
      */
         virtual void NotifyCollision(GameObject &other);

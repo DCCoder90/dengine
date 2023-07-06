@@ -52,3 +52,10 @@ void GameObject::SetPos(float xPos, float yPos) {
     box.x = xPos;
     box.y = yPos;
 }
+
+void GameObject::NotifyCollision(GameObject& other){
+    int i;
+    for (i = 0; i < components.size(); i++) {
+        components[i]->NotifyCollision(other);
+    }
+}
