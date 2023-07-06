@@ -17,7 +17,7 @@
 namespace dengine {
 /**
  * @brief The base level of the engine
- * A Game is the most bottom level of the game engine.  The game controls the game loop, managing state, and others.  For
+ * A game is the most bottom level of the game engine.  The game controls the game loop, managing state, and others.  For
  * individual developers there shouldn't be a need to inherit from or overwrite this class.
  */
     class Game {

@@ -7,7 +7,7 @@
 namespace dengine{
     /**
      * @brief A GameSave file
-     * GameSave is an abstract class that should be overwritten by the Game code. The purpose of gamesave
+     * GameSave is an abstract class that should be overwritten by the game code. The purpose of gamesave
      * is to provide a method of saving a game.  This used in combination with a GameLevel's Serialize
      * and Deserialize functions should allow for an easy method of saving and loading.
      */

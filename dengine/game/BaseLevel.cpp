@@ -9,14 +9,14 @@ BaseLevel::BaseLevel(){
 }
 
 void BaseLevel::Load(){
-    AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
-    AudioManager::GetInstance().AddSound("death","./Assets/deaths.wav");
-    AudioManager::GetInstance().AddSound("fire","./Assets/foom_0.wav");
+    AudioManager::GetInstance().AddSound("background","./assets/background.wav");
+    AudioManager::GetInstance().AddSound("death","./assets/deaths.wav");
+    AudioManager::GetInstance().AddSound("fire","./assets/foom_0.wav");
     AudioManager::GetInstance().LoadSounds();
     AudioManager::GetInstance().PlaySound("background");
 
     GameObject* managerGo = new GameObject("LevelManager");
-    BaselevelBackground* background = new BaselevelBackground("./Assets/grass.png",*managerGo);
+    BaselevelBackground* background = new BaselevelBackground("./assets/grass.png",*managerGo);
     managerGo->AddComponent(background);
     objects.emplace_back(managerGo);
 

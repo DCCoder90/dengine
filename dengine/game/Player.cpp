@@ -9,7 +9,7 @@ Player::Player(GameObject &parent) : Component(parent) {
 }
 
 void Player::Start() {
-    spriteSheet = new SpriteSheet("../Assets/warrior-sheet.png",parent);
+    spriteSheet = new SpriteSheet("../assets/warrior-sheet.png",parent);
     spriteSheet->RegisterAnimation("walkdown",2882,1045,96,96,8);
     spriteSheet->RegisterAnimation("walkleft",2882,1142,96,96,8);
     spriteSheet->RegisterAnimation("walkup",2882,1336,96,96,8);

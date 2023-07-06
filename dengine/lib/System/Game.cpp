@@ -8,7 +8,7 @@ Game::Game() {
     if (instance == nullptr) {
         instance = this;
     } else {
-        throw std::logic_error("Game constructor called when an instance is already created");
+        throw std::logic_error("game constructor called when an instance is already created");
     }
 
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) < 0) {
@@ -65,7 +65,7 @@ void Game::Pop() {
 
 void Game::loop() {
     if (storedState == nullptr) {
-        throw std::runtime_error("Can not start Game without an initial state");
+        throw std::runtime_error("Can not start game without an initial state");
     }
 
     stateStack.emplace(storedState);
