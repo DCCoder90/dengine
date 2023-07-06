@@ -122,7 +122,7 @@ void Game::loop() {
     }
 
     while (!stateStack.empty()) {
-        stateStack.pop();
+        Pop();
     }
 
     cleanup();
