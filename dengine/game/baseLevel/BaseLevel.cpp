@@ -1,7 +1,7 @@
 #include "BaseLevel.h"
-#include "LeafMan.h"
+#include "../enemies/LeafMan.h"
 #include "BaselevelBackground.h"
-#include "../include/Utils/Serializer.h"
+#include "../../include/Utils/Serializer.h"
 
 using namespace DemoGame;
 

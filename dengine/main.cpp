@@ -1,7 +1,7 @@
 #define SDL_MAIN_HANDLED
 #define DEBUG
 #include "include/System/Game.h"
-#include "Game/BaseLevel.h"
+#include "game/baseLevel/BaseLevel.h"
 #include "include/Universal.h"
 
 using namespace DemoGame;

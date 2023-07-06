@@ -20,7 +20,11 @@ namespace DemoGame {
 
         void Update() override;
 
+        int GetHealth();
+        void PerformDamage(int damage);
+
     private:
+        int health = 100;
         SpriteSheet *spriteSheet;
         int speed = 3;
         bool spaceKeyDown = false;

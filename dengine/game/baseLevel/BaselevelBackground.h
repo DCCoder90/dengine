@@ -1,11 +1,11 @@
 #ifndef DENGINE_BASELEVELBACKGROUND_H
 #define DENGINE_BASELEVELBACKGROUND_H
 
-#include <SDL.h>
-#include <SDL_image.h>
-#include "../include/System/Component.h"
-#include "../include/System/Game.h"
-#include "../include/System/CameraManager.h"
+#include "SDL.h"
+#include "SDL_image.h"
+#include "../../include/System/Component.h"
+#include "../../include/System/Game.h"
+#include "../../include/System/CameraManager.h"
 
 using namespace dengine;
 

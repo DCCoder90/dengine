@@ -8,6 +8,14 @@ Player::Player(GameObject &parent) : Component(parent) {
 
 }
 
+int Player::GetHealth() {
+    return health;
+}
+
+void Player::PerformDamage(int damage) {
+    health -= damage;
+}
+
 void Player::Start() {
     spriteSheet = new SpriteSheet("../assets/warrior-sheet.png",parent);
     spriteSheet->RegisterAnimation("walkdown",2882,1045,96,96,8);
