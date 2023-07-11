@@ -27,9 +27,9 @@
  */
 
 #include "../include/RmlUi_Renderer_SDL.h"
-#include <Core/Core.h>
-#include <Core/FileInterface.h>
-#include <Core/Types.h>
+#include <RmlUi/Core/Core.h>
+#include <RmlUi/Core/FileInterface.h>
+#include <RmlUi/Core/Types.h>
 #include <SDL.h>
 #include <SDL_image.h>
 

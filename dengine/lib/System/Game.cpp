@@ -19,7 +19,10 @@ Game::Game() {
         printf("SDL could not initialize images! SDL_ERROR: %s\n", IMG_GetError());
     }
 
-    window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480,
+    const int screen_width = 640;
+    const int screen_height = 480;
+
+    window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screen_width, screen_height,
                               SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
@@ -30,6 +33,10 @@ Game::Game() {
     if (window == NULL) {
         printf("Window could not be created! SDL_ERROR: %s\n", SDL_GetError());
     }
+
+    Rml::Initialise();
+    UiContext = Rml::CreateContext("default", Rml::Vector2i(screen_width, screen_height));
+
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
     LOG_INFO << "Created game";
@@ -112,11 +119,12 @@ void Game::loop() {
             Time::GetInstance().EndTick();
             continue;
         }
-
+        UiContext->Update();
         state->Update();
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
         state->Render();
+        UiContext->Render();
         SDL_RenderPresent(renderer);
         Time::GetInstance().EndTick();
     }
@@ -131,4 +139,8 @@ void Game::loop() {
 void Game::cleanup() {
     SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+Rml::Context* Game::GetUIContext() {
+    return UiContext;
 }

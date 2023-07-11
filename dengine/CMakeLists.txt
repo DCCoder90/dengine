@@ -2,16 +2,19 @@ cmake_minimum_required(VERSION 3.25)
 project(DENGINE)
 
 set(CMAKE_CXX_STANDARD 17)
-set(SDL2_INCLUDE_DIR extern/include/sdl2)
-set(SDL2_LIB_DIR extern/lib/sdl2)
-set(SDL2_IMG_INCLUDE_DIR extern/include/sdl2_img)
-set(SDL2_IMG_LIB_DIR extern/lib/sdl2_img)
-set(RMLUI_LIB_DIR extern/bin/rmlui/Debug)
-set(RMLUI_INCLUDE_DIR extern/include/RmlUi)
 
+list(APPEND CMAKE_PREFIX_PATH "C:/vcpkg")
 
-list(APPEND CMAKE_PREFIX_PATH "C:/Program Files/zlib")
 find_package(ZLIB REQUIRED)
+find_package(Freetype REQUIRED)
+find_package(RmlUi REQUIRED)
+add_library(RmlUi::RmlUi INTERFACE IMPORTED)
+set_target_properties(RmlUi::RmlUi PROPERTIES
+        INTERFACE_INCLUDE_DIRECTORIES "${RmlUi_INCLUDE_DIRS}"
+        )
+find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2_image CONFIG REQUIRED)
+find_package(SDL2_ttf CONFIG REQUIRED)
 
 if (ZLIB_FOUND)
     include_directories(${ZLIB_INCLUDE_DIRS})
@@ -19,9 +22,68 @@ else()
     message(FATAL_ERROR "zlib not found")
 endif()
 
-include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMG_INCLUDE_DIR} ${RMLUI_INCLUDE_DIR})
-link_directories(${SDL2_LIB_DIR} ${SDL2_IMG_LIB_DIR} ${RMLUI_LIB_DIR})
+if (SDL2_FOUND)
+    include_directories(${SDL2_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "SDL2 not found")
+endif()
 
-add_executable(DENGINE main.cpp lib/System/Time.cpp include/System/Time.h lib/System/Game.cpp include/System/Game.h lib/System/GameObject.cpp include/System/GameObject.h lib/System/Component.cpp include/System/Component.h include/System/GameStates.h lib/Components/InputController.cpp include/Components/InputController.h lib/System/GameState.cpp lib/System/EventSystem.cpp include/System/EventSystem.h lib/Components/Collider.cpp include/Components/Collider.h lib/Vec2.cpp include/Vec2.h lib/System/GameLevel.cpp include/System/GameLevel.h game/baseLevel/BaseLevel.cpp game/baseLevel/BaseLevel.h game/enemies/LeafMan.cpp game/enemies/LeafMan.h lib/Components/Sprite.cpp include/Components/Sprite.h game/Player.cpp game/Player.h lib/Helpers.cpp lib/System/Sound.cpp include/System/Sound.h lib/System/Camera.cpp include/System/Camera.h lib/System/CameraManager.cpp include/System/CameraManager.h lib/Utils/NanoLog.cpp include/Utils/NanoLog.h include/Universal.h lib/System/AudioManager.cpp include/System/AudioManager.h lib/Components/SpriteSheet.cpp include/Components/SpriteSheet.h game/baseLevel/BaselevelBackground.cpp game/baseLevel/BaselevelBackground.h include/Utils/Serializer.h include/System/GameSave.h game/hud.cpp game/hud.h include/RmlUi_Renderer_SDL.h lib/RmlUi_Renderer_SDL.cpp)
+if (SDL2_image_FOUND)
+    include_directories(${SDL2_image_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "SDL2_image not found")
+endif()
 
-target_link_libraries(${PROJECT_NAME} SDL2main SDL2 SDL2_image ${ZLIB_LIBRARIES})
+if (Freetype_FOUND)
+    include_directories(${Freetype_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "Freetype not found")
+endif()
+
+if (RmlUi_FOUND)
+    include_directories(${RmlUi_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "RmlUi not found")
+endif()
+
+if (SDL2_ttf_FOUND)
+    include_directories(${SDL2_ttf_INCLUDE_DIRS})
+else()
+    message(FATAL_ERROR "SDL2_ttf not found")
+endif()
+
+add_executable(DENGINE main.cpp
+        lib/System/Time.cpp
+        lib/System/Game.cpp
+        lib/System/GameObject.cpp
+        lib/System/Component.cpp
+        lib/Components/InputController.cpp
+        lib/System/GameState.cpp
+        lib/System/EventSystem.cpp
+        lib/Components/Collider.cpp
+        lib/Vec2.cpp
+        lib/System/GameLevel.cpp
+        game/baseLevel/BaseLevel.cpp
+        game/enemies/LeafMan.cpp
+        lib/Components/Sprite.cpp
+        lib/Helpers.cpp
+        lib/System/Sound.cpp
+        lib/System/Camera.cpp
+        lib/System/CameraManager.cpp
+        lib/Utils/NanoLog.cpp
+        lib/System/AudioManager.cpp
+        lib/Components/SpriteSheet.cpp
+        game/baseLevel/BaselevelBackground.cpp
+        game/Hud.cpp
+        lib/RmlUi_Renderer_SDL.cpp)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+        SDL2::SDL2main
+        SDL2::SDL2
+        SDL2_image::SDL2_image
+        SDL2_ttf::SDL2_ttf
+        Freetype::Freetype
+        ZLIB::ZLIB
+        RmlUi::RmlUi)

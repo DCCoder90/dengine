@@ -29,7 +29,7 @@
 #ifndef RMLUI_BACKENDS_RENDERER_SDL_H
 #define RMLUI_BACKENDS_RENDERER_SDL_H
 
-#include <Core/RenderInterface.h>
+#include <RmlUi/Core/RenderInterface.h>
 #include <SDL.h>
 
 class RenderInterface_SDL : public Rml::RenderInterface {

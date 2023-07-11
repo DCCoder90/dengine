@@ -13,6 +13,8 @@
 #include "GameLevel.h"
 #include "../Utils/Serializer.h"
 #include "../Universal.h"
+#include <RmlUi/Core/Core.h>
+#include <RmlUi/Core/Context.h>
 
 namespace dengine {
 /**
@@ -75,7 +77,15 @@ namespace dengine {
          * @return True if success
          */
         bool LoadState(Serializer<T>* serializer);
+
+        /**
+         * @brief Returns a copy of the UI context
+         * @return The UI context
+         * @see https://mikke89.github.io/RmlUiDoc/pages/cpp_manual/integrating.html
+         */
+        Rml::Context* GetUIContext();
     private:
+        Rml::Context* UiContext;
         SDL_Renderer *renderer;
         std::stack <std::unique_ptr<GameLevel>> stateStack;
         GameLevel *storedState;

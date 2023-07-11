@@ -27,3 +27,18 @@ Be sure to check out the engine's [FAQ page](FAQ.md) for some of the more freque
 * Event System
 * UI System
 * Save/Load system
+
+## Dependencies
+
+Installed using [vcpkg](https://vcpkg.io/)
+
+* ZLIB
+* Freetype
+* RmlUi
+* SDL2
+* SDL2_image
+* SDL2_ttf
+
+```
+vcpkg install sdl2-ttf:x64-windows
+```

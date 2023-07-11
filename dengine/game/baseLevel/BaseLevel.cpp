@@ -2,6 +2,7 @@
 #include "../enemies/LeafMan.h"
 #include "BaselevelBackground.h"
 #include "../../include/Utils/Serializer.h"
+#include "../Hud.h"
 
 using namespace DemoGame;
 
@@ -18,6 +19,8 @@ void BaseLevel::Load(){
     GameObject* managerGo = new GameObject("LevelManager");
     BaselevelBackground* background = new BaselevelBackground("./assets/grass.png",*managerGo);
     managerGo->AddComponent(background);
+    Hud* playerHud = new Hud(*managerGo);
+    managerGo->AddComponent(playerHud);
     objects.emplace_back(managerGo);
 
     GameObject* playerGo = new GameObject("Player");
