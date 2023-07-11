@@ -40,5 +40,10 @@ Installed using [vcpkg](https://vcpkg.io/)
 * SDL2_ttf
 
 ```
+vcpkg install ZLIB:x64-windows
+vcpkg install Freetype:x64-windows
+vcpkg install RmlUi:x64-windows
+vcpkg install sdl2:x64-windows
+vcpkg install sdl2-image:x64-windows
 vcpkg install sdl2-ttf:x64-windows
 ```
