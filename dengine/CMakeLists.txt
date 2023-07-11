@@ -8,10 +8,14 @@ list(APPEND CMAKE_PREFIX_PATH "C:/vcpkg")
 find_package(ZLIB REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(RmlUi REQUIRED)
+
+
 add_library(RmlUi::RmlUi INTERFACE IMPORTED)
 set_target_properties(RmlUi::RmlUi PROPERTIES
         INTERFACE_INCLUDE_DIRECTORIES "${RmlUi_INCLUDE_DIRS}"
         )
+
+
 find_package(SDL2 CONFIG REQUIRED)
 find_package(SDL2_image CONFIG REQUIRED)
 find_package(SDL2_ttf CONFIG REQUIRED)
@@ -78,6 +82,8 @@ add_executable(DENGINE main.cpp
         lib/RmlUi_Renderer_SDL.cpp)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+target_include_directories(${PROJECT_NAME} PRIVATE ${RmlUi_INCLUDE_DIRS})
+
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
         SDL2::SDL2main
@@ -86,4 +92,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
         SDL2_ttf::SDL2_ttf
         Freetype::Freetype
         ZLIB::ZLIB
-        RmlUi::RmlUi)
+        ${RmlUi_LIBRARIES})
