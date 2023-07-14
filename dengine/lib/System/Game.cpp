@@ -31,8 +31,14 @@ Game::Game() {
         printf("Window could not be created! SDL_ERROR: %s\n", SDL_GetError());
     }
 
+    ui = new UI();
+
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
     LOG_INFO << "Created game";
+}
+
+UI* Game::GetUI(){
+    return ui;
 }
 
 Game& Game::GetInstance() {
@@ -114,9 +120,11 @@ void Game::loop() {
         }
 
         state->Update();
+        ui->Update();
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
         state->Render();
+        ui->Render();
         SDL_RenderPresent(renderer);
         Time::GetInstance().EndTick();
     }
