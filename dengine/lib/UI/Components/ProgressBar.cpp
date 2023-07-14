@@ -11,19 +11,19 @@ void ProgressBar::Render() {
     int w_ptr, h_ptr;
     SDL_GetWindowSize(Game::GetInstance().window,&w_ptr,&h_ptr);
 
-    int percentage = 1-std::stoi(GetVar("completed"));
+    int percentage = std::stoi(GetVar("completed"));
 
     SDL_Rect rect;
     rect.x = std::stoi(GetVar("xpos"));
     rect.y = h_ptr-(.2*h_ptr);
     rect.w = .2*w_ptr;
-    rect.h = (1-0)*(.2*h_ptr);
+    rect.h = h_ptr*.2;
 
     SDL_Rect rectt;
     rectt.x = std::stoi(GetVar("xpos"));
-    rectt.y = h_ptr-(1-.2)*(.2*h_ptr);
+    rectt.y = (h_ptr-(.2*h_ptr))+((h_ptr*.2)-percentage);
     rectt.w = .2*w_ptr;
-    rectt.h = (1-std::stoi(GetVar("completed")))*(.2*h_ptr);
+    rectt.h = (h_ptr*.2)-((h_ptr*.2)-percentage);
 
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 

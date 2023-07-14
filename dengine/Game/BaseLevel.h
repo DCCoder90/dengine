@@ -36,7 +36,7 @@ namespace DemoGame {
 
     private:
         class Player *player;
-        int playerHealth = 0;
+        int playerHealth = 100;
         UIComponent* healthBar;
         std::vector <std::vector<char>> serializedObjects;
     };

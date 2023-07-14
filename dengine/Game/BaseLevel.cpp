@@ -9,7 +9,7 @@ BaseLevel::BaseLevel(){
     UIWindow* uiwindow = new UIWindow();
     healthBar = new ProgressBar();
     healthBar->SetVar("xpos","0");
-    healthBar->SetVar("completed","0.2");
+    healthBar->SetVar("completed","100");
     uiwindow->Push(healthBar);
 
     Game::GetInstance().GetUI()->Push(uiwindow);
@@ -81,9 +81,12 @@ void BaseLevel::Update(){
                     objects[i]->box.y + objects[i]->box.h >= playerGo->box.y &&
                     objects[i]->box.y <= playerGo->box.y + playerGo->box.h) {
 
-                playerHealth += 1;
-                LOG_INFO << std::to_string(playerHealth);
-                healthBar->SetVar("completed","0.5");
+                if(playerHealth <= 0){
+                    GameState::GetInstance().setGameState(GAMESTATES::Gameover);
+                }
+
+                playerHealth -= 10;
+                healthBar->SetVar("completed",std::to_string(playerHealth));
 
                 AudioManager::GetInstance().PlaySound("death");
                 objects[i]->box.x = 0;
