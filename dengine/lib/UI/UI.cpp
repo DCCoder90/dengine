@@ -22,5 +22,7 @@ void UI::Push(dengine::UIWindow *window) {
 }
 
 void UI::Pop() {
-    windows.pop_back();
+    if(!windows.empty()) {
+        windows.pop_back();
+    }
 }
