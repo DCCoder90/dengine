@@ -3,9 +3,17 @@
 #include "BaselevelBackground.h"
 #include "../include/Utils/Serializer.h"
 
+#include "../include/UI/Components/ProgressBar.h"
 using namespace DemoGame;
 
 BaseLevel::BaseLevel(){
+    UIWindow* uiwindow = new UIWindow();
+    healthBar = new ProgressBar();
+    healthBar->SetVar("xpos","0");
+    healthBar->SetVar("completed","0.2");
+    uiwindow->Push(healthBar);
+
+    Game::GetInstance().GetUI()->Push(uiwindow);
 }
 
 void BaseLevel::Load(){
@@ -74,9 +82,16 @@ void BaseLevel::Update(){
                     objects[i]->box.y + objects[i]->box.h >= playerGo->box.y &&
                     objects[i]->box.y <= playerGo->box.y + playerGo->box.h) {
 
+                playerHealth += 1;
+                LOG_INFO << std::to_string(playerHealth);
+
+                healthBar->SetVar("completed","0.5");
+
                 AudioManager::GetInstance().PlaySound("death");
-                GameState::GetInstance().setGameState(GAMESTATES::Gameover);
-                SDL_Delay(1000);
+                objects[i]->box.x = 0;
+                objects[i]->box.y = 0;
+                //GameState::GetInstance().setGameState(GAMESTATES::Gameover);
+                //SDL_Delay(1000);
             }
         }
     }

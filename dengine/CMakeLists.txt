@@ -45,6 +45,9 @@ add_executable(DENGINE
         lib/System/AudioManager.cpp
         lib/Components/SpriteSheet.cpp
         Game/BaselevelBackground.cpp
-        lib/UI/UI.cpp)
+        lib/UI/UI.cpp
+        lib/UI/UIWindow.cpp
+        lib/UI/Components/ProgressBar.cpp
+        lib/UI/UIComponent.cpp)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2 SDL2_image ${ZLIB_LIBRARIES})

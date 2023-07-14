@@ -2,7 +2,8 @@
 #define DENGINE_UI_H
 
 #include <string>
-#include <map>
+#include <vector>
+#include "UIWindow.h"
 
 namespace dengine {
 /**
@@ -22,17 +23,11 @@ namespace dengine {
          */
         void Render();
 
-        void Update();
-
-        /**
-         * @brief Set a variable within the UI
-         * @param name Name of the variable
-         * @param value Value of the variable
-         */
-        void SetVar(std::string name, std::string value);
+        void Push(UIWindow* window);
+        void Pop();
 
     private:
-        std::map<std::string, std::string> variables;
+        std::vector<UIWindow*> windows;
     };
 }
 #endif //DENGINE_UI_H
