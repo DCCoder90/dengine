@@ -1,7 +1,6 @@
 #include "BaseLevel.h"
 #include "LeafMan.h"
 #include "BaselevelBackground.h"
-#include "../include/Utils/Serializer.h"
 
 #include "../include/UI/Components/ProgressBar.h"
 using namespace DemoGame;
@@ -84,14 +83,11 @@ void BaseLevel::Update(){
 
                 playerHealth += 1;
                 LOG_INFO << std::to_string(playerHealth);
-
                 healthBar->SetVar("completed","0.5");
 
                 AudioManager::GetInstance().PlaySound("death");
                 objects[i]->box.x = 0;
                 objects[i]->box.y = 0;
-                //GameState::GetInstance().setGameState(GAMESTATES::Gameover);
-                //SDL_Delay(1000);
             }
         }
     }
