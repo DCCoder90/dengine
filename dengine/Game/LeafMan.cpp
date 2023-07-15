@@ -27,7 +27,7 @@ void LeafMan::Update(){
         return;
     }
 
-    std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
+    std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObject("Player");
     std::shared_ptr<GameObject>  playerGo = playerGoPtr.lock();
 
     //Move enemies towards player

@@ -35,9 +35,9 @@ std::weak_ptr<GameObject> GameLevel::GetObjectByComponent(std::string componentN
     return std::weak_ptr<GameObject>(*it);
 }
 
-std::weak_ptr<GameObject> GameLevel::GetObject(GameObject* go) {
+std::weak_ptr<GameObject> GameLevel::GetObject(std::string gameObjectName) {
     auto it = std::find_if(objects.begin(), objects.end(),
-                           [&](std::shared_ptr<GameObject>& go2){ return go == go2.get(); });
+                           [&](std::shared_ptr<GameObject>& go2){ return gameObjectName == go2.get()->GetName(); });
 
     if (it == objects.end()) {
         return std::weak_ptr<GameObject>();

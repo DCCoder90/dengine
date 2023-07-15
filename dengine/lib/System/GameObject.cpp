@@ -41,6 +41,16 @@ void GameObject::Update() {
     }
 }
 
+std::weak_ptr<Component> GameObject::GetComponentByName(std::string name) {
+    if(HasComponent(name)){
+        for(int i=0;i<components.size();i++){
+            if(components[i]->GetName() == name) {
+                return std::make_shared<Component>(*components[i]);
+            }
+        }
+    }
+}
+
 void GameObject::Render() {
     int i;
     for (i = 0; i < components.size(); i++) {

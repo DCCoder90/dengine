@@ -27,10 +27,8 @@ void BaseLevel::Load(){
     managerGo->AddComponent(background);
     objects.emplace_back(managerGo);
 
-    GameObject* playerGo = new GameObject("Player");
-    Player* player = new Player(*playerGo);
-    playerGo->AddComponent(player);
-    objects.emplace_back(playerGo);
+    player = new Player();
+    objects.emplace_back(player);
 
 
     for (int i = 0; i < 2; i++) {
@@ -72,21 +70,20 @@ void BaseLevel::Update(){
     }
 
 
-    std::weak_ptr<GameObject> player = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
-    std::shared_ptr<GameObject> playerGo = player.lock();
     for(int i=0;i<objects.size();i++){
         if(objects[i]->HasComponent("LeafMan")){
-            if (objects[i]->box.x + objects[i]->box.w>= playerGo->box.x &&
-                    objects[i]->box.x <= playerGo->box.x + playerGo->box.w &&
-                    objects[i]->box.y + objects[i]->box.h >= playerGo->box.y &&
-                    objects[i]->box.y <= playerGo->box.y + playerGo->box.h) {
+            if (objects[i]->box.x + objects[i]->box.w>= player->box.x &&
+                    objects[i]->box.x <= player->box.x + player->box.w &&
+                    objects[i]->box.y + objects[i]->box.h >= player->box.y &&
+                    objects[i]->box.y <= player->box.y + player->box.h) {
 
-                if(playerHealth <= 0){
+                if(player->GetHealth() <= 0){
                     GameState::GetInstance().setGameState(GAMESTATES::Gameover);
                 }
 
-                playerHealth -= 10;
-                healthBar->SetVar("completed",std::to_string(playerHealth));
+                player->Damage(10);
+
+                healthBar->SetVar("completed",std::to_string(player->GetHealth()));
 
                 AudioManager::GetInstance().PlaySound("death");
                 objects[i]->box.x = 0;

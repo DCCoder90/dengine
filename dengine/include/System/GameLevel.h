@@ -71,7 +71,7 @@ namespace dengine {
         /**
          * @brief Retrieves a pointer to the object from the level
          */
-        virtual std::weak_ptr <GameObject> GetObject(GameObject *go);
+        virtual std::weak_ptr <GameObject> GetObject(std::string gameObjectName);
 
         /**
      * @brief Retrieves an object from the level based on if it has a component or not
