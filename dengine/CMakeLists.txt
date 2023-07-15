@@ -47,7 +47,8 @@ add_executable(DENGINE
         Game/BaselevelBackground.cpp
         lib/UI/UI.cpp
         lib/UI/UIWindow.cpp
-        lib/UI/Components/ProgressBar.cpp
-        lib/UI/UIComponent.cpp)
+        lib/UI/Components/ProgressBarV.cpp
+        lib/UI/UIComponent.cpp
+        lib/UI/Components/ProgressBarH.cpp)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2 SDL2_image ${ZLIB_LIBRARIES})

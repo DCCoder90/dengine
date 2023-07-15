@@ -2,12 +2,15 @@
 #include "LeafMan.h"
 #include "BaselevelBackground.h"
 
-#include "../include/UI/Components/ProgressBarV.h"
+//#include "../include/UI/Components/ProgressBarV.h"
+#include "../include/UI/Components/ProgressBarH.h"
+
 using namespace DemoGame;
 
 BaseLevel::BaseLevel(){
     UIWindow* uiwindow = new UIWindow();
-    healthBar = new ProgressBarV();
+    healthBar = new ProgressBarH();
+    healthBar->SetVar("ypos","0");
     healthBar->SetVar("xpos","0");
     healthBar->SetVar("completed","100");
     uiwindow->Push(healthBar);

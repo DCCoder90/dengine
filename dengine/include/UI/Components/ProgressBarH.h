@@ -2,7 +2,7 @@
 #define DENGINE_PROGRESSBARV_H
 #include "../UIComponent.h"
 using namespace dengine;
-class ProgressBarV : public  UIComponent{
+class ProgressBarH : public  UIComponent{
     void Render() override;
 };
 
