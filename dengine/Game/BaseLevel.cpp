@@ -32,11 +32,9 @@ void BaseLevel::Load(){
 
 
     for (int i = 0; i < 2; i++) {
-        GameObject* enemyGo = new GameObject("Enemy " + i);
-        LeafMan* enemy = new LeafMan(*enemyGo);
-        enemyGo->AddComponent(enemy);
-        enemyGo->SetPos(i*150,i*80);
-        objects.emplace_back(enemyGo);
+        LeafMan* enemy = new LeafMan();
+        enemy->SetPos(i*150,i*80);
+        objects.emplace_back(enemy);
     }
 }
 
@@ -71,7 +69,7 @@ void BaseLevel::Update(){
 
 
     for(int i=0;i<objects.size();i++){
-        if(objects[i]->HasComponent("LeafMan")){
+        if(objects[i]->GetName() == "LeafMan"){
             if (objects[i]->box.x + objects[i]->box.w>= player->box.x &&
                     objects[i]->box.x <= player->box.x + player->box.w &&
                     objects[i]->box.y + objects[i]->box.h >= player->box.y &&
