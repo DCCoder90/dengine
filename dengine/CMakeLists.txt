@@ -21,6 +21,8 @@ set(SDL2_IMG_LIB_DIR C:/libs/SDL_IMG/x86_64-w64-mingw32/lib)
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMG_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR} ${SDL2_IMG_LIB_DIR})
 
+find_package(SDL2_ttf CONFIG REQUIRED)
+
 add_executable(DENGINE
         main.cpp
         lib/System/Time.cpp
@@ -49,6 +51,7 @@ add_executable(DENGINE
         lib/UI/UIWindow.cpp
         lib/UI/Components/ProgressBarV.cpp
         lib/UI/UIComponent.cpp
-        lib/UI/Components/ProgressBarH.cpp)
+        lib/UI/Components/ProgressBarH.cpp
+        lib/UI/FontManager.cpp)
 
-target_link_libraries(${PROJECT_NAME} SDL2main SDL2 SDL2_image ${ZLIB_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} SDL2main SDL2 $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static> SDL2_image ${ZLIB_LIBRARIES})

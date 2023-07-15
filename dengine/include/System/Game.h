@@ -9,6 +9,7 @@
 #include <vector>
 #include <memory>
 #include <stack>
+#include <SDL_ttf.h>
 #include "GameStates.h"
 #include "GameLevel.h"
 #include "../Utils/Serializer.h"

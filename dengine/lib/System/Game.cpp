@@ -19,6 +19,11 @@ Game::Game() {
         printf("SDL could not initialize images! SDL_ERROR: %s\n", IMG_GetError());
     }
 
+    if (TTF_Init() < 0) {
+        printf("SDL could not initialize TTF! SDL_ERROR: %s\n", IMG_GetError());
+    }
+
+
     window = SDL_CreateWindow("Main Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480,
                               SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);

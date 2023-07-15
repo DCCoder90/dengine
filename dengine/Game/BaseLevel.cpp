@@ -4,10 +4,13 @@
 
 //#include "../include/UI/Components/ProgressBarV.h"
 #include "../include/UI/Components/ProgressBarH.h"
+#include "../include/UI/FontManager.h"
 
 using namespace DemoGame;
 
 BaseLevel::BaseLevel(){
+    FontManager::GetInstance().AddFont("SpaceSmall","Space_Pontiff.ttf",80);
+
     UIWindow* uiwindow = new UIWindow();
     healthBar = new ProgressBarH();
     healthBar->SetVar("ypos","0");
@@ -60,6 +63,16 @@ void BaseLevel::Resume(){
 
 
 void BaseLevel::Update(){
+
+    SDL_Texture* fontText = FontManager::GetInstance().Text("SpaceSmall",{255, 255, 255},"Example Fonts Stuff");
+    SDL_Rect* fontTextRect = new SDL_Rect();
+    fontTextRect->x=0;
+    fontTextRect->y=300;
+    fontTextRect->h=100;
+    fontTextRect->w=200;
+    //SDL_RenderClear(Game::GetInstance().GetRenderer());
+
+    SDL_RenderCopy(Game::GetInstance().GetRenderer(), fontText, NULL, fontTextRect);
 
     const Uint8 *keystates = SDL_GetKeyboardState(NULL);
     if (keystates[SDL_SCANCODE_T]) {
