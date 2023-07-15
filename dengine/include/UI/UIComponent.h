@@ -11,6 +11,7 @@ namespace dengine {
     public:
         virtual void Render() = 0;
         void SetVar(std::string key,std::string value);
+        bool HasVar(std::string key);
     protected:
         std::string GetVar(std::string key);
     private:
