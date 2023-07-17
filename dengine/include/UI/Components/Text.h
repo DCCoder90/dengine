@@ -7,14 +7,17 @@
 #include "../../System/Game.h"
 #include "../FontManager.h"
 
-using namespace dengine;
-class Text : public  UIComponent{
-public:
-    void Setup(std::string font,std::string text, SDL_Rect rect);
-    void Render() override;
-private:
-    SDL_Rect textRect;
-    std::string fontName;
-    std::string displayText;
-};
+namespace dengine {
+    class Text : public UIComponent {
+    public:
+        void Setup(std::string font, std::string text, SDL_Rect rect);
+
+        void Render() override;
+
+    private:
+        SDL_Rect textRect;
+        std::string fontName;
+        std::string displayText;
+    };
+}
 #endif //DENGINE_TEXT_H
