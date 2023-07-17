@@ -2,6 +2,8 @@
 #include <SDL.h>
 #include "../../../include/System/Game.h"
 
+using namespace dengine;
+
 void ProgressBarH::Render() {
     int w_ptr, h_ptr;
     SDL_GetWindowSize(Game::GetInstance().window,&w_ptr,&h_ptr);

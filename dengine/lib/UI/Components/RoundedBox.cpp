@@ -1,6 +1,8 @@
 #include "../../../include/UI/Components/RoundedBox.h"
 #include "../../../include/System/Game.h"
 
+using namespace dengine;
+
 void RoundedBox::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 

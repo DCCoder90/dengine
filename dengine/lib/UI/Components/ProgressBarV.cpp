@@ -1,10 +1,8 @@
-//
-// Created by ernes on 7/14/2023.
-//
-
 #include "../../../include/UI/Components/ProgressBarV.h"
 #include <SDL.h>
 #include "../../../include/System/Game.h"
+
+using namespace dengine;
 
 void ProgressBarV::Render() {
     int w_ptr, h_ptr;

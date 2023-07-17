@@ -7,6 +7,7 @@
 #include "../include/UI/FontManager.h"
 #include "../include/UI/Components/Text.h"
 #include "../include/UI/Components/RoundedBox.h"
+#include "../include/UI/Components/HollowRect.h"
 
 using namespace DemoGame;
 
@@ -113,10 +114,13 @@ void BaseLevel::LoadUI() {
     RoundedBox* roundedBox = new RoundedBox();
     roundedBox->Setup({0,200,150,30},0.5,2);
 
+    HollowRect* hollowRect = new HollowRect();
+    hollowRect->Setup({0,400,150,30},2);
 
     uiwindow->Push(healthBar);
     uiwindow->Push(displayText);
     uiwindow->Push(roundedBox);
+    uiwindow->Push(hollowRect);
 
     Game::GetInstance().GetUI()->Push(uiwindow);
 }
