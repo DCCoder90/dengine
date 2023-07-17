@@ -53,6 +53,7 @@ add_executable(DENGINE
         lib/UI/UIComponent.cpp
         lib/UI/Components/ProgressBarH.cpp
         lib/UI/FontManager.cpp
-        lib/UI/Components/Text.cpp)
+        lib/UI/Components/Text.cpp
+        lib/UI/Components/RoundedBox.cpp)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2 $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static> SDL2_image ${ZLIB_LIBRARIES})

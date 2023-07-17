@@ -6,6 +6,7 @@
 #include "../include/UI/Components/ProgressBarH.h"
 #include "../include/UI/FontManager.h"
 #include "../include/UI/Components/Text.h"
+#include "../include/UI/Components/RoundedBox.h"
 
 using namespace DemoGame;
 
@@ -109,8 +110,13 @@ void BaseLevel::LoadUI() {
     SDL_Rect displayRect = {200,0,300,80};
     displayText->Setup("SpaceSmall","Example Game",displayRect);
 
+    RoundedBox* roundedBox = new RoundedBox();
+    roundedBox->Setup({0,200,150,30},0.5,2);
+
+
     uiwindow->Push(healthBar);
     uiwindow->Push(displayText);
+    uiwindow->Push(roundedBox);
 
     Game::GetInstance().GetUI()->Push(uiwindow);
 }
