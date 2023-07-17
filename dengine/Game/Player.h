@@ -12,15 +12,19 @@
 using namespace dengine;
 
 namespace DemoGame {
-    class Player : public Component {
+    class Player : public GameObject {
     public:
-        Player(GameObject &parent);
+        Player();
 
         void Start() override;
 
         void Update() override;
 
+        int GetHealth();
+        void Damage(int amount);
+
     private:
+        int health =100;
         SpriteSheet *spriteSheet;
         int speed = 3;
         bool spaceKeyDown = false;

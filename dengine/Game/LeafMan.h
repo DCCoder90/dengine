@@ -11,9 +11,9 @@
 using namespace dengine;
 
 namespace DemoGame {
-    class LeafMan : public Component {
+    class LeafMan : public GameObject {
     public:
-        LeafMan(GameObject &parent);
+        LeafMan();
 
         void Start() override;
 

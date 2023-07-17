@@ -21,6 +21,42 @@ set(SDL2_IMG_LIB_DIR C:/libs/SDL_IMG/x86_64-w64-mingw32/lib)
 include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMG_INCLUDE_DIR})
 link_directories(${SDL2_LIB_DIR} ${SDL2_IMG_LIB_DIR})
 
-add_executable(DENGINE main.cpp lib/System/Time.cpp include/System/Time.h lib/System/Game.cpp include/System/Game.h lib/System/GameObject.cpp include/System/GameObject.h lib/System/Component.cpp include/System/Component.h include/System/GameStates.h lib/Components/InputController.cpp include/Components/InputController.h lib/System/GameState.cpp lib/System/EventSystem.cpp include/System/EventSystem.h lib/Components/Collider.cpp include/Components/Collider.h lib/Vec2.cpp include/Vec2.h lib/System/GameLevel.cpp include/System/GameLevel.h Game/BaseLevel.cpp Game/BaseLevel.h Game/LeafMan.cpp Game/LeafMan.h lib/Components/Sprite.cpp include/Components/Sprite.h Game/Player.cpp Game/Player.h lib/Helpers.cpp lib/System/Sound.cpp include/System/Sound.h lib/System/Camera.cpp include/System/Camera.h lib/System/CameraManager.cpp include/System/CameraManager.h lib/Utils/NanoLog.cpp include/Utils/NanoLog.h include/Universal.h lib/System/AudioManager.cpp include/System/AudioManager.h lib/Components/SpriteSheet.cpp include/Components/SpriteSheet.h Game/BaselevelBackground.cpp Game/BaselevelBackground.h include/Utils/Serializer.h include/System/GameSave.h)
+find_package(SDL2_ttf CONFIG REQUIRED)
 
-target_link_libraries(${PROJECT_NAME} SDL2main SDL2 SDL2_image ${ZLIB_LIBRARIES})
+add_executable(DENGINE
+        main.cpp
+        lib/System/Time.cpp
+        lib/System/Game.cpp
+        lib/System/GameObject.cpp
+        lib/System/Component.cpp
+        lib/Components/InputController.cpp
+        lib/System/GameState.cpp
+        lib/System/EventSystem.cpp
+        lib/Components/Collider.cpp
+        lib/Vec2.cpp
+        lib/System/GameLevel.cpp
+        Game/BaseLevel.cpp
+        Game/LeafMan.cpp
+        lib/Components/Sprite.cpp
+        Game/Player.cpp
+        lib/Helpers.cpp
+        lib/System/Sound.cpp
+        lib/System/Camera.cpp
+        lib/System/CameraManager.cpp
+        lib/Utils/NanoLog.cpp
+        lib/System/AudioManager.cpp
+        lib/Components/SpriteSheet.cpp
+        Game/BaselevelBackground.cpp
+        lib/UI/UI.cpp
+        lib/UI/UIWindow.cpp
+        lib/UI/Components/ProgressBarV.cpp
+        lib/UI/UIComponent.cpp
+        lib/UI/Components/ProgressBarH.cpp
+        lib/UI/FontManager.cpp
+        lib/UI/Components/Text.cpp
+        lib/UI/Components/RoundedBox.cpp
+        lib/UI/Components/HollowRect.cpp
+        lib/UI/Components/Circle.cpp
+        lib/UI/Components/FilledCircle.cpp)
+
+target_link_libraries(${PROJECT_NAME} SDL2main SDL2 $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static> SDL2_image ${ZLIB_LIBRARIES})

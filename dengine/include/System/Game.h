@@ -9,10 +9,12 @@
 #include <vector>
 #include <memory>
 #include <stack>
+#include <SDL_ttf.h>
 #include "GameStates.h"
 #include "GameLevel.h"
 #include "../Utils/Serializer.h"
 #include "../Universal.h"
+#include "../UI/UI.h"
 
 namespace dengine {
 /**
@@ -75,7 +77,15 @@ namespace dengine {
          * @return True if success
          */
         bool LoadState(Serializer<T>* serializer);
+
+        /**
+         * Retrieves a pointer to the system UI
+         * @return The UI
+         * @see UI.h
+         */
+        UI *GetUI();
     private:
+        UI *ui;
         SDL_Renderer *renderer;
         std::stack <std::unique_ptr<GameLevel>> stateStack;
         GameLevel *storedState;

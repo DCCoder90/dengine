@@ -71,6 +71,8 @@ namespace dengine {
 
         void SetPos(float xPos, float yPos);
 
+        std::weak_ptr<Component> GetComponentByName(std::string name);
+
     private:
         /**
     * @brief A vector containing any components that may be on the GameObject

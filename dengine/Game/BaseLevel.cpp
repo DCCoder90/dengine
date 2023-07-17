@@ -1,11 +1,20 @@
 #include "BaseLevel.h"
 #include "LeafMan.h"
 #include "BaselevelBackground.h"
-#include "../include/Utils/Serializer.h"
+
+//#include "../include/UI/Components/ProgressBarV.h"
+#include "../include/UI/Components/ProgressBarH.h"
+#include "../include/UI/FontManager.h"
+#include "../include/UI/Components/Text.h"
+#include "../include/UI/Components/RoundedBox.h"
+#include "../include/UI/Components/HollowRect.h"
+#include "../include/UI/Components/Circle.h"
+#include "../include/UI/Components/FilledCircle.h"
 
 using namespace DemoGame;
 
 BaseLevel::BaseLevel(){
+
 }
 
 void BaseLevel::Load(){
@@ -20,19 +29,17 @@ void BaseLevel::Load(){
     managerGo->AddComponent(background);
     objects.emplace_back(managerGo);
 
-    GameObject* playerGo = new GameObject("Player");
-    Player* player = new Player(*playerGo);
-    playerGo->AddComponent(player);
-    objects.emplace_back(playerGo);
+    player = new Player();
+    objects.emplace_back(player);
 
 
     for (int i = 0; i < 2; i++) {
-        GameObject* enemyGo = new GameObject("Enemy " + i);
-        LeafMan* enemy = new LeafMan(*enemyGo);
-        enemyGo->AddComponent(enemy);
-        enemyGo->SetPos(i*150,i*80);
-        objects.emplace_back(enemyGo);
+        LeafMan* enemy = new LeafMan();
+        enemy->SetPos(i*150,i*80);
+        objects.emplace_back(enemy);
     }
+
+    LoadUI();
 }
 
 void BaseLevel::UnLoad() {
@@ -54,7 +61,6 @@ void BaseLevel::Resume(){
 
 
 void BaseLevel::Update(){
-
     const Uint8 *keystates = SDL_GetKeyboardState(NULL);
     if (keystates[SDL_SCANCODE_T]) {
         if(GameState::GetInstance().getGameState()==GAMESTATES::Pause){
@@ -65,18 +71,24 @@ void BaseLevel::Update(){
     }
 
 
-    std::weak_ptr<GameObject> player = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
-    std::shared_ptr<GameObject> playerGo = player.lock();
     for(int i=0;i<objects.size();i++){
-        if(objects[i]->HasComponent("LeafMan")){
-            if (objects[i]->box.x + objects[i]->box.w>= playerGo->box.x &&
-                    objects[i]->box.x <= playerGo->box.x + playerGo->box.w &&
-                    objects[i]->box.y + objects[i]->box.h >= playerGo->box.y &&
-                    objects[i]->box.y <= playerGo->box.y + playerGo->box.h) {
+        if(objects[i]->GetName() == "LeafMan"){
+            if (objects[i]->box.x + objects[i]->box.w>= player->box.x &&
+                    objects[i]->box.x <= player->box.x + player->box.w &&
+                    objects[i]->box.y + objects[i]->box.h >= player->box.y &&
+                    objects[i]->box.y <= player->box.y + player->box.h) {
+
+                if(player->GetHealth() <= 0){
+                    GameState::GetInstance().setGameState(GAMESTATES::Gameover);
+                }
+
+                player->Damage(10);
+
+                healthBar->SetVar("completed",std::to_string(player->GetHealth()));
 
                 AudioManager::GetInstance().PlaySound("death");
-                GameState::GetInstance().setGameState(GAMESTATES::Gameover);
-                SDL_Delay(1000);
+                objects[i]->box.x = 0;
+                objects[i]->box.y = 0;
             }
         }
     }
@@ -86,4 +98,39 @@ void BaseLevel::Update(){
 
 void BaseLevel::Render() {
     RenderObjects();
+}
+
+void BaseLevel::LoadUI() {
+    FontManager::GetInstance().AddFont("SpaceSmall","Space_Pontiff.ttf",80);
+
+    UIWindow* uiwindow = new UIWindow();
+    healthBar = new ProgressBarH();
+    healthBar->SetVar("ypos","0");
+    healthBar->SetVar("xpos","0");
+    healthBar->SetVar("completed","100");
+
+    Text* displayText = new Text();
+    SDL_Rect displayRect = {200,0,300,80};
+    displayText->Setup("SpaceSmall","Example Game",displayRect);
+
+    RoundedBox* roundedBox = new RoundedBox();
+    roundedBox->Setup({0,200,150,30},0.5,2);
+
+    HollowRect* hollowRect = new HollowRect();
+    hollowRect->Setup({50,250,150,30},10);
+
+    Circle* circle = new Circle();
+    circle->Setup({200,250},80);
+
+    FilledCircle* filledcircle = new FilledCircle();
+    filledcircle->Setup({290,250},80);
+
+    uiwindow->Push(healthBar);
+    uiwindow->Push(displayText);
+    uiwindow->Push(roundedBox);
+    uiwindow->Push(hollowRect);
+    uiwindow->Push(circle);
+    uiwindow->Push(filledcircle);
+
+    Game::GetInstance().GetUI()->Push(uiwindow);
 }

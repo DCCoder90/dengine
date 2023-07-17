@@ -34,8 +34,12 @@ namespace DemoGame {
 
         void Resume() override;
 
+        void LoadUI();
+
     private:
         class Player *player;
+        int playerHealth = 100;
+        UIComponent* healthBar;
         std::vector <std::vector<char>> serializedObjects;
     };
 }

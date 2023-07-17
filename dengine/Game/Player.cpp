@@ -3,13 +3,19 @@
 
 using namespace DemoGame;
 
-Player::Player(GameObject &parent) : Component(parent) {
-    name="Player";
+Player::Player() : GameObject("Player") {
+}
 
+int Player::GetHealth(){
+    return health;
+}
+
+void Player::Damage(int amount){
+    health -= amount;
 }
 
 void Player::Start() {
-    spriteSheet = new SpriteSheet("../Assets/warrior-sheet.png",parent);
+    spriteSheet = new SpriteSheet("../Assets/warrior-sheet.png",*this);
     spriteSheet->RegisterAnimation("walkdown",2882,1045,96,96,8);
     spriteSheet->RegisterAnimation("walkleft",2882,1142,96,96,8);
     spriteSheet->RegisterAnimation("walkup",2882,1336,96,96,8);
@@ -19,10 +25,10 @@ void Player::Start() {
     spriteSheet->SetCurrentAnimation("idle");
     spriteSheet->Pause(false);
 
-    parent.AddComponent(spriteSheet);
+    AddComponent(spriteSheet);
     LOG_INFO << "Loaded Player";
 
-    parent.box = {250,100,32,32};
+    box = {250,100,32,32};
 }
 
 void Player::Update(){
@@ -46,7 +52,7 @@ void Player::Update(){
     if(noKeysPressed){
         spriteSheet->SetCurrentAnimation("idle");
     }else {
-        std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
+        std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObject("Player");
         std::shared_ptr<GameObject> player = playerGoPtr.lock();
         if (keystates[SDL_SCANCODE_UP]) {
             spriteSheet->SetCurrentAnimation("walkup");

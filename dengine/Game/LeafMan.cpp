@@ -2,12 +2,11 @@
 
 using namespace DemoGame;
 
-LeafMan::LeafMan(GameObject &parent) : Component(parent) {
-    name = "LeafMan";
+LeafMan::LeafMan() : GameObject("LeafMan") {
 }
 
 void LeafMan::Start() {
-    spriteSheet = new SpriteSheet("../Assets/demon-sheet.png",parent);
+    spriteSheet = new SpriteSheet("../Assets/demon-sheet.png",*this);
     spriteSheet->RegisterAnimation("walkdown",2306,1045,127,127,8);
     spriteSheet->RegisterAnimation("walkleft",2306,1303,127,127,8);
     spriteSheet->RegisterAnimation("walkup",2306,1561,127,127,8);
@@ -16,9 +15,9 @@ void LeafMan::Start() {
     spriteSheet->SetCurrentAnimation("idle");
     spriteSheet->Pause(false);
 
-    parent.AddComponent(spriteSheet);
-    parent.box.h = 32;
-    parent.box.w = 32;
+    AddComponent(spriteSheet);
+    box.h = 32;
+    box.w = 32;
 }
 
 void LeafMan::Update(){
@@ -27,24 +26,24 @@ void LeafMan::Update(){
         return;
     }
 
-    std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObjectByComponent("Player");
+    std::weak_ptr<GameObject> playerGoPtr = Game::GetInstance().GetCurrentState().GetObject("Player");
     std::shared_ptr<GameObject>  playerGo = playerGoPtr.lock();
 
     //Move enemies towards player
-    if (parent.box.x < playerGo->box.x) {
+    if (box.x < playerGo->box.x) {
         spriteSheet->SetCurrentAnimation("walkdown");
-        parent.SetPos(parent.box.x + speed,parent.box.y);
+        SetPos(box.x + speed,box.y);
     }
-    if (parent.box.x> playerGo->box.x) {
+    if (box.x> playerGo->box.x) {
         spriteSheet->SetCurrentAnimation("walkup");
-        parent.SetPos(parent.box.x - speed,parent.box.y);
+        SetPos(box.x - speed,box.y);
     }
-    if (parent.box.y < playerGo->box.y) {
+    if (box.y < playerGo->box.y) {
         spriteSheet->SetCurrentAnimation("walkright");
-        parent.SetPos(parent.box.x,parent.box.y+speed);
+        SetPos(box.x,box.y+speed);
     }
-    if (parent.box.y > playerGo->box.y) {
+    if (box.y > playerGo->box.y) {
         spriteSheet->SetCurrentAnimation("walkleft");
-        parent.SetPos(parent.box.x,parent.box.y-speed);
+        SetPos(box.x,box.y-speed);
     }
 }
