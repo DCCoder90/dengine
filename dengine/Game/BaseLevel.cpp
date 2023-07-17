@@ -8,6 +8,8 @@
 #include "../include/UI/Components/Text.h"
 #include "../include/UI/Components/RoundedBox.h"
 #include "../include/UI/Components/HollowRect.h"
+#include "../include/UI/Components/Circle.h"
+#include "../include/UI/Components/FilledCircle.h"
 
 using namespace DemoGame;
 
@@ -117,10 +119,18 @@ void BaseLevel::LoadUI() {
     HollowRect* hollowRect = new HollowRect();
     hollowRect->Setup({50,250,150,30},10);
 
+    Circle* circle = new Circle();
+    circle->Setup({200,250},80);
+
+    FilledCircle* filledcircle = new FilledCircle();
+    filledcircle->Setup({290,250},80);
+
     uiwindow->Push(healthBar);
     uiwindow->Push(displayText);
     uiwindow->Push(roundedBox);
     uiwindow->Push(hollowRect);
+    uiwindow->Push(circle);
+    uiwindow->Push(filledcircle);
 
     Game::GetInstance().GetUI()->Push(uiwindow);
 }

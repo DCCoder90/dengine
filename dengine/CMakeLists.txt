@@ -55,6 +55,8 @@ add_executable(DENGINE
         lib/UI/FontManager.cpp
         lib/UI/Components/Text.cpp
         lib/UI/Components/RoundedBox.cpp
-        lib/UI/Components/HollowRect.cpp)
+        lib/UI/Components/HollowRect.cpp
+        lib/UI/Components/Circle.cpp
+        lib/UI/Components/FilledCircle.cpp)
 
 target_link_libraries(${PROJECT_NAME} SDL2main SDL2 $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static> SDL2_image ${ZLIB_LIBRARIES})
