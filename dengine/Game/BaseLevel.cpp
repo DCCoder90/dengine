@@ -115,7 +115,7 @@ void BaseLevel::LoadUI() {
     roundedBox->Setup({0,200,150,30},0.5,2);
 
     HollowRect* hollowRect = new HollowRect();
-    hollowRect->Setup({0,400,150,30},2);
+    hollowRect->Setup({50,250,150,30},10);
 
     uiwindow->Push(healthBar);
     uiwindow->Push(displayText);
