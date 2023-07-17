@@ -7,7 +7,7 @@
 #include "../../System/Game.h"
 #include "../FontManager.h"
 
-namespace dengine {
+namespace dengine_UI {
     /**
      * @brief Text rendered with TrueTypeFonts
      */

@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "../../../include/System/Game.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void ProgressBarH::Render() {

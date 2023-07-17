@@ -16,6 +16,8 @@
 #include "../Universal.h"
 #include "../UI/UI.h"
 
+using namespace dengine_UI;
+
 namespace dengine {
 /**
  * A Game is the most bottom level of the game engine.  The game controls the game loop, managing state, and others.  For

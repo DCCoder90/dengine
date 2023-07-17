@@ -1,6 +1,6 @@
 #include "../../include/UI/UIComponent.h"
 
-using namespace dengine;
+using namespace dengine_UI;
 
 void UIComponent::SetVar(std::string key, std::string value) {
     variables[key]=value;

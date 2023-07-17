@@ -1,12 +1,8 @@
-//
-// Created by ernes on 7/14/2023.
-//
-
 #ifndef DENGINE_UICOMPONENT_H
 #define DENGINE_UICOMPONENT_H
 #include <map>
 #include <string>
-namespace dengine {
+namespace dengine_UI {
     /**
      * This is a base level component that by itself does nothing.  This should be used as a building block for other UI
      * components.   UI components are meant to be added to UIWindows and will be rendered from there.

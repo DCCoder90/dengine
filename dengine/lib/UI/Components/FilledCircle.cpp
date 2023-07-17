@@ -1,5 +1,6 @@
 #include "../../../include/UI/Components/FilledCircle.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void FilledCircle::Setup(Vec2 center, int radius){

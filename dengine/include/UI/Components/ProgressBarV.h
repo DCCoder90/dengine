@@ -1,7 +1,7 @@
 #ifndef DENGINE_PROGRESSBARV_H
 #define DENGINE_PROGRESSBARV_H
 #include "../UIComponent.h"
-namespace dengine {
+namespace dengine_UI {
     /**
      * @brief A verticle progress bar
      * Variables are:

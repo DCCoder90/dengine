@@ -1,5 +1,6 @@
 #include "../../../include/UI/Components/HollowRect.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void HollowRect::Setup(SDL_Rect rect, int width){

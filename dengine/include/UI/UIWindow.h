@@ -1,13 +1,9 @@
-//
-// Created by ernes on 7/14/2023.
-//
-
 #ifndef DENGINE_UIWINDOW_H
 #define DENGINE_UIWINDOW_H
 #include <vector>
 #include "UIComponent.h"
 
-namespace dengine{
+namespace dengine_UI{
     /**
      * @brief UI window
      * Meant to be a collection of related UIComponents to display at the same time.  This can be a menu, a HUD, or anything

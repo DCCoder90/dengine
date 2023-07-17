@@ -1,6 +1,6 @@
 #include "../../include/UI/UI.h"
 
-using namespace dengine;
+using namespace dengine_UI;
 
 UI::UI(){
 
@@ -17,7 +17,7 @@ void UI::Load() {
 
 };
 
-void UI::Push(dengine::UIWindow *window) {
+void UI::Push(UIWindow *window) {
     windows.push_back(window);
 }
 

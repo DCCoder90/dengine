@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <cmath>
 
-namespace dengine {
+namespace dengine_UI {
     /**
      * @brief A rectangle with rounded corners
      */

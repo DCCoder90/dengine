@@ -1,6 +1,7 @@
 #include "../../../include/UI/Components/RoundedBox.h"
 #include "../../../include/System/Game.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void RoundedBox::Render() {

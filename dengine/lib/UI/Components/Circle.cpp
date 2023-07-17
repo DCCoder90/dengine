@@ -1,5 +1,6 @@
 #include "../../../include/UI/Components/Circle.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void Circle::Setup(Vec2 center, int radius){
