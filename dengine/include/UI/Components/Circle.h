@@ -8,7 +8,7 @@
 
 namespace dengine {
     /**
-     * A hollow circle
+     * @brief A hollow circle
      */
     class Circle : public UIComponent{
     public:

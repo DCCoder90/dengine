@@ -6,9 +6,9 @@
 
 namespace dengine {
 /**
-* @brief Manages the loading, unloading, and playing of sounds
- * Designed to be used by individual GameLevels to help manage sounds on a per level basis
+ * The audio manager is designed to be used by individual GameLevels to help manage sounds on a per level basis
  * allowing only sounds for that level to be loaded at the loading screen
+* @brief Manages the loading, unloading, and playing of sounds
  * @see Sound
 */
     class AudioManager {
@@ -19,6 +19,9 @@ namespace dengine {
          * @param filepath Filepath to the wave file
          * @param name The name of the sound
          * @see LoadSounds
+         * @code
+         * AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
+         * @endcode
     */
         void AddSound(std::string name, std::string filepath);
 
@@ -32,12 +35,23 @@ namespace dengine {
     * Plays a sound through the default audio device
          * @brief Play a sound
      * @param name The name of the sound
+         *
+         * @code
+         * AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
+         * AudioManager::GetInstance().LoadSounds();
+         * AudioManager::GetInstance().PlaySound("background");
+         * @endcode
     */
         void PlaySound(std::string name);
 
         /**
     * Clear all currently added and loaded sounds freeing up previously allocated space
          * @brief Clear all stored sounds
+         * @code
+         * AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
+         * AudioManager::GetInstance().LoadSounds();
+         * AudioManager::GetInstance().ClearSounds();
+         * @endcode
     */
         void ClearSounds();
 
@@ -45,6 +59,11 @@ namespace dengine {
     * Removes a single sound by name from memory
          * @brief Remove a single sound
          * @param name Name of sound to remove
+         * @code
+         * AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
+         * AudioManager::GetInstance().LoadSounds();
+         * AudioManager::GetInstance().RemoveSound("background");
+         * @endcode
     */
         void RemoveSound(std::string name);
 
@@ -53,6 +72,13 @@ namespace dengine {
          * @brief Check if sound has been added
          * @param name Name of the sound
          * @returns Whether sound currently exists in audiomanager or not
+         * @code
+         * AudioManager::GetInstance().AddSound("background","./Assets/background.wav");
+         * AudioManager::GetInstance().LoadSounds();
+         * if(AudioManager::GetInstance().HasSound("background")){
+         *  AudioManager::GetInstance().PlaySound("background");
+         * }
+         * @endcode
     */
         bool HasSound(std::string name);
 

@@ -14,8 +14,8 @@ namespace dengine {
         Collider(GameObject &associated, Vec2 scale = {1, 1}, Vec2 offset = {0, 0});
 
         /**
-    * @brief A rect denoting the collider's position in space.
-    */
+        * @brief A rect denoting the collider's position in space.
+        */
         SDL_Rect box;
 
         void Update() override;

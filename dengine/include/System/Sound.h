@@ -8,7 +8,9 @@
 
 namespace dengine {
 /**
-* @brief Sound controls audio aspects within the game
+ * A sound is any audible event within the game, whether it be background music or a quick effect.  Sounds are managed by the
+ * AudioManager and are loaded into and called from it.
+* @brief A Sound
  * @see AudioManager
 */
     class Sound {
@@ -16,27 +18,29 @@ namespace dengine {
     public:
         /**
     * Create a new sound
+         * @brief Constructor
          * @param filepath The filepath to a wav file
     */
         Sound(std::string filepath);
 
         /**
     * Frees up resources allocated by sound
+         * @brief Destructor
     */
         ~Sound();
 
         /**
-    * Loads sound into memory
+    * @brief Loads sound into memory
     */
         void LoadSound();
 
         /**
-    * Plays the sound
+    * @brief Plays the sound
     */
         void PlaySound();
 
         /**
-    * Stops the sound from playing
+    * @brief Stops the sound from playing
     */
         void StopSound();
 
