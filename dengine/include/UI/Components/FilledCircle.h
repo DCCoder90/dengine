@@ -7,8 +7,16 @@
 #include "../../Vec2.h"
 
 namespace dengine {
+    /**
+     * @brief A filled circle
+     */
     class FilledCircle : public UIComponent{
     public:
+        /**
+         * Initializes a filled circle to be displayed on screen
+         * @param center A vec2 denoting the center of the circle
+         * @param radius The radius of the circle in pixels
+         */
         void Setup(Vec2 center, int radius);
 
         void Render() override;

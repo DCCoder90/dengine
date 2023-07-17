@@ -7,7 +7,7 @@
 
 namespace dengine {
 /**
-* @brief Time is used to help manage gametime, refresh rates, ticks and more
+* @brief Used to manage the UI of a game
 */
     class UI {
     public:
@@ -23,7 +23,14 @@ namespace dengine {
          */
         void Render();
 
+        /**
+         * Push a UI window onto the stack
+         * @param window The window to add to the stack
+         */
         void Push(UIWindow* window);
+        /**
+         * @brief Pop a UI window from the stack
+         */
         void Pop();
 
     private:

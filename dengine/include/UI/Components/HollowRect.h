@@ -11,8 +11,16 @@
 
 
 namespace dengine {
+    /**
+     * @brief A rectangle with a hollow or transparent center
+     */
     class HollowRect : public UIComponent {
     public:
+        /**
+         * Initializes a rectangle with a hollow center
+         * @param rect The rectangle to display
+         * @param width The width of the sides
+         */
         void Setup(SDL_Rect rect, int width);
 
         void Render() override;
