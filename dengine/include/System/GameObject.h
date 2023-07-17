@@ -40,7 +40,12 @@ namespace dengine {
     */
         void RemoveComponent(Component *component);
 
-
+        /**
+         * Checks if the gameobject has a component with the specified name
+         * @brief Does it have a component?
+         * @param name The name of the component to check
+         * @return True if this gameobject has a component with the name name.
+         */
         bool HasComponent(std::string name);
 
         /**
@@ -69,8 +74,24 @@ namespace dengine {
     */
         SDL_Rect box;
 
+        /**
+         * Set the position of the game object
+         * @brief Set position
+         * @param xPos X position
+         * @param yPos Y position
+         */
         void SetPos(float xPos, float yPos);
 
+        /**
+         * @brief Get a reference to a component
+         * @param name Name of the component to get
+         * @return A weak pointer to the component on the gameobject
+         * @code
+         * if(gameObject->HasComponent("Collider")){
+         *   Component* collider = gameObject->GetComponentByName("Collider").lock();
+         * }
+         * @endcode
+         */
         std::weak_ptr<Component> GetComponentByName(std::string name);
 
     private:

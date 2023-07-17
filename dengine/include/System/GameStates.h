@@ -4,12 +4,28 @@
 namespace dengine {
 /** @enum GAMESTATES
 *  @brief Available game states
+ * Used largely by the GameState class, this enum is meant to keep up with the current state of the game
 */
     enum GAMESTATES {
+        /**
+         * @brief Splash Screen
+         */
         Splash,
+        /**
+         * @brief Pause Screen
+         */
         Pause,
+        /**
+         * @brief Currently Playing
+         */
         Playing,
+        /**
+         * @brief Game over screen
+         */
         Gameover,
+        /**
+         * @brief User initiated quit
+         */
         Quit
     };
 

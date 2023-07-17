@@ -8,27 +8,49 @@
 namespace dengine {
 /**
 * @brief Used to manage the UI of a game
+ * See the code example below for a quick reference on how to use the UI
+ * @code
+ *  UIWindow* uiwindow = new UIWindow();
+ *  Circle* circle = new Circle();
+ *  circle->Setup({200,250},80);
+ *
+ *  FilledCircle* filledcircle = new FilledCircle();
+ *  filledcircle->Setup({290,250},80);
+ *  uiwindow->Push(circle);
+ *  uiwindow->Push(filledcircle);
+ *
+ *  Game::GetInstance().GetUI()->Push(uiwindow);
+ * @endcode
 */
     class UI {
     public:
+        /**
+         * Create a new UI
+         * @brief Constructor
+         */
         UI();
 
         /**
+         * Called in the Load stage of a game.  Used for loading the UI into memory
          * @brief Load the UI
          */
         void Load();
 
         /**
+         * Renders the UI to the screen. Called in the Render stage of the game and is rendered after all GameObjects
+         * and their components.
          * @brief Render the UI
          */
         void Render();
 
         /**
-         * Push a UI window onto the stack
+         * Push a new UI window onto the stack
+         * @brief Push window to stack
          * @param window The window to add to the stack
          */
         void Push(UIWindow* window);
         /**
+         * Removes the last added UI window from the stack
          * @brief Pop a UI window from the stack
          */
         void Pop();

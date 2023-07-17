@@ -9,10 +9,18 @@
 
 namespace dengine {
     template<typename T>
+    /**
+     * @brief A serializer
+     * @tparam T The type to serialize or deserialize
+     * @deprecated This was initially created for the Load/Save system but I wasn't able to find a way to integrate it just right
+     * as such I am marking this as deprecated.  I don't want to get rid of it just yet in case I find a use for it, but currently
+     * it isn't used.
+     */
     class Serializer {
     public:
         /**
-         * @brief Create a new Serializer
+         * Create a new Serializer that will use the file defined in filePath to read/write
+         * @brief Constructor
          * @param filePath The path to save to/load from
          */
         Serializer(std::string filePath);

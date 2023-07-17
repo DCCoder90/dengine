@@ -11,27 +11,32 @@
 
 namespace dengine {
 /**
- * @brief Sprites are used for static images that don't require animation
+ * Sprites are used for static images that don't require animation
+ * @brief A sprite
 */
     class Sprite : public Component {
     public:
         /**
-    * Creates a sprite object
-    */
+        * Creates a sprite from the image defined in the filepath
+         * @brief Constructor
+        */
         Sprite(std::string filepath, GameObject &parent);
 
         /**
-    * Frees up resources allocated by Sprite
-    */
+        * Frees up resources allocated by Sprite
+         * @brief Desctructor
+        */
         ~Sprite();
 
         /**
     * Renders the sprite
+         * @brief Render Function
     */
         void Render() override;
 
         /**
     * Returns a pointer to the texture
+         * @brief Sprite Texture
     */
         SDL_Texture *getTexture();
 

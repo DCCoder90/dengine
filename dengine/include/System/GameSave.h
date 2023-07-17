@@ -10,6 +10,9 @@ namespace dengine{
      * GameSave is an abstract class that should be overwritten by the Game code. The purpose of gamesave
      * is to provide a method of saving a game.  This used in combination with a GameLevel's Serialize
      * and Deserialize functions should allow for an easy method of saving and loading.
+     * @deprecated Marking this as deprecated because as mentioned in the Serializer documentation, I wasn't able to get
+     * the save/load system working quite right.  If I happen to shift my attention back here and get it working we may keep it
+     * but may not.  As such, don't count on it being here in the future.
      */
     class GameSave{
     public:

@@ -10,9 +10,9 @@
 
 namespace dengine {
 /**
- * @brief A level of the game
  * This is the base level for individual game development.  A game level could be a title screen, a traditional level for the game
  * or more.  This is where all the objects will live and is what will act as an interface between the GameObjects and the Game
+ * @brief A level of the game
  * @see Game
  * @see GameObject
  */
