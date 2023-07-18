@@ -1,5 +1,6 @@
 #include "../../../include/UI/Components/HollowRect.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void HollowRect::Setup(SDL_Rect rect, int width){
@@ -10,7 +11,7 @@ void HollowRect::Setup(SDL_Rect rect, int width){
 void HollowRect::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, drawColor.r,drawColor.g,drawColor.b,drawColor.a);
 
     //Draw the top of the rect
     SDL_Rect rect = {boxRect.x,boxRect.y,boxRect.w,borderWidth};

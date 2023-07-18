@@ -7,7 +7,7 @@
 #include "../../System/Game.h"
 #include "../FontManager.h"
 
-namespace dengine {
+namespace dengine_UI {
     /**
      * @brief Text rendered with TrueTypeFonts
      */
@@ -22,12 +22,18 @@ namespace dengine {
          */
         void Setup(std::string font, std::string text, SDL_Rect rect);
 
+        void SetDrawColor(SDL_Color color){
+            drawColor = color;
+        }
+
         void Render() override;
 
     private:
         SDL_Rect textRect;
         std::string fontName;
         std::string displayText;
+        SDL_Color drawColor;
+
     };
 }
 #endif //DENGINE_TEXT_H

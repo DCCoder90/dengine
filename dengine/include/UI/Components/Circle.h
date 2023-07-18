@@ -6,7 +6,9 @@
 #include "../../System/Game.h"
 #include "../../Vec2.h"
 
-namespace dengine {
+using namespace dengine;
+
+namespace dengine_UI {
     /**
      * @brief A hollow circle
      */

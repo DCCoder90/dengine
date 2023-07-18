@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "../include/System/Sound.h"
 #include "../include/System/AudioManager.h"
+#include "../include/UI/Components/ProgressBarH.h"
 
 
 using namespace dengine;
@@ -39,7 +40,7 @@ namespace DemoGame {
     private:
         class Player *player;
         int playerHealth = 100;
-        UIComponent* healthBar;
+        ProgressBarH* healthBar;
         std::vector <std::vector<char>> serializedObjects;
     };
 }

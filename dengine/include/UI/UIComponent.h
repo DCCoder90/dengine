@@ -1,12 +1,10 @@
-//
-// Created by ernes on 7/14/2023.
-//
-
 #ifndef DENGINE_UICOMPONENT_H
 #define DENGINE_UICOMPONENT_H
 #include <map>
 #include <string>
-namespace dengine {
+#include <SDL.h>
+
+namespace dengine_UI {
     /**
      * This is a base level component that by itself does nothing.  This should be used as a building block for other UI
      * components.   UI components are meant to be added to UIWindows and will be rendered from there.
@@ -22,26 +20,18 @@ namespace dengine {
          * @brief The render method of a component.
          */
         virtual void Render() = 0;
+
         /**
-         * Sets a variable and stores the value in the variables map to be used by UI components later
-         * @brief Sets a variable for a component
-         * @param key The name of the variable to set
-         * @param value The value of the variable to set as a string
-         * @see variables
+         * Sets the draw color of the component
+         * @brief Set Draw Color
+         * @param color The color to draw the UI component in
          */
-        void SetVar(std::string key,std::string value);
-        /**
-         * Returns true if the variable is set and false if it isn't.  This function does not check or validate the variable's
-         * value, only if it exists or not.
-         * @brief Checks if component has a variable set
-         * @param key The name of the variable to check
-         * @return True if the variable is set
-         */
-        bool HasVar(std::string key);
+        void SetDrawColor(SDL_Color color){
+            drawColor = color;
+        }
     protected:
         std::string GetVar(std::string key);
-    private:
-        std::map<std::string,std::string> variables;
+        SDL_Color drawColor;
     };
 };
 

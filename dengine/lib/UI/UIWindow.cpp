@@ -1,8 +1,8 @@
 #include "../../include/UI/UIWindow.h"
 
-using namespace dengine;
+using namespace dengine_UI;
 
-void UIWindow::Push(dengine::UIComponent * component) {
+void UIWindow::Push(UIComponent * component) {
     components.push_back(component);
 }
 

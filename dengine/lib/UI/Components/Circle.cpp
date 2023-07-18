@@ -1,5 +1,6 @@
 #include "../../../include/UI/Components/Circle.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void Circle::Setup(Vec2 center, int radius){
@@ -10,7 +11,7 @@ void Circle::Setup(Vec2 center, int radius){
 void Circle::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 50, 255);
+    SDL_SetRenderDrawColor(renderer, drawColor.r,drawColor.g,drawColor.b,drawColor.a);
 
     int x = r - 1;
     int y = 0;

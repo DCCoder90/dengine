@@ -5,7 +5,7 @@
 #include <vector>
 #include "UIWindow.h"
 
-namespace dengine {
+namespace dengine_UI {
 /**
 * @brief Used to manage the UI of a game
  * See the code example below for a quick reference on how to use the UI

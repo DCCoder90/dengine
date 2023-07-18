@@ -10,7 +10,7 @@
 #include "../../System/Game.h"
 
 
-namespace dengine {
+namespace dengine_UI {
     /**
      * @brief A rectangle with a hollow or transparent center
      */

@@ -5,7 +5,7 @@
 #include <string>
 #include <SDL_ttf.h>
 
-namespace dengine {
+namespace dengine_UI {
     /**
      * A singleton manager that manages all TTF's in the game
      * @brief Font Manager
@@ -31,6 +31,8 @@ namespace dengine {
          * @brief Destructor
          */
         ~FontManager();
+
+        SDL_Texture* Text(std::string fontName, SDL_Color color, std::string text);
         /**
          * In order to ensure singleton pattern is maintained, this function is used to retrieve the instance of
          * the FontManager

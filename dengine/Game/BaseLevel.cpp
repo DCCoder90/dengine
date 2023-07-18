@@ -10,6 +10,7 @@
 #include "../include/UI/Components/HollowRect.h"
 #include "../include/UI/Components/Circle.h"
 #include "../include/UI/Components/FilledCircle.h"
+#include "../include/Vec2.h"
 
 using namespace DemoGame;
 
@@ -84,7 +85,7 @@ void BaseLevel::Update(){
 
                 player->Damage(10);
 
-                healthBar->SetVar("completed",std::to_string(player->GetHealth()));
+                healthBar->SetCompleted(player->GetHealth());
 
                 AudioManager::GetInstance().PlaySound("death");
                 objects[i]->box.x = 0;
@@ -105,25 +106,34 @@ void BaseLevel::LoadUI() {
 
     UIWindow* uiwindow = new UIWindow();
     healthBar = new ProgressBarH();
-    healthBar->SetVar("ypos","0");
-    healthBar->SetVar("xpos","0");
-    healthBar->SetVar("completed","100");
+    healthBar->Setup({0,0},100);
+    healthBar->SetDrawColor({255,255,255,255});
+    healthBar->SetFillColor({255,0,0,255});
+
 
     Text* displayText = new Text();
     SDL_Rect displayRect = {200,0,300,80};
     displayText->Setup("SpaceSmall","Example Game",displayRect);
+    displayText->SetDrawColor({255,255,255,255});
+
 
     RoundedBox* roundedBox = new RoundedBox();
     roundedBox->Setup({0,200,150,30},0.5,2);
+    roundedBox->SetDrawColor({255,165,0,255});
 
     HollowRect* hollowRect = new HollowRect();
     hollowRect->Setup({50,250,150,30},10);
+    hollowRect->SetDrawColor({255,165,98,255});
 
     Circle* circle = new Circle();
     circle->Setup({200,250},80);
+    circle->SetDrawColor({153,0,76,255});
+
 
     FilledCircle* filledcircle = new FilledCircle();
     filledcircle->Setup({290,250},80);
+    filledcircle->SetDrawColor({255,51,153,255});
+
 
     uiwindow->Push(healthBar);
     uiwindow->Push(displayText);

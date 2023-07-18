@@ -1,13 +1,14 @@
 #include "../../../include/UI/Components/RoundedBox.h"
 #include "../../../include/System/Game.h"
 
+using namespace dengine_UI;
 using namespace dengine;
 
 void RoundedBox::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 
     // Set the desired render draw color
-    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+    SDL_SetRenderDrawColor(renderer, drawColor.r,drawColor.g,drawColor.b,drawColor.a);
 
     // Draw outer border
     SDL_Point outerBorderPoints[16];
