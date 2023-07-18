@@ -1,5 +1,6 @@
 #ifndef DENGINE_PROGRESSBARV_H
 #define DENGINE_PROGRESSBARV_H
+#include <SDL.h>
 #include "../UIComponent.h"
 #include "../../Vec2.h"
 
@@ -18,12 +19,18 @@ namespace dengine_UI {
             position = initPos;
         }
         void Render() override;
+
+        void SetFillColor(SDL_Color color){
+            fillColor = color;
+        }
+
         void SetCompleted(int completeAmount) {
             completed = completeAmount;
         }
     private:
         int completed;
         dengine::Vec2 position;
+        SDL_Color fillColor;
     };
 }
 

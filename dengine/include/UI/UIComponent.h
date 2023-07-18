@@ -2,6 +2,8 @@
 #define DENGINE_UICOMPONENT_H
 #include <map>
 #include <string>
+#include <SDL.h>
+
 namespace dengine_UI {
     /**
      * This is a base level component that by itself does nothing.  This should be used as a building block for other UI
@@ -18,10 +20,13 @@ namespace dengine_UI {
          * @brief The render method of a component.
          */
         virtual void Render() = 0;
+
+        void SetDrawColor(SDL_Color color){
+            drawColor = color;
+        }
     protected:
         std::string GetVar(std::string key);
-    private:
-        std::map<std::string,std::string> variables;
+        SDL_Color drawColor;
     };
 };
 

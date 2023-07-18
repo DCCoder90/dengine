@@ -24,8 +24,9 @@ void ProgressBarV::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 
     SDL_UpdateWindowSurface(Game::GetInstance().window);
-    SDL_SetRenderDrawColor(renderer, 255, 50, 50, 180);
+    SDL_SetRenderDrawColor(renderer, fillColor.r,fillColor.g,fillColor.b,fillColor.a);
+
     SDL_RenderFillRect(renderer,&rectt);
-    SDL_SetRenderDrawColor(renderer, 0, 255,0, 180);
+    SDL_SetRenderDrawColor(renderer, drawColor.r,drawColor.g,drawColor.b,drawColor.a);
     SDL_RenderDrawRect(renderer, &rect);
 }

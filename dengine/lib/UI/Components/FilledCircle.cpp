@@ -11,7 +11,7 @@ void FilledCircle::Setup(Vec2 center, int radius){
 void FilledCircle::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 
-    SDL_SetRenderDrawColor(renderer, 255, 0, 50, 255);
+    SDL_SetRenderDrawColor(renderer, drawColor.r,drawColor.g,drawColor.b,drawColor.a);
 
     for (int y = -r; y <= r; ++y) {
         for (int x = -r; x <= r; ++x) {
