@@ -84,7 +84,7 @@ void BaseLevel::Update(){
 
                 player->Damage(10);
 
-                healthBar->SetVar("completed",std::to_string(player->GetHealth()));
+                healthBar->SetCompleted(player->GetHealth());
 
                 AudioManager::GetInstance().PlaySound("death");
                 objects[i]->box.x = 0;
@@ -105,9 +105,7 @@ void BaseLevel::LoadUI() {
 
     UIWindow* uiwindow = new UIWindow();
     healthBar = new ProgressBarH();
-    healthBar->SetVar("ypos","0");
-    healthBar->SetVar("xpos","0");
-    healthBar->SetVar("completed","100");
+    healthBar->Setup({0,0},100);
 
     Text* displayText = new Text();
     SDL_Rect displayRect = {200,0,300,80};

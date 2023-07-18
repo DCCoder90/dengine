@@ -1,6 +1,8 @@
 #ifndef DENGINE_PROGRESSBARV_H
 #define DENGINE_PROGRESSBARV_H
 #include "../UIComponent.h"
+#include "../../Vec2.h"
+
 namespace dengine_UI {
     /**
      * @brief A horizontal progress bar
@@ -10,7 +12,18 @@ namespace dengine_UI {
      * completed - The amount completed on a scale of 0 - 100
      */
     class ProgressBarH : public UIComponent {
+    public:
+        void Setup(dengine::Vec2 initPos, int initAmount = 0){
+            completed = initAmount;
+            position = initPos;
+        }
         void Render() override;
+        void SetCompleted(int completeAmount) {
+            completed = completeAmount;
+        }
+    private:
+        int completed;
+        dengine::Vec2 position;
     };
 }
 

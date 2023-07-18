@@ -50,7 +50,6 @@ add_executable(DENGINE
         lib/UI/UI.cpp
         lib/UI/UIWindow.cpp
         lib/UI/Components/ProgressBarV.cpp
-        lib/UI/UIComponent.cpp
         lib/UI/Components/ProgressBarH.cpp
         lib/UI/FontManager.cpp
         lib/UI/Components/Text.cpp

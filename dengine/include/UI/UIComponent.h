@@ -18,22 +18,6 @@ namespace dengine_UI {
          * @brief The render method of a component.
          */
         virtual void Render() = 0;
-        /**
-         * Sets a variable and stores the value in the variables map to be used by UI components later
-         * @brief Sets a variable for a component
-         * @param key The name of the variable to set
-         * @param value The value of the variable to set as a string
-         * @see variables
-         */
-        void SetVar(std::string key,std::string value);
-        /**
-         * Returns true if the variable is set and false if it isn't.  This function does not check or validate the variable's
-         * value, only if it exists or not.
-         * @brief Checks if component has a variable set
-         * @param key The name of the variable to check
-         * @return True if the variable is set
-         */
-        bool HasVar(std::string key);
     protected:
         std::string GetVar(std::string key);
     private:
