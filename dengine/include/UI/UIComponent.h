@@ -21,6 +21,11 @@ namespace dengine_UI {
          */
         virtual void Render() = 0;
 
+        /**
+         * Sets the draw color of the component
+         * @brief Set Draw Color
+         * @param color The color to draw the UI component in
+         */
         void SetDrawColor(SDL_Color color){
             drawColor = color;
         }
