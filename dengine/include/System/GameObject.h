@@ -94,6 +94,35 @@ namespace dengine {
          */
         std::weak_ptr<Component> GetComponentByName(std::string name);
 
+        /**
+        * @brief Add a tag to the game object
+        */
+        void AddTag(std::string tag){
+            auto it = std::find(tags.begin(), tags.end(), tag);
+            if(it == tags.end()) {
+                tags.push_back(tag);
+            }
+        }
+
+        /**
+    * @brief Check if game object has a tag
+         * @return True if the game object has the tag
+    */
+        bool HasTag(std::string tag){
+            auto it = std::find(tags.begin(), tags.end(), tag);
+            return it == tags.end();
+        }
+
+        /**
+        * @brief Remove tag from game object
+        */
+        void RemoveTag(std::string tag){
+            auto it = std::find(tags.begin(), tags.end(), tag);
+            if(it == tags.end()) {
+                tags.erase(std::remove(tags.begin(),tags.end(),tag),tags.end());
+            }
+        }
+
     private:
         /**
     * @brief A vector containing any components that may be on the GameObject
@@ -103,6 +132,7 @@ namespace dengine {
     * @brief A string containing the object name.
     */
         std::string name;
+        std::vector<std::string> tags;
     };
 }
 
