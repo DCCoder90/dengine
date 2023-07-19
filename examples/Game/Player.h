@@ -1,13 +1,12 @@
-
-
 #ifndef DENGINE_PLAYER_H
 #define DENGINE_PLAYER_H
 
-#include "../include/System/Component.h"
-#include "../include/System/GameObject.h"
-#include "../include/Components/Sprite.h"
-#include "../include/Universal.h"
-#include "../include/Components/SpriteSheet.h"
+#include <System/Component.h>
+#include <System/GameObject.h>
+#include <Components/Sprite.h>
+#include <Universal.h>
+#include <Components/SpriteSheet.h>
+#include <System/AudioManager.h>
 
 using namespace dengine;
 

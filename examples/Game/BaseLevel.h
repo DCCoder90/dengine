@@ -2,15 +2,14 @@
 #define DENGINE_BASELEVEL_H
 
 #include <SDL.h>
-#include "../include/Utils/Serializer.h"
-#include "../include/System/GameLevel.h"
-#include "../include/System/GameStates.h"
-#include "../include/System/Game.h"
+#include <Utils/Serializer.h>
+#include <System/GameLevel.h>
+#include <System/GameStates.h>
+#include <System/Game.h>
 #include "Player.h"
-#include "../include/System/Sound.h"
-#include "../include/System/AudioManager.h"
-#include "../include/UI/Components/ProgressBarH.h"
-
+#include <System/Sound.h>
+#include <System/AudioManager.h>
+#include <UI/Components/ProgressBarH.h>
 
 using namespace dengine;
 /**

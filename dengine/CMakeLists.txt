@@ -23,8 +23,7 @@ link_directories(${SDL2_LIB_DIR} ${SDL2_IMG_LIB_DIR})
 
 find_package(SDL2_ttf CONFIG REQUIRED)
 
-add_executable(DENGINE
-        main.cpp
+add_library(DENGINE SHARED
         lib/System/Time.cpp
         lib/System/Game.cpp
         lib/System/GameObject.cpp
@@ -35,10 +34,7 @@ add_executable(DENGINE
         lib/Components/Collider.cpp
         lib/Vec2.cpp
         lib/System/GameLevel.cpp
-        Game/BaseLevel.cpp
-        Game/LeafMan.cpp
         lib/Components/Sprite.cpp
-        Game/Player.cpp
         lib/Helpers.cpp
         lib/System/Sound.cpp
         lib/System/Camera.cpp
@@ -46,7 +42,6 @@ add_executable(DENGINE
         lib/Utils/NanoLog.cpp
         lib/System/AudioManager.cpp
         lib/Components/SpriteSheet.cpp
-        Game/BaselevelBackground.cpp
         lib/UI/UI.cpp
         lib/UI/UIWindow.cpp
         lib/UI/Components/ProgressBarV.cpp

@@ -3,9 +3,9 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include "../include/System/Component.h"
-#include "../include/System/Game.h"
-#include "../include/System/CameraManager.h"
+#include <System/Component.h>
+#include <System/Game.h>
+#include <System/CameraManager.h>
 
 using namespace dengine;
 

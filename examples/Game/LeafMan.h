@@ -3,9 +3,9 @@
 #ifndef DENGINE_LEAFMAN_H
 #define DENGINE_LEAFMAN_H
 
-#include "../include/System/Component.h"
-#include "../include/System/GameObject.h"
-#include "../include/Components/Sprite.h"
+#include <System/Component.h>
+#include <System/GameObject.h>
+#include <Components/Sprite.h>
 #include "./Player.h"
 
 using namespace dengine;
