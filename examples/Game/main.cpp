@@ -1,15 +1,12 @@
 #define SDL_MAIN_HANDLED
-#define DEBUG
-#include "include/System/Game.h"
-#include "Game/BaseLevel.h"
-#include "include/Universal.h"
-
-using namespace DemoGame;
+#include <System/Game.h>
+#include "BaseLevel.h"
+#include <Utils/NanoLog.h>
 
 int main(int argc, char *argv[]) {
     nanolog::initialize(nanolog::GuaranteedLogger(), "./", "logfile", 3);
     Game& game = Game::GetInstance();
-    BaseLevel* baseLevel = new BaseLevel();
+    DemoGame::BaseLevel* baseLevel = new DemoGame::BaseLevel();
     game.Push(baseLevel);
     game.loop();
     return 0;

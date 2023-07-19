@@ -15,7 +15,7 @@ FontManager::~FontManager(){
 
 void FontManager::AddFont(std::string name,std::string filePath, int size){
     if(fonts.count(name) <= 0){
-        fonts[name] = TTF_OpenFont(("../Assets/Fonts/"+filePath).c_str(), size);
+        fonts[name] = TTF_OpenFont((filePath).c_str(), size);
         return;
     }
     //throw std::runtime_error("Font already added");

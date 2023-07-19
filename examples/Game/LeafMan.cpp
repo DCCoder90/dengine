@@ -6,7 +6,7 @@ LeafMan::LeafMan() : GameObject("LeafMan") {
 }
 
 void LeafMan::Start() {
-    spriteSheet = new SpriteSheet("../Assets/demon-sheet.png",*this);
+    spriteSheet = new SpriteSheet("./Assets/demon-sheet.png",*this);
     spriteSheet->RegisterAnimation("walkdown",2306,1045,127,127,8);
     spriteSheet->RegisterAnimation("walkleft",2306,1303,127,127,8);
     spriteSheet->RegisterAnimation("walkup",2306,1561,127,127,8);

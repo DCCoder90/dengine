@@ -1,0 +1,20 @@
+{
+  "name" : "game-engine",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "7e1bd5f95cbf982d904def2be12b4f89c76d09a1",
+  "dependencies" : [ {
+    "name" : "sdl2-image",
+    "version>=" : "2.6.3",
+    "$comment" : "    find_package(SDL2_image CONFIG REQUIRED)\n\n    target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:SDL2_image::SDL2_image>,SDL2_image::SDL2_image,SDL2_image::SDL2_image-static>)\n"
+  }, {
+    "name" : "sdl2-ttf",
+    "version>=" : "2.20.2",
+    "$comment" : "    find_package(SDL2_ttf CONFIG REQUIRED)\n\n    target_link_libraries(main PRIVATE $<IF:$<TARGET_EXISTS:SDL2_ttf::SDL2_ttf>,SDL2_ttf::SDL2_ttf,SDL2_ttf::SDL2_ttf-static>)\n"
+  }, {
+    "name" : "sdl2",
+    "version>=" : "2.26.5"
+  }, {
+    "name" : "zlib",
+    "version>=" : "1.2.13"
+  } ]
+}

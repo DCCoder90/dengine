@@ -102,7 +102,7 @@ void BaseLevel::Render() {
 }
 
 void BaseLevel::LoadUI() {
-    FontManager::GetInstance().AddFont("SpaceSmall","Space_Pontiff.ttf",80);
+    FontManager::GetInstance().AddFont("SpaceSmall","./Assets/Fonts/Space_Pontiff.ttf",80);
 
     UIWindow* uiwindow = new UIWindow();
     healthBar = new ProgressBarH();
