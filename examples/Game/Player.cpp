@@ -14,7 +14,7 @@ void Player::Damage(int amount){
 }
 
 void Player::Start() {
-    spriteSheet = new SpriteSheet("../Assets/warrior-sheet.png",*this);
+    spriteSheet = new SpriteSheet("./Assets/warrior-sheet.png",*this);
     spriteSheet->RegisterAnimation("walkdown",2882,1045,96,96,8);
     spriteSheet->RegisterAnimation("walkleft",2882,1142,96,96,8);
     spriteSheet->RegisterAnimation("walkup",2882,1336,96,96,8);
