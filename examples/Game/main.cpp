@@ -1,6 +1,6 @@
 #define SDL_MAIN_HANDLED
 #include <System/Game.h>
-#include "BaseLevel.h"
+#include "Level1/BaseLevel.h"
 #include <Utils/NanoLog.h>
 
 int main(int argc, char *argv[]) {
