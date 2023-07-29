@@ -87,13 +87,12 @@ void Game::loop() {
     while (!(stateStack.empty())&& GameState::GetInstance().getGameState() != GAMESTATES::Quit) {
         Time::GetInstance().StartTick();
 
-        auto& topState = stateStack.top();
-
         if (storedState != nullptr) {
             if (!stateStack.empty()) {
                 auto& pauseState = stateStack.top();
                 pauseState->Pause();
             }
+
             stateStack.emplace(storedState);
             storedState->Start();
             storedState = nullptr;
