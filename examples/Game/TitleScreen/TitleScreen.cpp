@@ -2,6 +2,7 @@
 #include "TitleScreenBackground.h"
 #include "../include/UI/FontManager.h"
 #include "../include/UI/Components/Text.h"
+#include "../Level1/BaseLevel.h"
 
 using namespace DemoGame;
 
@@ -51,6 +52,12 @@ void TitleScreen::Update(){
         }else {
             Pause();
         }
+    }
+
+    if(keystates[SDL_SCANCODE_SPACE]){
+        Game& game = Game::GetInstance();
+        DemoGame::BaseLevel* baseLevel = new DemoGame::BaseLevel();
+        game.Push(baseLevel);
     }
 
     UpdateObjects();
