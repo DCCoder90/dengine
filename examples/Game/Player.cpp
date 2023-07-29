@@ -3,6 +3,7 @@
 using namespace DemoGame;
 
 Player::Player() : GameObject("Player") {
+    AddTag("Player");
 }
 
 int Player::GetHealth(){
