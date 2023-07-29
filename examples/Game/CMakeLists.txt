@@ -11,7 +11,7 @@ file(COPY
         DESTINATION ${CMAKE_BINARY_DIR}/examples/Game/
         )
 
-add_executable(Game main.cpp LeafMan.cpp Player.cpp Level1/BaseLevel.cpp Level1/BaselevelBackground.cpp)
+add_executable(Game main.cpp LeafMan.cpp Player.cpp Level1/BaseLevel.cpp Level1/BaselevelBackground.cpp TitleScreen/TitleScreen.cpp TitleScreen/TitleScreenBackground.cpp)
 
 target_include_directories(Game PRIVATE ${CMAKE_SOURCE_DIR}/dengine/include)
 target_link_libraries(Game PRIVATE DENGINE
