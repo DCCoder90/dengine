@@ -17,7 +17,7 @@ target_include_directories(Game PRIVATE ${CMAKE_SOURCE_DIR}/dengine/include)
 target_link_libraries(Game PRIVATE DENGINE
         $<IF:$<TARGET_EXISTS:SDL2::SDL2>,SDL2::SDL2,SDL2::SDL2-static>
         $<IF:$<TARGET_EXISTS:SDL2_image::SDL2_image>,SDL2_image::SDL2_image,SDL2_image::SDL2_image-static>
-        $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main>
+        $<TARGET_NAME_IF_EXISTS:SDL2::SDL2main> -static-libgcc -static-libstdc++
         )
 
 add_custom_command(TARGET Game POST_BUILD
