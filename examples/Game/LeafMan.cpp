@@ -3,6 +3,7 @@
 using namespace DemoGame;
 
 LeafMan::LeafMan() : GameObject("LeafMan") {
+    AddTag("Enemy");
 }
 
 void LeafMan::Start() {

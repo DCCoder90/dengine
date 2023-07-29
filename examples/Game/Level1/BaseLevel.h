@@ -6,7 +6,7 @@
 #include <System/GameLevel.h>
 #include <System/GameStates.h>
 #include <System/Game.h>
-#include "Player.h"
+#include "../Player.h"
 #include <System/Sound.h>
 #include <System/AudioManager.h>
 #include <UI/Components/ProgressBarH.h>
