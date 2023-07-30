@@ -27,14 +27,18 @@ namespace dengine {
 
         /**
          * @brief Register custom event callback function
-         * @tparam Args
+         * @tparam Function The type of the callback function
          * @param eventType The event type to register this for
          * @param callback The callback to invoke when the event is triggered
-         * @param args Arguments for the callback
          * @return A unique identifier for the registration
          */
-        template <typename... Args>
-        int registerEventCallback(Uint32 eventType, std::function<void(Args...)> callback, Args&&... args);
+        template <typename Function>
+        int registerEventCallback(Uint32 eventType, Function&& callback) {
+            customEventCallbacks.push_back(std::make_unique<CustomEventCallback<Function>>(eventType, std::forward<Function>(callback)));
+            int identifier = nextCallbackIdentifier++;
+            callbackMap[identifier] = customEventCallbacks.end() - 1;
+            return identifier;
+        }
 
         /**
          * @brief Deregister a custom event callback by its unique identifier
@@ -59,18 +63,14 @@ namespace dengine {
             virtual ~CustomEventCallbackBase() {}
         };
 
-        template <typename... Args>
+        template <typename Function>
         struct CustomEventCallback : public CustomEventCallbackBase {
-            std::function<void(int, Args...)> callback;
-            std::tuple<Args...> arguments;
-
-            CustomEventCallback(Uint32 eventType, std::function<void(int, Args...)> cb, Args&&... args)
-                    : callback(cb), arguments(std::forward<Args>(args)...) {
+            Function callback;
+            CustomEventCallback(Uint32 eventType, Function&& cb) : callback(std::forward<Function>(cb)) {
                 this->eventType = eventType;
             }
-
             void execute() override {
-                std::apply(callback, std::tuple_cat(std::make_tuple(0), arguments)); // Pass '0' as an additional argument to the callback
+                callback();
             }
         };
 

@@ -4,14 +4,6 @@ using namespace dengine;
 
 EventSystem::EventSystem() {}
 
-template <typename... Args>
-int EventSystem::registerEventCallback(Uint32 eventType, std::function<void(Args...)> callback, Args&&... args) {
-    customEventCallbacks.push_back(new CustomEventCallback<Args...>(eventType, callback, std::forward<Args>(args)...));
-    int identifier = nextCallbackIdentifier++;
-    callbackMap[identifier] = customEventCallbacks.end() - 1;
-    return identifier;
-}
-
 void EventSystem::deregisterEventCallback(int identifier) {
     auto iter = callbackMap.find(identifier);
     if (iter != callbackMap.end()) {

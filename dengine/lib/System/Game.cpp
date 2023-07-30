@@ -39,14 +39,13 @@ Game::Game() {
     ui = new UI();
     eventSystem = new EventSystem();
 
-    int identifier = eventSystem->registerEventCallback<int>(SDL_QUIT, [](int param) {
+    eventSystem->registerEventCallback(SDL_QUIT, []() {
         GameState::GetInstance().setGameState(GAMESTATES::Quit);
-    }, 0);
+    });
 
-    int parameter1 = 42;
-    int callback1Identifier = eventSystem.registerEventCallback<int>(SDL_USEREVENT, [](int param) {
-        std::cout << "Custom Event 1 triggered with parameter: " << param << "\n";
-    }, parameter1);
+    eventSystem->registerEventCallback(SDL_KEYDOWN, []() {
+        GameState::GetInstance().setGameState(GAMESTATES::Quit);
+    });
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
     LOG_INFO << "Created game";
