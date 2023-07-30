@@ -37,6 +37,16 @@ Game::Game() {
     }
 
     ui = new UI();
+    eventSystem = new EventSystem();
+
+    int identifier = eventSystem->registerEventCallback<int>(SDL_QUIT, [](int param) {
+        GameState::GetInstance().setGameState(GAMESTATES::Quit);
+    }, 0);
+
+    int parameter1 = 42;
+    int callback1Identifier = eventSystem.registerEventCallback<int>(SDL_USEREVENT, [](int param) {
+        std::cout << "Custom Event 1 triggered with parameter: " << param << "\n";
+    }, parameter1);
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
     LOG_INFO << "Created game";
@@ -44,6 +54,10 @@ Game::Game() {
 
 UI* Game::GetUI(){
     return ui;
+}
+
+EventSystem* Game::GetEventSystem(){
+    return eventSystem;
 }
 
 Game& Game::GetInstance() {
@@ -104,13 +118,7 @@ void Game::loop() {
 
         auto& state = stateStack.top();
 
-        SDL_Event event;
-
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                GameState::GetInstance().setGameState(GAMESTATES::Quit);
-            }
-        }
+        eventSystem->processEvents();
 
         //TODO: Change this to be an end game screen
         //TODO: Add a way to change levels

@@ -2,69 +2,81 @@
 #define DENGINE_EVENTSYSTEM_H
 
 #include <SDL.h>
+#include <vector>
 #include <functional>
-#include <map>
+#include <unordered_map>
 #include <string>
-#include <iostream>
+#include <memory>
 
 namespace dengine {
     /**
+    * @brief A struct containing event data
+    */
+    struct CustomEventData {
+        // Define custom data fields here
+        int intValue;
+        std::string stringValue;
+    };
+
+    /**
      * @brief Event System
-     * @deprecated Marking this as deprecated as it currently serves no purpose.  As development progresses may find a way
-     * to add it in to keep up with system events, until then it will be marked as deprecated so others don't rely on it.
      */
     class EventSystem {
     public:
-        /**
-         * @brief Customer event data
-         */
-        struct CustomEventData;
-        /**
-         * @brief Structure of a custom event
-         */
-        struct CustomEvent;
+        EventSystem();
 
         /**
-         * Runs handlers for any events that have been registered and/called
-         * @brief Process called events
+         * @brief Register custom event callback function
+         * @tparam Args
+         * @param eventType The event type to register this for
+         * @param callback The callback to invoke when the event is triggered
+         * @param args Arguments for the callback
+         * @return A unique identifier for the registration
+         */
+        template <typename... Args>
+        int registerEventCallback(Uint32 eventType, std::function<void(Args...)> callback, Args&&... args);
+
+        /**
+         * @brief Deregister a custom event callback by its unique identifier
+         * @param identifier Unique identifier for an event callback.  Created from registerEventCallback
+         */
+        void deregisterEventCallback(int identifier);
+
+        /**
+         * @brief Process events, including custom events
          */
         void processEvents();
 
         /**
-         * Sends an event to any handlers that have been registered
-         * @brief Send an event
-         * @param data1 Data for the event
-         * @param data2 Data for the event
+         * @brief Clean up resources
          */
-        void sendCustomEvent(void *data1, void *data2);
-
-        template<typename EventType>
-        /**
-         * Register an event handler to be notified when a system event is processed.
-         * @brief Register event handler
-         * @tparam EventType The type of event to manage
-         * @param handler The handler to be called
-         */
-        void registerHandler(std::function<void(EventType)> handler);
-
-        template<typename EventType>
-        /**
-         * Removes an event handler that was previous registered with registerHandler(std::function<void(EventType)> handler)
-         * @brief Deregister event handler
-         */
-        void unregisterHandler();
-
-    protected:
-        virtual void handleCustomEvent(void *data1, void *data2);
-
-        virtual void onQuit();
-
-        virtual void onKeyDown(SDL_Keycode key);
-
-        virtual void onMouseButtonDown(Uint8 button, int x, int y);
+        void cleanup();
 
     private:
-        std::map <Uint32, std::function<void(void *, void *)>> eventHandlers;
+        struct CustomEventCallbackBase {
+            Uint32 eventType;
+            virtual void execute() = 0;
+            virtual ~CustomEventCallbackBase() {}
+        };
+
+        template <typename... Args>
+        struct CustomEventCallback : public CustomEventCallbackBase {
+            std::function<void(int, Args...)> callback;
+            std::tuple<Args...> arguments;
+
+            CustomEventCallback(Uint32 eventType, std::function<void(int, Args...)> cb, Args&&... args)
+                    : callback(cb), arguments(std::forward<Args>(args)...) {
+                this->eventType = eventType;
+            }
+
+            void execute() override {
+                std::apply(callback, std::tuple_cat(std::make_tuple(0), arguments)); // Pass '0' as an additional argument to the callback
+            }
+        };
+
+        std::vector<std::unique_ptr<CustomEventCallbackBase>> customEventCallbacks;
+        std::unordered_map<int, std::vector<std::unique_ptr<CustomEventCallbackBase>>::iterator> callbackMap;
+        int nextCallbackIdentifier = 0;
     };
 }
 #endif //DENGINE_EVENTSYSTEM_H
