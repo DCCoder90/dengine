@@ -14,12 +14,20 @@ namespace dengine_UI {
     class UIComponent {
     public:
         /**
-         * During the render phase of the program, this funtion is what draws the component to the screen.  This should
+         * During the render phase of the program, this function is what draws the component to the screen.  This should
          * be overridden for any UIComponents and actually be used to draw to the screen using one of the many SDL_Render
          * functions available.
          * @brief The render method of a component.
          */
         virtual void Render() = 0;
+
+        /**
+         * During the update phase of the program, this function is what updates and performs any logic within the component.
+         * This should be overridden for any UIComponents and actually be used to Update the internal logic of the component.
+         * This is called prior to the update anywhere else within the engine.
+         * @brief The update method of a component.
+         */
+        virtual void Update() = 0;
 
         /**
          * Sets the draw color of the component

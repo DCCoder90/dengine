@@ -20,7 +20,9 @@ namespace dengine_UI {
 
         void Render() override;
 
-    private:
+        void Update() override;
+
+    protected:
         SDL_Rect boxRect;
         int cornerR;
         double borderWidth;

@@ -33,6 +33,8 @@ namespace dengine_UI {
         }
 
         void Render() override;
+        void Update() override;
+
 
         /**
          * @brief Sets the filled progress of the progress bar

@@ -55,6 +55,8 @@ void GameLevel::StartObjects() {
 }
 
 void GameLevel::UpdateObjects() {
+
+
     objects.insert(objects.end(), newObjects.begin(), newObjects.end());
     newObjects.clear();
 

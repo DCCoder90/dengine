@@ -123,12 +123,15 @@ void Game::loop() {
             continue;
         }
 
+        ui->Update();
         state->Update();
+
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
         state->Render();
         ui->Render();
         SDL_RenderPresent(renderer);
+
         Time::GetInstance().EndTick();
     }
 

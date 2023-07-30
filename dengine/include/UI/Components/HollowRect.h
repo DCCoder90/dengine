@@ -24,6 +24,8 @@ namespace dengine_UI {
         void Setup(SDL_Rect rect, int width);
 
         void Render() override;
+        void Update() override;
+
 
     private:
         SDL_Rect boxRect;

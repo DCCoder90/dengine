@@ -8,6 +8,8 @@ void HollowRect::Setup(SDL_Rect rect, int width){
     borderWidth = width;
 }
 
+void HollowRect::Update() {}
+
 void HollowRect::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 

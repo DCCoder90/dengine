@@ -24,6 +24,8 @@ namespace dengine_UI {
             position = initPos;
         }
         void Render() override;
+        void Update() override;
+
 
         /**
          * @brief Sets the fill color of the progress bar

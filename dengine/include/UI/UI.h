@@ -44,6 +44,13 @@ namespace dengine_UI {
         void Render();
 
         /**
+         * Calls the Update function for the UI. Called in the Update stage of the game and is ran before all GameObjects
+         * and their components.
+         * @brief Render the UI
+         */
+        void Update();
+
+        /**
          * Push a new UI window onto the stack
          * @brief Push window to stack
          * @param window The window to add to the stack

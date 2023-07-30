@@ -3,6 +3,7 @@
 #include "../include/UI/FontManager.h"
 #include "../include/UI/Components/Text.h"
 #include "../Level1/BaseLevel.h"
+#include "StartGameButton.h"
 
 using namespace DemoGame;
 
@@ -54,11 +55,7 @@ void TitleScreen::Update(){
         }
     }
 
-    if(keystates[SDL_SCANCODE_SPACE]){
-        Game& game = Game::GetInstance();
-        DemoGame::BaseLevel* baseLevel = new DemoGame::BaseLevel();
-        game.Push(baseLevel);
-    }
+
 
     UpdateObjects();
 }
@@ -77,7 +74,13 @@ void TitleScreen::LoadUI() {
     displayText->Setup("SpaceSmall","Dark Moon",displayRect);
     displayText->SetDrawColor({255,102,255,255});
 
+    SDL_Rect displayRectT = {0,100,300,80};
+    StartGameButton* startGameButton = new StartGameButton();
+    startGameButton->Setup("SpaceSmall","Start Game",displayRectT);
+    startGameButton->SetDrawColor({255,102,255,255});
+
     uiwindow->Push(displayText);
+    uiwindow->Push(startGameButton);
 
     Game::GetInstance().GetUI()->Push(uiwindow);
 }

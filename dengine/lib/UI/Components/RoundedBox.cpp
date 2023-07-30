@@ -4,6 +4,8 @@
 using namespace dengine_UI;
 using namespace dengine;
 
+void RoundedBox::Update() {}
+
 void RoundedBox::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 

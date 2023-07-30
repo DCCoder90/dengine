@@ -22,6 +22,8 @@ namespace dengine_UI {
         void Setup(Vec2 center, int radius);
 
         void Render() override;
+        void Update() override;
+
 
     private:
         Vec2 centerPoint;
