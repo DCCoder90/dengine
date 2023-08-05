@@ -42,6 +42,12 @@ namespace dengine_UI{
          */
         virtual void Render();
 
+        /**
+         * Update all components on the stack
+         * @brief Update function
+         */
+        virtual void Update();
+
     private:
         std::vector<class UIComponent *> components;
     };

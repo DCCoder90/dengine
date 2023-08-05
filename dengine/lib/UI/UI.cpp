@@ -13,6 +13,13 @@ void UI::Render() {
     }
 };
 
+void UI::Update() {
+    int i;
+    for (i = 0; i < windows.size(); i++) {
+        windows[i]->Update();
+    }
+};
+
 void UI::Load() {
 
 };

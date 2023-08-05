@@ -8,6 +8,8 @@ void Circle::Setup(Vec2 center, int radius){
     r = radius;
 }
 
+void Circle::Update() {}
+
 void Circle::Render() {
     SDL_Renderer* renderer = Game::GetInstance().GetRenderer();
 

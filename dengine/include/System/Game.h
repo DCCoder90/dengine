@@ -15,6 +15,7 @@
 #include "../Utils/Serializer.h"
 #include "../Universal.h"
 #include "../UI/UI.h"
+#include "EventSystem.h"
 
 using namespace dengine_UI;
 
@@ -89,8 +90,16 @@ namespace dengine {
          * @see UI.h
          */
         UI *GetUI();
+
+        /**
+         * Retrieves a pointer to the Event System
+         * @return The Event System
+         * @see EventSystem.h
+         */
+        EventSystem *GetEventSystem();
     private:
         UI *ui;
+        EventSystem *eventSystem;
         SDL_Renderer *renderer;
         std::stack <std::unique_ptr<GameLevel>> stateStack;
         GameLevel *storedState;

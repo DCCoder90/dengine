@@ -5,6 +5,8 @@
 using namespace dengine_UI;
 using namespace dengine;
 
+void ProgressBarV::Update() {}
+
 void ProgressBarV::Render() {
     int w_ptr, h_ptr;
     SDL_GetWindowSize(Game::GetInstance().window,&w_ptr,&h_ptr);

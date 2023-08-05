@@ -37,6 +37,7 @@ Game::Game() {
     }
 
     ui = new UI();
+    eventSystem = new EventSystem();
 
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
     LOG_INFO << "Created game";
@@ -44,6 +45,10 @@ Game::Game() {
 
 UI* Game::GetUI(){
     return ui;
+}
+
+EventSystem* Game::GetEventSystem(){
+    return eventSystem;
 }
 
 Game& Game::GetInstance() {
@@ -87,13 +92,12 @@ void Game::loop() {
     while (!(stateStack.empty())&& GameState::GetInstance().getGameState() != GAMESTATES::Quit) {
         Time::GetInstance().StartTick();
 
-        auto& topState = stateStack.top();
-
         if (storedState != nullptr) {
             if (!stateStack.empty()) {
                 auto& pauseState = stateStack.top();
                 pauseState->Pause();
             }
+
             stateStack.emplace(storedState);
             storedState->Start();
             storedState = nullptr;
@@ -105,13 +109,7 @@ void Game::loop() {
 
         auto& state = stateStack.top();
 
-        SDL_Event event;
-
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                GameState::GetInstance().setGameState(GAMESTATES::Quit);
-            }
-        }
+        eventSystem->processEvents();
 
         //TODO: Change this to be an end game screen
         //TODO: Add a way to change levels
@@ -124,12 +122,15 @@ void Game::loop() {
             continue;
         }
 
+        ui->Update();
         state->Update();
+
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
         state->Render();
         ui->Render();
         SDL_RenderPresent(renderer);
+
         Time::GetInstance().EndTick();
     }
 

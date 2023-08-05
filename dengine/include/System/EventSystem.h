@@ -2,69 +2,103 @@
 #define DENGINE_EVENTSYSTEM_H
 
 #include <SDL.h>
+#include <vector>
 #include <functional>
-#include <map>
+#include <unordered_map>
 #include <string>
-#include <iostream>
+#include <memory>
+#include <map>
+#include "GameStates.h"
 
 namespace dengine {
     /**
+    * @brief A struct containing event data
+    */
+    struct CustomEventData {
+        // Define custom data fields here
+        int intValue;
+        std::string stringValue;
+    };
+
+    /**
      * @brief Event System
-     * @deprecated Marking this as deprecated as it currently serves no purpose.  As development progresses may find a way
-     * to add it in to keep up with system events, until then it will be marked as deprecated so others don't rely on it.
      */
     class EventSystem {
     public:
-        /**
-         * @brief Customer event data
-         */
-        struct CustomEventData;
-        /**
-         * @brief Structure of a custom event
-         */
-        struct CustomEvent;
+        EventSystem();
+
+        typedef std::function<void(SDL_Event&)> EventCallback;
+        std::map<Uint32, EventCallback> eventCallbacks;
 
         /**
-         * Runs handlers for any events that have been registered and/called
-         * @brief Process called events
+         * @brief Function to register an event callback
+         * @param eventType The type of event your want this registered for
+         * @param callback The callback itself
+         *
+         * @code
+        * void StartGameButton::CheckMouseHover(SDL_Event& event){
+        *    if(event.type == SDL_MOUSEMOTION) {
+        *         int x, y;
+        *         SDL_GetMouseState(&x, &y);
+        *
+        *         if (x > textRect.x && x < textRect.x + textRect.w
+        *             && y > textRect.y && y < textRect.y + textRect.h) {
+        *             inRect = true;
+        *             SetDrawColor({255, 0, 0, 255});
+        *         } else {
+        *             inRect = false;
+        *             SetDrawColor({255, 102, 255, 255});
+        *         }
+        *     }else if(event.type == SDL_MOUSEBUTTONUP){
+        *         OnClick();
+        *     }
+        * }
+        *
+        * void StartGameButton::Start(){
+        *     Game::GetInstance().GetEventSystem()->RegisterEventCallback(SDL_MOUSEMOTION, [this](SDL_Event& event) {
+        *         CheckMouseHover(event);
+        *     });
+        *     Game::GetInstance().GetEventSystem()->RegisterEventCallback(SDL_MOUSEBUTTONUP, [this](SDL_Event& event) {
+        *         CheckMouseHover(event);
+        *     });
+        * }
+         * @endcode
          */
-        void processEvents();
+        void RegisterEventCallback(Uint32 eventType, EventCallback callback) {
+            eventCallbacks[eventType] = callback;
+        }
 
         /**
-         * Sends an event to any handlers that have been registered
-         * @brief Send an event
-         * @param data1 Data for the event
-         * @param data2 Data for the event
+         * @brief Function to deregister an event callback
+         * @param eventType The type of event you want to deregister
          */
-        void sendCustomEvent(void *data1, void *data2);
+        void DeregisterEventCallback(Uint32 eventType) {
+            eventCallbacks.erase(eventType);
+        }
 
-        template<typename EventType>
         /**
-         * Register an event handler to be notified when a system event is processed.
-         * @brief Register event handler
-         * @tparam EventType The type of event to manage
-         * @param handler The handler to be called
+         * @brief Process events, including custom events
          */
-        void registerHandler(std::function<void(EventType)> handler);
+        void processEvents(){
+            SDL_Event event;
 
-        template<typename EventType>
+            while (SDL_PollEvent(&event)) {
+                if (event.type == SDL_QUIT) {
+                    GameState::GetInstance().setGameState(GAMESTATES::Quit);
+                }
+
+                // Check if there's a registered callback for this event type
+                if (eventCallbacks.find(event.type) != eventCallbacks.end()) {
+                    // Call the registered callback function passing the event as an argument
+                    eventCallbacks[event.type](event);
+                }
+            }
+        }
+
         /**
-         * Removes an event handler that was previous registered with registerHandler(std::function<void(EventType)> handler)
-         * @brief Deregister event handler
+         * @brief Clean up resources
          */
-        void unregisterHandler();
-
-    protected:
-        virtual void handleCustomEvent(void *data1, void *data2);
-
-        virtual void onQuit();
-
-        virtual void onKeyDown(SDL_Keycode key);
-
-        virtual void onMouseButtonDown(Uint8 button, int x, int y);
-
-    private:
-        std::map <Uint32, std::function<void(void *, void *)>> eventHandlers;
+        void cleanup();
     };
 }
 #endif //DENGINE_EVENTSYSTEM_H

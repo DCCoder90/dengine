@@ -16,3 +16,10 @@ void UIWindow::Render() {
         components[i]->Render();
     }
 }
+
+void UIWindow::Update() {
+    int i;
+    for (i = 0; i < components.size(); i++) {
+        components[i]->Update();
+    }
+}

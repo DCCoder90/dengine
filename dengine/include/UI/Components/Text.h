@@ -27,8 +27,9 @@ namespace dengine_UI {
         }
 
         void Render() override;
+        void Update() override;
 
-    private:
+    protected:
         SDL_Rect textRect;
         std::string fontName;
         std::string displayText;

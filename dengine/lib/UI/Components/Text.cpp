@@ -3,6 +3,8 @@
 using namespace dengine_UI;
 using namespace dengine;
 
+void Text::Update() {}
+
 void Text::Setup(std::string font, std::string text, SDL_Rect rect) {
     textRect = rect;
     fontName = font;
