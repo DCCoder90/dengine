@@ -39,14 +39,6 @@ Game::Game() {
     ui = new UI();
     eventSystem = new EventSystem();
 
-    eventSystem->registerEventCallback(SDL_QUIT, []() {
-        GameState::GetInstance().setGameState(GAMESTATES::Quit);
-    });
-
-    eventSystem->registerEventCallback(SDL_KEYDOWN, []() {
-        GameState::GetInstance().setGameState(GAMESTATES::Quit);
-    });
-
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
     LOG_INFO << "Created game";
 }

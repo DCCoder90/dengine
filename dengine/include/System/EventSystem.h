@@ -7,6 +7,8 @@
 #include <unordered_map>
 #include <string>
 #include <memory>
+#include <map>
+#include "GameStates.h"
 
 namespace dengine {
     /**
@@ -25,58 +27,78 @@ namespace dengine {
     public:
         EventSystem();
 
+        typedef std::function<void(SDL_Event&)> EventCallback;
+        std::map<Uint32, EventCallback> eventCallbacks;
+
         /**
-         * @brief Register custom event callback function
-         * @tparam Function The type of the callback function
-         * @param eventType The event type to register this for
-         * @param callback The callback to invoke when the event is triggered
-         * @return A unique identifier for the registration
+         * @brief Function to register an event callback
+         * @param eventType The type of event your want this registered for
+         * @param callback The callback itself
+         *
+         * @code
+        * void StartGameButton::CheckMouseHover(SDL_Event& event){
+        *    if(event.type == SDL_MOUSEMOTION) {
+        *         int x, y;
+        *         SDL_GetMouseState(&x, &y);
+        *
+        *         if (x > textRect.x && x < textRect.x + textRect.w
+        *             && y > textRect.y && y < textRect.y + textRect.h) {
+        *             inRect = true;
+        *             SetDrawColor({255, 0, 0, 255});
+        *         } else {
+        *             inRect = false;
+        *             SetDrawColor({255, 102, 255, 255});
+        *         }
+        *     }else if(event.type == SDL_MOUSEBUTTONUP){
+        *         OnClick();
+        *     }
+        * }
+        *
+        * void StartGameButton::Start(){
+        *     Game::GetInstance().GetEventSystem()->RegisterEventCallback(SDL_MOUSEMOTION, [this](SDL_Event& event) {
+        *         CheckMouseHover(event);
+        *     });
+        *     Game::GetInstance().GetEventSystem()->RegisterEventCallback(SDL_MOUSEBUTTONUP, [this](SDL_Event& event) {
+        *         CheckMouseHover(event);
+        *     });
+        * }
+         * @endcode
          */
-        template <typename Function>
-        int registerEventCallback(Uint32 eventType, Function&& callback) {
-            customEventCallbacks.push_back(std::make_unique<CustomEventCallback<Function>>(eventType, std::forward<Function>(callback)));
-            int identifier = nextCallbackIdentifier++;
-            callbackMap[identifier] = customEventCallbacks.end() - 1;
-            return identifier;
+        void RegisterEventCallback(Uint32 eventType, EventCallback callback) {
+            eventCallbacks[eventType] = callback;
         }
 
         /**
-         * @brief Deregister a custom event callback by its unique identifier
-         * @param identifier Unique identifier for an event callback.  Created from registerEventCallback
+         * @brief Function to deregister an event callback
+         * @param eventType The type of event you want to deregister
          */
-        void deregisterEventCallback(int identifier);
+        void DeregisterEventCallback(Uint32 eventType) {
+            eventCallbacks.erase(eventType);
+        }
 
         /**
          * @brief Process events, including custom events
          */
-        void processEvents();
+        void processEvents(){
+            SDL_Event event;
+
+            while (SDL_PollEvent(&event)) {
+                if (event.type == SDL_QUIT) {
+                    GameState::GetInstance().setGameState(GAMESTATES::Quit);
+                }
+
+                // Check if there's a registered callback for this event type
+                if (eventCallbacks.find(event.type) != eventCallbacks.end()) {
+                    // Call the registered callback function passing the event as an argument
+                    eventCallbacks[event.type](event);
+                }
+            }
+        }
 
         /**
          * @brief Clean up resources
          */
         void cleanup();
-
-    private:
-        struct CustomEventCallbackBase {
-            Uint32 eventType;
-            virtual void execute() = 0;
-            virtual ~CustomEventCallbackBase() {}
-        };
-
-        template <typename Function>
-        struct CustomEventCallback : public CustomEventCallbackBase {
-            Function callback;
-            CustomEventCallback(Uint32 eventType, Function&& cb) : callback(std::forward<Function>(cb)) {
-                this->eventType = eventType;
-            }
-            void execute() override {
-                callback();
-            }
-        };
-
-        std::vector<std::unique_ptr<CustomEventCallbackBase>> customEventCallbacks;
-        std::unordered_map<int, std::vector<std::unique_ptr<CustomEventCallbackBase>>::iterator> callbackMap;
-        int nextCallbackIdentifier = 0;
     };
 }
 #endif //DENGINE_EVENTSYSTEM_H

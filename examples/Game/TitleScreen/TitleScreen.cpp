@@ -4,6 +4,7 @@
 #include "../include/UI/Components/Text.h"
 #include "../Level1/BaseLevel.h"
 #include "StartGameButton.h"
+#include <SDL.h>
 
 using namespace DemoGame;
 
@@ -13,6 +14,19 @@ TitleScreen::TitleScreen(){
 
 TitleScreen::~TitleScreen(){
     UnLoad();
+}
+
+void OnPause(SDL_Event& event){
+    if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_t){
+
+        if(GameState::GetInstance().getGameState()==GAMESTATES::Pause){
+            GameState::GetInstance().setGameState(GAMESTATES::Playing);
+            LOG_INFO << "Playing";
+        }else {
+            GameState::GetInstance().setGameState(GAMESTATES::Pause);
+            LOG_INFO << "Pause";
+        }
+    }
 }
 
 void TitleScreen::Load(){
@@ -26,6 +40,8 @@ void TitleScreen::Load(){
     objects.emplace_back(managerGo);
 
     LoadUI();
+
+    Game::GetInstance().GetEventSystem()->RegisterEventCallback(SDL_KEYDOWN,OnPause);
 }
 
 void TitleScreen::UnLoad() {
@@ -44,19 +60,7 @@ void TitleScreen::Resume(){
     GameState::GetInstance().setGameState(GAMESTATES::Playing);
 }
 
-
 void TitleScreen::Update(){
-    const Uint8 *keystates = SDL_GetKeyboardState(NULL);
-    if (keystates[SDL_SCANCODE_T]) {
-        if(GameState::GetInstance().getGameState()==GAMESTATES::Pause){
-            Resume();
-        }else {
-            Pause();
-        }
-    }
-
-
-
     UpdateObjects();
 }
 
@@ -78,6 +82,7 @@ void TitleScreen::LoadUI() {
     StartGameButton* startGameButton = new StartGameButton();
     startGameButton->Setup("SpaceSmall","Start Game",displayRectT);
     startGameButton->SetDrawColor({255,102,255,255});
+    startGameButton->Start();
 
     uiwindow->Push(displayText);
     uiwindow->Push(startGameButton);
